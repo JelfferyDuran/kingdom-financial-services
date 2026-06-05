@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kingdom Financial Services | Financial Clarity for Every Journey</title>
+  <meta name="description" content="Premium financial education, credit guidance, debt relief, and business funding support. Serving clients nationwide from Wayne, NJ." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- WebGL canvas (fixed, full-screen, behind everything) -->
+  <canvas id="bg"></canvas>
+
+  <!-- Scroll progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Fixed navigation -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-mark">K</span>
+      <span class="logo-text">KINGDOM<small>Financial Services</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#credit">Credit</a>
+      <a href="#debt">Debt</a>
+      <a href="#business">Business</a>
+      <a href="#start" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- CHAPTER 1: HERO -->
+    <section id="hero" class="chapter chapter-hero">
+      <div class="chapter-inner">
+        <span class="eyebrow">New Jersey LLC · Nationwide Service</span>
+        <h1>Financial<br><span class="accent">Clarity.</span></h1>
+        <p class="hero-sub">For every journey.</p>
+        <p class="hero-desc">
+          Kingdom Financial Services provides structured education, strategic
+          guidance, and personalized support for credit, debt, business funding,
+          and financial empowerment — wherever you are right now.
+        </p>
+        <div class="scroll-hint">
+          <span>Scroll to begin</span>
+          <div class="scroll-arrow">↓</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 2: CREDIT -->
+    <section id="credit" class="chapter chapter-left">
+      <div class="chapter-inner glass">
+        <span class="chapter-num">01</span>
+        <h2>Credit Education</h2>
+        <p>
+          Understand your credit profile, learn how scoring actually works, and
+          build a strategic roadmap toward stronger financial standing. No jargon.
+          No judgment. Just clarity.
+        </p>
+        <ul class="feature-list">
+          <li>Credit report analysis &amp; education</li>
+          <li>Understanding the five scoring factors</li>
+          <li>A personalized improvement roadmap</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3: DEBT -->
+    <section id="debt" class="chapter chapter-right">
+      <div class="chapter-inner glass">
+        <span class="chapter-num">02</span>
+        <h2>Debt Relief Guidance</h2>
+        <p>
+          Explore your options with structured guidance on debt management,
+          consolidation strategies, and relief program navigation — so you can
+          move forward with a plan that fits your life.
+        </p>
+        <ul class="feature-list">
+          <li>Debt management strategy education</li>
+          <li>Consolidation &amp; relief options</li>
+          <li>Step-by-step path forward</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4: BUSINESS -->
+    <section id="business" class="chapter chapter-left">
+      <div class="chapter-inner glass">
+        <span class="chapter-num">03</span>
+        <h2>Business Funding</h2>
+        <p>
+          Learn how business credit works, what lenders look for, and how to
+          position your business for funding opportunities. Build something
+          that lasts.
+        </p>
+        <ul class="feature-list">
+          <li>Business credit fundamentals</li>
+          <li>Funding readiness education</li>
+          <li>Business structuring guidance</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5: GET STARTED -->
+    <section id="start" class="chapter chapter-center">
+      <div class="chapter-inner">
+        <span class="chapter-num">04</span>
+        <h2>Where Do You<br>Want to Start?</h2>
+        <p class="start-desc">
+          No commitment. No pressure. Just a real conversation about where you
+          are and where you want to go. We serve clients across all 50 states.
+        </p>
+
+        <form id="lead-form" class="lead-form" name="kfs-leads" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="kfs-leads" />
+          <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <div class="form-row">
+            <input type="text" name="first_name" placeholder="First Name *" required />
+            <input type="email" name="email" placeholder="Email Address *" required />
+          </div>
+          <div class="form-row">
+            <input type="tel" name="phone" placeholder="Phone Number" />
+            <select name="service_interest" required>
+              <option value="">I need help with… *</option>
+              <option value="credit">Credit Education</option>
+              <option value="debt">Debt Relief Guidance</option>
+              <option value="business">Business Funding</option>
+              <option value="literacy">Financial Literacy</option>
+              <option value="general">General Consultation</option>
+            </select>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="email_consent" checked />
+            <span>I agree to receive educational emails. I can unsubscribe anytime.</span>
+          </label>
+          <button type="submit" class="btn-gold">Get Started — It's Free</button>
+          <p class="form-note">We never sell your information.</p>
+        </form>
+
+        <div class="portal-link">
+          <span>Already a client?</span>
+          <a href="https://kingdomfinancialservices.getcredithelpnow.com/start" target="_blank" rel="noopener">
+            Access your portal →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-mark">K</span>
+          <div>
+            <strong>Kingdom Financial Services LLC</strong>
+            <span>155 Willowbrook Blvd, Ste 110 #8199, Wayne, NJ 07470</span>
+            <a href="tel:2019897108">(201) 989-7108</a>
+          </div>
+        </div>
+        <p class="footer-legal">
+          © <span id="year"></span> Kingdom Financial Services LLC · EIN 41-5101264 ·
+          New Jersey LLC. Financial education and guidance only. Not legal or
+          financial advice. No guarantees. Results vary.
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
