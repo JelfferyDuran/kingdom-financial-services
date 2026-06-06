@@ -3,7 +3,6 @@ import * as THREE from 'three';
 
 // ============================================================
 // KINGDOM FINANCIAL SERVICES — CINEMATIC WEBGL SCENE
-// Scroll position drives the camera through the 3D space.
 // ============================================================
 
 // ---- Setup ----
@@ -43,7 +42,7 @@ fillLight.position.set(-10, -5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
 scene.add(pointLight, fillLight, ambientLight);
 
-// ---- Hero geometry: rotating faceted icosahedron ----
+// ---- Hero geometry: icosahedron "core" ----
 const coreGeometry = new THREE.IcosahedronGeometry(8, 1);
 const coreMaterial = new THREE.MeshStandardMaterial({
   color: GOLD,
@@ -143,7 +142,7 @@ document.addEventListener('mousemove', (e) => {
   mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
 
-// ---- Animation loop ----
+// ---- Main animation loop ----
 const clock = new THREE.Clock();
 
 function animate() {
@@ -175,7 +174,7 @@ window.addEventListener('resize', () => {
 // ---- Footer year ----
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ---- Lead form handler — Web3Forms ----
+// ---- Lead form — Web3Forms ----
 const form = document.getElementById('lead-form');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -201,3 +200,113 @@ form.addEventListener('submit', async (e) => {
     btn.disabled = false;
   }
 });
+
+
+// ============================================================
+// PORTAL ORB — 3D interactive client portal bubble
+// ============================================================
+
+const orbCanvas = document.getElementById('portal-orb');
+if (orbCanvas) {
+  const orbScene = new THREE.Scene();
+  const orbCamera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  orbCamera.position.z = 3.2;
+
+  const orbRenderer = new THREE.WebGLRenderer({
+    canvas: orbCanvas,
+    antialias: true,
+    alpha: true,
+  });
+  orbRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  orbRenderer.setSize(100, 100);
+
+  // Gold metallic sphere
+  const sphereMesh = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(1, 5),
+    new THREE.MeshStandardMaterial({
+      color: 0xc9a84c,
+      metalness: 0.85,
+      roughness: 0.12,
+      emissive: 0x3d2200,
+      emissiveIntensity: 0.5,
+    })
+  );
+  orbScene.add(sphereMesh);
+
+  // Orbital ring 1
+  const ring1 = new THREE.Mesh(
+    new THREE.TorusGeometry(1.38, 0.033, 16, 120),
+    new THREE.MeshBasicMaterial({ color: 0xe8c97a, transparent: true, opacity: 0.85 })
+  );
+  ring1.rotation.x = Math.PI / 4;
+  orbScene.add(ring1);
+
+  // Orbital ring 2
+  const ring2 = new THREE.Mesh(
+    new THREE.TorusGeometry(1.38, 0.018, 16, 120),
+    new THREE.MeshBasicMaterial({ color: 0xc9a84c, transparent: true, opacity: 0.45 })
+  );
+  ring2.rotation.x = -Math.PI / 3.5;
+  ring2.rotation.y = Math.PI / 3;
+  orbScene.add(ring2);
+
+  // Lights
+  const orbKey = new THREE.PointLight(0xffd060, 4, 20);
+  orbKey.position.set(3, 3, 3);
+  orbScene.add(orbKey);
+  const orbFill = new THREE.PointLight(0x4040ff, 0.6, 10);
+  orbFill.position.set(-3, -2, 1);
+  orbScene.add(orbFill);
+  orbScene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+  // Animation state
+  let hovering = false;
+  let zooming  = false;
+  let zoomT    = 0;
+  const orbClk = new THREE.Clock();
+
+  function renderOrb() {
+    requestAnimationFrame(renderOrb);
+    const t = orbClk.getElapsedTime();
+
+    sphereMesh.rotation.y = t * 0.55;
+    sphereMesh.rotation.x = Math.sin(t * 0.28) * 0.18;
+    ring1.rotation.z = t * 0.8;
+    ring2.rotation.z = -t * 0.55;
+
+    // Hover pulse
+    const ts = hovering ? 1.12 : 1.0;
+    sphereMesh.scale.setScalar(THREE.MathUtils.lerp(sphereMesh.scale.x, ts, 0.1));
+    orbKey.intensity = THREE.MathUtils.lerp(orbKey.intensity, hovering ? 9 : 4, 0.07);
+
+    // Zoom-in on click then open portal
+    if (zooming) {
+      zoomT = THREE.MathUtils.lerp(zoomT, 1, 0.075);
+      orbCamera.position.z = 3.2 - zoomT * 3.15;
+      if (zoomT > 0.94) {
+        window.open('https://www.secureclientaccess.com/login', '_blank', 'noopener,noreferrer');
+        zooming = false;
+        zoomT   = 0;
+        orbCamera.position.z = 3.2;
+        document.getElementById('portal-orb-wrapper')?.classList.remove('orb-zooming');
+      }
+    }
+
+    orbRenderer.render(orbScene, orbCamera);
+  }
+  renderOrb();
+
+  // Pointer events
+  const wrapper = document.getElementById('portal-orb-wrapper');
+  orbCanvas.addEventListener('mouseenter', () => { hovering = true; });
+  orbCanvas.addEventListener('mouseleave', () => { hovering = false; });
+  orbCanvas.addEventListener('click', () => {
+    zooming = true;
+    wrapper?.classList.add('orb-zooming');
+  });
+  orbCanvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    zooming = true;
+    wrapper?.classList.add('orb-zooming');
+  }, { passive: false });
+}
