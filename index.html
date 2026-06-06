@@ -115,9 +115,11 @@
           are and where you want to go. We serve clients across all 50 states.
         </p>
 
-        <form id="lead-form" class="lead-form" name="kfs-leads" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="kfs-leads" />
-          <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <form id="lead-form" class="lead-form" name="kfs-leads" method="POST" action="https://api.web3forms.com/submit">
+          <input type="hidden" name="access_key" value="754e4fd3-1f9f-4c97-b53a-80dcea5e723f" />
+          <input type="hidden" name="subject" value="New Lead — Kingdom Financial Services" />
+          <input type="hidden" name="from_name" value="KFS Website" />
+          <input type="checkbox" name="botcheck" style="display:none" />
           <div class="form-row">
             <input type="text" name="first_name" placeholder="First Name *" required />
             <input type="email" name="email" placeholder="Email Address *" required />
@@ -162,7 +164,7 @@
           </div>
         </div>
         <p class="footer-legal">
-          © <span id="year"></span> Kingdom Financial Services LLC · EIN 41-5101264 ·
+          &copy; <span id="year"></span> Kingdom Financial Services LLC &middot; EIN 41-5101264 &middot;
           New Jersey LLC. Financial education and guidance only. Not legal or
           financial advice. No guarantees. Results vary.
         </p>
