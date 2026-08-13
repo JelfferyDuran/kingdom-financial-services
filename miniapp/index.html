@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#14152a">
+<title>Kingdom Hermes</title>
+<style>
+  :root {
+    --bg: #14152a;
+    --card: #1e2038;
+    --card2: #262849;
+    --border: #2e3057;
+    --text: #e8eaf6;
+    --muted: #9aa0c0;
+    --accent: #7c5cfc;
+    --accent2: #a78bfa;
+    --gold: #f59e0b;
+    --green: #22c55e;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 14px 14px 110px;
+    max-width: 460px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+  .header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .logo {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 13px; display: flex; align-items: center; justify-content: center;
+    font-size: 21px; box-shadow: 0 4px 16px rgba(124,92,252,.35);
+  }
+  .header h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.2px; }
+  .header .sub { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+  .status-pill {
+    margin-left: auto; display: flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600; color: var(--green);
+    background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25);
+    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 15px; margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 11px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-title .hint { font-size: 10px; letter-spacing: 0; text-transform: none; opacity: .7; }
+
+  .session-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .session-item:last-child { border-bottom: none; padding-bottom: 2px; }
+  .session-item .who { font-size: 14px; font-weight: 600; }
+  .session-item .when { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .pill-btn {
+    background: var(--card2); border: 1px solid var(--border); color: var(--text);
+    font-size: 11.5px; font-weight: 600; padding: 6px 13px; border-radius: 20px;
+    cursor: pointer; transition: transform .12s, background .12s; flex-shrink: 0;
+  }
+  .pill-btn:active { transform: scale(.94); background: #31345f; }
+  .pill-btn.accent { background: var(--accent); border-color: transparent; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .action-btn {
+    background: var(--card2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 8px 10px; color: var(--text); font-size: 12.5px; font-weight: 500;
+    cursor: pointer; transition: transform .12s, background .12s; line-height: 1.35; text-align: center;
+  }
+  .action-btn:active { transform: scale(.95); background: #31345f; }
+  .action-btn .emoji { display: block; font-size: 21px; margin-bottom: 5px; }
+  .action-btn .mini { font-size: 10px; color: var(--muted); display: block; margin-top: 2px; }
+
+  .fin-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8.5px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+  .fin-row:last-of-type { border-bottom: none; }
+  .fin-row .lbl { color: var(--muted); font-size: 13px; }
+  .fin-row .amt { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14.5px; }
+  .amt.pos { color: var(--green); } .amt.neg { color: var(--red); } .amt.neutral { color: var(--text); }
+  .prog { margin-top: 10px; }
+  .prog .bar { height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .prog .fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold), var(--accent)); transition: width .6s ease; }
+  .prog .meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+  .flag-row { display: flex; align-items: flex-start; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .flag-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .flag-row .femoji { font-size: 15px; flex-shrink: 0; }
+  .flag-row .ftxt { color: var(--text); }
+  .flag-row .fmeta { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  .open-chat {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(135deg, var(--accent), #6d4aff);
+    border: none; border-radius: 13px; color: #fff; font-size: 14.5px; font-weight: 700;
+    padding: 14px; width: 100%; cursor: pointer; margin-bottom: 12px;
+    box-shadow: 0 6px 20px rgba(124,92,252,.3); transition: transform .12s;
+  }
+  .open-chat:active { transform: scale(.97); }
+
+  .cmd-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(20,21,42,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--border); padding: 11px 14px calc(11px + env(safe-area-inset-bottom));
+    display: flex; gap: 8px; align-items: center; max-width: 460px; margin: 0 auto;
+  }
+  .cmd-bar input {
+    flex: 1; background: var(--card2); border: 1px solid var(--border); border-radius: 11px;
+    padding: 11px 14px; color: var(--text); font-size: 14px; outline: none; min-width: 0;
+  }
+  .cmd-bar input:focus { border-color: var(--accent); }
+  .cmd-bar input::placeholder { color: var(--muted); }
+  .cmd-bar button {
+    background: var(--accent); color: #fff; border: none; border-radius: 11px;
+    padding: 11px 17px; font-size: 14px; font-weight: 700; cursor: pointer; flex-shrink: 0;
+  }
+  .cmd-bar button:active { opacity: .8; }
+
+  .toast {
+    position: fixed; bottom: 86px; left: 50%; transform: translateX(-50%) translateY(8px);
+    background: #2e3057; border: 1px solid #3d3f6e; color: var(--text);
+    padding: 11px 18px; border-radius: 12px; font-size: 13px; font-weight: 500;
+    box-shadow: 0 10px 34px rgba(0,0,0,.45); opacity: 0; transition: all .25s ease;
+    pointer-events: none; z-index: 100; max-width: 90%; text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 90;
+    display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px);
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px 18px 0 0;
+    padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); width: 100%; max-width: 460px;
+    max-height: 78vh; overflow-y: auto;
+  }
+  .modal h2 { font-size: 16px; margin-bottom: 4px; }
+  .modal p { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .qm-row { display: flex; gap: 8px; margin-bottom: 9px; align-items: center; }
+  .qm-row input { flex: 1; background: var(--card2); border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px; color: var(--text); font-size: 12.5px; outline: none; }
+  .qm-row input:focus { border-color: var(--accent); }
+  .qm-row .rm { background: none; border: none; color: var(--red); font-size: 17px; cursor: pointer; padding: 6px; }
+  .modal .actions { display: flex; gap: 8px; margin-top: 14px; }
+  .modal .actions button { flex: 1; border-radius: 10px; padding: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border) !important; }
+
+  .footer { text-align: center; font-size: 10.5px; color: var(--muted); margin-top: 4px; line-height: 1.7; }
+  .skeleton { background: linear-gradient(90deg, var(--card) 25%, var(--card2) 50%, var(--card) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 8px; }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">⚡</div>
+  <div>
+    <h1>Kingdom Hermes</h1>
+    <div class="sub" id="snapshotSub">loading snapshot…</div>
+  </div>
+  <span class="status-pill"><span class="dot"></span>Online</span>
+</div>
+
+<button class="open-chat" id="openChatBtn">💬 Open Chat &amp; Paste</button>
+
+<!-- Recent Sessions -->
+<div class="card" id="sessionsCard">
+  <div class="card-title"><span>📋 Recent Sessions</span><span class="hint">tap to continue</span></div>
+  <div id="sessionsList"></div>
+</div>
+
+<!-- Quick Commands -->
+<div class="card">
+  <div class="card-title"><span>⚡ Quick Commands</span><button class="pill-btn" id="editCmds" style="padding:4px 10px;font-size:10.5px;">✏️ Edit</button></div>
+  <div class="grid" id="quickGrid"></div>
+</div>
+
+<!-- Financial Snapshot -->
+<div class="card" id="financeCard">
+  <div class="card-title"><span>💰 Financial Snapshot</span></div>
+  <div id="financeBody"></div>
+</div>
+
+<!-- Flags -->
+<div class="card" id="flagsCard">
+  <div class="card-title">🚩 Flags</div>
+  <div id="flagsBody"></div>
+</div>
+
+<div class="footer">
+  Kingdom Hermes · v1.0<br>
+  Built for Kingdom Financial Services · <span id="footerTs">–</span>
+</div>
+
+<!-- Command bar -->
+<div class="cmd-bar">
+  <input type="text" id="cmdInput" placeholder="Type a command for Hermes…" autocomplete="off" />
+  <button id="cmdSend">Copy</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Edit commands modal -->
+<div class="modal-backdrop" id="editModal">
+  <div class="modal">
+    <h2>⚡ Customize Quick Commands</h2>
+    <p>These are saved on this device and work offline.</p>
+    <div id="qmList"></div>
+    <div class="actions">
+      <button class="btn-ghost" id="qmAdd">＋ Add</button>
+      <button class="btn-ghost" id="qmReset">↺ Reset</button>
+      <button class="btn-primary" id="qmDone">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ Telegram WebApp SDK ============ */
+const tg = (window.Telegram && window.Telegram.WebApp) ? window.Telegram.WebApp : null;
+let inTelegram = false;
+if (tg) {
+  try {
+    inTelegram = true;
+    tg.ready();
+    tg.expand();
+    tg.setHeaderColor && tg.setHeaderColor('#14152a');
+    tg.setBackgroundColor && tg.setBackgroundColor('#14152a');
+    // Apply Telegram-native theme colors when available
+    const tp = tg.themeParams || {};
+    const applyTheme = (dark) => {
+      const root = document.documentElement.style;
+      if (tp.bg_color) root.setProperty('--bg', tp.bg_color);
+      if (tp.secondary_bg_color) root.setProperty('--card', tp.secondary_bg_color);
+      if (tp.text_color) root.setProperty('--text', tp.text_color);
+      if (tp.hint_color) root.setProperty('--muted', tp.hint_color);
+      if (tp.button_color) root.setProperty('--accent', tp.button_color);
+      if (tp.button_text_color) root.setProperty('--accent-text', tp.button_text_color);
+    };
+    applyTheme(tg.colorScheme === 'dark');
+  } catch (e) { /* non-critical */ }
+}
+
+const BOT_USERNAME = 'kingdomfi_bot';
+const DATA_URL = 'data.json';
+const LS_CMDS_KEY = 'kh_quick_cmds';
+const LS_OVERRIDE_KEY = 'kh_override';
+
+/* ============ Snapshot data (fetched, with embedded fallback) ============ */
+const FALLBACK = {
+  updatedAt: '2026-08-12T23:59:00Z',
+  sessions: [
+    { title: 'Credit Report Analysis', who: 'Anthony R', when: '3 min ago', cmd: 'Continue working on the credit report analysis for Anthony R Duran Martinez. Review the 3-bureau reports in /opt/data/finance/credit/ and summarize current status, disputes filed, and next steps.' },
+    { title: 'Subscription Audit', who: 'Noel', when: '2h ago', cmd: 'Continue the subscription audit. List every active subscription, monthly cost, annual cost, and flag any that can be canceled.' },
+    { title: 'Budget Review Q3', who: 'Kristina', when: 'Yesterday', cmd: 'Continue the Q3 budget review for the joint accounts. Summarize spending by category, savings rate, and recommended adjustments.' }
+  ],
+  quickCommands: [
+    { emoji: '💳', label: 'Financial Audit', cmd: 'Run a full financial audit of my bank statements for the past 90 days. Show totals, categories, flags, and recommendations.' },
+    { emoji: '🔍', label: 'Scan Subs', cmd: 'Find all active subscriptions across my accounts and flag any I can cancel. Show monthly and annual totals.' },
+    { emoji: '🏆', label: 'Savings Report', cmd: 'Show my savings progress tiers (gold, silver, bronze), current balances, and the next milestone with a plan to reach it.' },
+    { emoji: '📊', label: 'Credit Report', cmd: 'Analyze the credit report for Anthony R Duran Martinez. Summarize accounts, adverse items, and recommended dispute next steps.' },
+    { emoji: '🏥', label: 'Health Score', cmd: 'Give my overall financial health score out of 100 with a breakdown by category and the top 3 actions to raise it.' },
+    { emoji: '📅', label: 'Bills Due', cmd: 'List all upcoming bills and due dates this month with amounts, sorted by date.' }
+  ],
+  financial: [
+    { label: 'Total Assets', value: 8340, fmt: '$8,340.00', kind: 'pos' },
+    { label: 'Total Liabilities', value: 4046, fmt: '$4,046.00', kind: 'neg' },
+    { label: 'Net Worth', value: 4294, fmt: '$4,294.00', kind: 'pos' },
+    { label: 'Emergency Fund', value: 1500, goal: 3000, fmt: '$1,500 / $3,000', kind: 'neutral' }
+  ],
+  flags: [
+    { emoji: '⚠️', text: 'Dept of Ed / Aidvantage student loan 120+ days late', meta: '~$4,046 · DOFD 12/22/2024 · dispute in progress' },
+    { emoji: '🔗', text: 'Ally auto lease is joint with Jeff (Jelffery N Duran)', meta: 'co-borrower reporting affects both credit files' },
+    { emoji: '🔔', text: 'Subscriptions haven\u2019t been re-audited this month', meta: 'last audit: Aug 10' },
+    { emoji: '✅', text: 'Budget on track', meta: 'Q3 spending within plan' }
+  ]
+};
+
+let data = FALLBACK;
+let quickCmds = loadQuickCmds();
+
+function loadQuickCmds() {
+  try {
+    const raw = localStorage.getItem(LS_CMDS_KEY);
+    if (raw) { const arr = JSON.parse(raw); if (Array.isArray(arr) && arr.length) return arr; }
+  } catch (e) {}
+  return FALLBACK.quickCommands.slice();
+}
+
+/* ============ Fetch live snapshot ============ */
+function fetchSnapshot() {
+  const t = Date.now();
+  fetch(DATA_URL + '?t=' + t, { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(j => { data = Object.assign({}, FALLBACK, j); render(); })
+    .catch(e => { console.warn('snapshot fetch failed, using fallback:', e); render(); });
+}
+
+/* ============ Rendering ============ */
+function render() {
+  // header snapshot meta
+  const when = fmtWhen(data.updatedAt);
+  document.getElementById('snapshotSub').textContent = 'data: ' + when;
+  document.getElementById('footerTs').textContent = 'snapshot ' + when;
+
+  // sessions
+  const sl = document.getElementById('sessionsList');
+  sl.innerHTML = '';
+  (data.sessions || []).slice(0, 5).forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'session-item';
+    div.innerHTML = '<div><div class="who"></div><div class="when"></div></div>';
+    div.querySelector('.who').textContent = s.title || 'Session';
+    div.querySelector('.when').textContent = (s.who ? s.who + ' · ' : '') + (s.when || '');
+    const btn = document.createElement('button');
+    btn.className = 'pill-btn accent';
+    btn.textContent = 'Continue';
+    btn.onclick = () => send(s.cmd || ('Continue working on: ' + s.title), '📋 ' + (s.title || 'session') + ' → copied!');
+    div.appendChild(btn);
+    sl.appendChild(div);
+  });
+
+  // quick commands
+  const qg = document.getElementById('quickGrid');
+  qg.innerHTML = '';
+  quickCmds.slice(0, 8).forEach(q => {
+    const b = document.createElement('button');
+    b.className = 'action-btn';
+    b.innerHTML = '<span class="emoji">' + (q.emoji || '⚡') + '</span>' + esc(q.label || 'Command');
+    b.onclick = () => send(q.cmd, '⚡ ' + (q.label || 'Command') + ' → copied!');
+    qg.appendChild(b);
+  });
+
+  // financial
+  const fb = document.getElementById('financeBody');
+  fb.innerHTML = '';
+  (data.financial || []).forEach(f => {
+    if (f.goal) {
+      const pct = Math.min(100, Math.round((f.value / f.goal) * 100));
+      const tier = pct >= 100 ? '🥇' : pct >= 60 ? '🥈' : pct >= 30 ? '🥉' : '🌱';
+      fb.innerHTML += '<div class="fin-row"><span class="lbl">' + esc(f.label) + '</span><span class="amt neutral">' + esc(f.fmt) + '</span></div>' +
+        '<div class="prog"><div class="bar"><div class="fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="meta"><span>' + tier + ' ' + pct + '% to goal</span><span>+' + fmtMoney(f.value) + '</span></div></div>';
+    } else {
+      fb.innerHTML += '<div class="fin-row"><span class="lbl">' + esc(f.label) + '</span><span class="amt ' + (f.kind || 'neutral') + '">' + esc(f.fmt || fmtMoney(f.value)) + '</span></div>';
+    }
+  });
+
+  // flags
+  const fl = document.getElementById('flagsBody');
+  fl.innerHTML = '';
+  (data.flags || []).forEach(g => {
+    fl.innerHTML += '<div class="flag-row"><span class="femoji">' + (g.emoji || '🚩') + '</span><div><div class="ftxt">' + esc(g.text) + '</div>' +
+      (g.meta ? '<div class="fmeta">' + esc(g.meta) + '</div>' : '') + '</div></div>';
+  });
+}
+
+/* ============ Actions ============ */
+function send(text, toastMsg) {
+  if (!text || !text.trim()) return;
+  text = text.trim();
+
+  // 1) Try native Telegram WebApp data path (works when adapter supports web_app_data)
+  if (tg && tg.sendData) {
+    try {
+      tg.sendData(JSON.stringify({ type: 'command', text: text, from: 'miniapp', at: new Date().toISOString() }));
+    } catch (e) { /* fall through to clipboard */ }
+  }
+
+  // 2) Clipboard always: paste into the Hermes chat
+  copyText(text);
+  showToast(toastMsg || '📋 Copied — open the chat and send it!');
+  haptic(0);
+}
+
+function copyText(txt) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).catch(() => legacyCopy(txt));
+  } else legacyCopy(txt);
+}
+function legacyCopy(txt) {
+  const el = document.createElement('textarea');
+  el.value = txt; el.style.cssText = 'position:fixed;opacity:0;';
+  document.body.appendChild(el); el.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(el);
+}
+
+function haptic(style) {
+  if (tg && tg.HapticFeedback) { try { tg.HapticFeedback.impactOccurred(style === 0 ? 'light' : 'medium'); } catch (e) {} }
+}
+
+function openChat() {
+  if (tg && tg.openTelegramLink) { try { tg.openTelegramLink('https://t.me/' + BOT_USERNAME); return; } catch (e) {} }
+  window.open('https://t.me/' + BOT_USERNAME, '_blank');
+}
+
+/* ============ Toast / time helpers ============ */
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+function fmtWhen(iso) {
+  if (!iso) return 'now';
+  const d = new Date(iso);
+  if (isNaN(d)) return 'now';
+  const s = (Date.now() - d.getTime()) / 1000;
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s / 60) + 'm ago';
+  if (s < 86400) return Math.floor(s / 3600) + 'h ago';
+  return Math.floor(s / 86400) + 'd ago';
+}
+function fmtMoney(n) {
+  return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+/* ============ Command bar ============ */
+document.getElementById('cmdSend').onclick = () => {
+  const inp = document.getElementById('cmdInput');
+  const v = inp.value.trim();
+  if (!v) return;
+  send(v, '📋 Command copied — open the chat and send it!');
+  inp.value = '';
+};
+document.getElementById('cmdInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('cmdSend').click(); });
+document.getElementById('openChatBtn').onclick = openChat;
+
+/* ============ Edit quick commands (localStorage) ============ */
+const editModal = document.getElementById('editModal');
+const qmList = document.getElementById('qmList');
+
+function renderQmEditor() {
+  qmList.innerHTML = '';
+  quickCmds.forEach((q, i) => {
+    const row = document.createElement('div');
+    row.className = 'qm-row';
+    row.innerHTML = '<input class="qm-emoji" maxlength="4" value="' + esc(q.emoji || '⚡') + '">' +
+                    '<input class="qm-label" placeholder="Label" value="' + esc(q.label || '') + '">' +
+                    '<button class="rm">✕</button>';
+    const inputs = row.querySelectorAll('input');
+    inputs[0].oninput = e => quickCmds[i].emoji = e.target.value;
+    inputs[1].oninput = e => quickCmds[i].label = e.target.value;
+    row.querySelector('.rm').onclick = () => { quickCmds.splice(i, 1); renderQmEditor(); };
+    qmList.appendChild(row);
+  });
+  // hidden full-cmd field per row is managed via prompt-lite: reuse label click-to-edit via details
+}
+
+document.getElementById('editCmds').onclick = () => { renderQmEditor(); editModal.classList.add('open'); };
+document.getElementById('qmDone').onclick = () => {
+  try { localStorage.setItem(LS_CMDS_KEY, JSON.stringify(quickCmds)); } catch (e) {}
+  editModal.classList.remove('open');
+  render();
+};
+document.getElementById('qmAdd').onclick = () => {
+  quickCmds.push({ emoji: '⚡', label: 'New command', cmd: 'Describe what Hermes should do…' });
+  renderQmEditor();
+};
+document.getElementById('qmReset').onclick = () => {
+  quickCmds = FALLBACK.quickCommands.slice();
+  try { localStorage.removeItem(LS_CMDS_KEY); } catch (e) {}
+  renderQmEditor();
+};
+editModal.addEventListener('click', e => { if (e.target === editModal) editModal.classList.remove('open'); });
+
+/* ============ Boot ============ */
+fetchSnapshot();
+</script>
+</body>
+</html>

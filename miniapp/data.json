@@ -1,0 +1,104 @@
+{
+  "updatedAt": "2026-08-13T01:05:09Z",
+  "sessions": [
+    {
+      "title": "Credit Report Analysis",
+      "who": "Anthony R",
+      "when": "3 min ago",
+      "cmd": "Continue working on the credit report analysis for Anthony R Duran Martinez. Review the 3-bureau reports in /opt/data/finance/credit/ and summarize current status, disputes filed, and next steps."
+    },
+    {
+      "title": "Subscription Audit",
+      "who": "Noel",
+      "when": "2h ago",
+      "cmd": "Continue the subscription audit. List every active subscription, monthly cost, annual cost, and flag any that can be canceled."
+    },
+    {
+      "title": "Budget Review Q3",
+      "who": "Kristina",
+      "when": "Yesterday",
+      "cmd": "Continue the Q3 budget review for the joint accounts. Summarize spending by category, savings rate, and recommended adjustments."
+    }
+  ],
+  "quickCommands": [
+    {
+      "emoji": "💳",
+      "label": "Financial Audit",
+      "cmd": "Run a full financial audit of my bank statements for the past 90 days. Show totals, categories, flags, and recommendations."
+    },
+    {
+      "emoji": "🔍",
+      "label": "Scan Subs",
+      "cmd": "Find all active subscriptions across my accounts and flag any I can cancel. Show monthly and annual totals."
+    },
+    {
+      "emoji": "🏆",
+      "label": "Savings Report",
+      "cmd": "Show my savings progress tiers (gold, silver, bronze), current balances, and the next milestone with a plan to reach it."
+    },
+    {
+      "emoji": "📊",
+      "label": "Credit Report",
+      "cmd": "Analyze the credit report for Anthony R Duran Martinez. Summarize accounts, adverse items, and recommended dispute next steps."
+    },
+    {
+      "emoji": "🏥",
+      "label": "Health Score",
+      "cmd": "Give my overall financial health score out of 100 with a breakdown by category and the top 3 actions to raise it."
+    },
+    {
+      "emoji": "📅",
+      "label": "Bills Due",
+      "cmd": "List all upcoming bills and due dates this month with amounts, sorted by date."
+    }
+  ],
+  "financial": [
+    {
+      "label": "Total Assets",
+      "value": 8340,
+      "fmt": "$8,340.00",
+      "kind": "pos"
+    },
+    {
+      "label": "Total Liabilities",
+      "value": 4046,
+      "fmt": "$4,046.00",
+      "kind": "neg"
+    },
+    {
+      "label": "Net Worth",
+      "value": 4294,
+      "fmt": "$4,294.00",
+      "kind": "pos"
+    },
+    {
+      "label": "Emergency Fund",
+      "value": 1500,
+      "goal": 3000,
+      "fmt": "$1,500 / $3,000",
+      "kind": "neutral"
+    }
+  ],
+  "flags": [
+    {
+      "emoji": "⚠️",
+      "text": "Dept of Ed / Aidvantage student loan 120+ days late",
+      "meta": "~$4,046 · DOFD 12/22/2024 · dispute in progress"
+    },
+    {
+      "emoji": "🔗",
+      "text": "Ally auto lease is joint with Jeff (Jelffery N Duran)",
+      "meta": "co-borrower reporting affects both credit files"
+    },
+    {
+      "emoji": "🔔",
+      "text": "Subscriptions haven't been re-audited this month",
+      "meta": "last audit: Aug 10"
+    },
+    {
+      "emoji": "✅",
+      "text": "Budget on track",
+      "meta": "Q3 spending within plan"
+    }
+  ]
+}
