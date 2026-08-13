@@ -4,170 +4,188 @@
   "display": "Anthony Duran",
   "title": "Credit Report Dashboard",
   "lang": "en",
-  "updatedAt": "2026-08-13T16:47:14Z",
+  "updatedAt": "2026-08-13T18:45:00Z",
   "profile": {
     "role": "KFS client (family of Noel)",
-    "reportDate": "Dec 13, 2025",
-    "reportSource": "annualcreditreport.com full disclosure — no scores included",
+    "reportDate": "Aug 13, 2026",
+    "reportSource": "transunion.com direct disclosure (fresh 08/13/26 pull) — no scores included",
     "fileSince": "07/16/2008",
-    "history": "16y 2m · oldest acct Oct 2009 · avg age 7y 5m",
+    "history": "18y · oldest acct Oct 2009 · avg age ~6y on open accts",
     "location": "Nutley, NJ",
     "employer": "ANS Market Place (Anthony's Supermarket)",
     "piiNote": "Full identity (DOB/SSN/address) stays local in /opt/data/finance/credit/anthony_aug2026/ — never in this public repo."
   },
   "credit": {
     "scores": null,
-    "scoresNote": "Dec 2025 disclosures have NO scores — pull fresh scored reports (Brave/Credit Karma) before Round 1.",
+    "scoresNote": "TU direct PDF has NO score — pull a scored report (Brave/Credit Karma/myFICO) to see the VantageScore 3.0 numbers.",
     "negative": [
       {
         "creditor": "DEPT OF ED / AIDVANTAGE",
         "account": "Student Loan #…0420 (masked)",
         "opened": "03/04/2020",
-        "type": "Federal student loan · installment $49/mo (99 mo)",
-        "balance": "EQ $4,027 / TU $4,046 / EX $4,046",
-        "pastDue": "EX $654 / EQ $603",
-        "rating": "120 (120+ days late)",
+        "type": "Federal student loan · installment (99 mo)",
+        "balance": "$0",
+        "pastDue": "$0",
+        "rating": "Transferred; was 120 days past due",
         "dofd": "12/22/2024",
-        "lastPayment": "01/07/2024",
-        "removalEst": "TU 11/2031 / EX Jan 2032",
-        "strategy": "Federal loan → NOT a deletion target. Path = cure delinquency (rehab/consolidation) + accuracy dispute of wrong data points (balance, past-due, removal dates differ per bureau) + FSA/CFPB if servicer errors."
+        "lastPayment": "11/17/2025",
+        "removalEst": "11/2031",
+        "strategy": "Closed 11/17/2025 — ACCT CLOSED DUE TO TRANSFER. Same federal debt now lives at US DEPT OF EDUCATION default group (2 collection lines below). Federal loan → NOT a deletion target; path = cure delinquency (FSA rehab/consolidation) + accuracy dispute of wrong data points."
+      },
+      {
+        "creditor": "US DEPT OF EDUCATION (Consolidated Direct Loans)",
+        "account": "Student Loan #7525****",
+        "opened": "11/24/2025",
+        "type": "Federal student loan — COLLECTION line 1 of 2",
+        "balance": "$1,445",
+        "pastDue": "$1,445",
+        "rating": "Collection (>CLA< placed for collection)",
+        "dofd": "see note",
+        "lastPayment": "05/12/2026",
+        "removalEst": "02/2027 (verify — conflicts with original 11/2031)",
+        "strategy": "Same consolidated direct loan as Aidvantage line, now at the Dept of Ed default servicer (3130 Fairview Park Dr, Falls Church VA). Federal → cure + accuracy dispute, NOT deletion. Removal-date inconsistency (02/2027 vs 11/2031) is a dispute point."
+      },
+      {
+        "creditor": "US DEPT OF EDUCATION (Consolidated Direct Loans)",
+        "account": "Student Loan #7525****",
+        "opened": "11/24/2025",
+        "type": "Federal student loan — COLLECTION line 2 of 2",
+        "balance": "$1,510",
+        "pastDue": "$1,510",
+        "rating": "Collection (>CLA< placed for collection)",
+        "dofd": "see note",
+        "lastPayment": "05/12/2026",
+        "removalEst": "02/2027 (verify — conflicts with original 11/2031)",
+        "strategy": "Second loan group of the same consolidated debt. Combined with line 1 = $2,955 total in collections (was $4,046 single line Dec 2025). Cure delinquency + accuracy dispute."
       }
     ],
     "openAccounts": [
       {
-        "creditor": "Nationstar / Mr Cooper",
+        "creditor": "Rocket Mortgage",
         "type": "🏠 Mortgage",
-        "balance": "$452,728",
+        "balance": "$443,645",
         "limit": "$494,000",
         "opened": "11/30/2021",
-        "note": "$4,016/mo · pays as agreed"
+        "note": "$4,016/mo · current · servicer moved Mr Cooper → Rocket (transfer 7/2024)"
       },
       {
         "creditor": "JPMCB Auto Finance",
         "type": "🚗 Auto",
-        "balance": "$87,399",
+        "balance": "$78,707",
         "limit": "$114,763",
         "opened": "11/02/2023",
-        "note": "$2,207/mo · pays as agreed"
+        "note": "$2,207/mo · current"
       },
       {
         "creditor": "Union County Economic Dev",
         "type": "🏢 Business",
-        "balance": "$70,182",
+        "balance": "$58,372",
         "limit": "$150,000",
         "opened": "03/20/2019",
-        "note": "CO-SIGNOR · $2,014/mo · current"
+        "note": "CO-SIGNOR · $1,999/mo · current"
       },
       {
         "creditor": "JPMCB Card Services",
         "type": "💳 Card",
-        "balance": "$12,413",
+        "balance": "$14,828",
         "limit": "$15,100",
         "opened": "04/19/2016",
-        "note": "$406/mo · current"
-      },
-      {
-        "creditor": "Ally Financial",
-        "type": "🚗 Auto lease",
-        "balance": "$10,811",
-        "limit": "$32,435",
-        "opened": "12/02/2023",
-        "note": "JOINT w/ Jelffery N Duran · $900/mo"
+        "note": "current · UTILIZATION 98% — pay down"
       },
       {
         "creditor": "Apple Card (GS Bank)",
         "type": "💳 Card",
-        "balance": "$3,844",
+        "balance": "$5,183",
         "limit": "$5,250",
         "opened": "09/14/2020",
-        "note": "pays as agreed"
+        "note": "current · UTILIZATION 99% — pay down"
+      },
+      {
+        "creditor": "Ally Financial",
+        "type": "🚗 Auto lease",
+        "balance": "$3,603",
+        "limit": "$32,435",
+        "opened": "12/02/2023",
+        "note": "JOINT w/ Jelffery N Duran · $900/mo · current · lease ends Dec 2026"
       },
       {
         "creditor": "Capital One",
         "type": "💳 Card",
-        "balance": "$388",
+        "balance": "$580",
         "limit": "$651",
         "opened": "09/13/2015",
-        "note": "pays as agreed · same BIN as Jeff's, DIFFERENT account"
-      },
-      {
-        "creditor": "RBS Citizens NA",
-        "type": "🚗 Auto",
-        "balance": "—",
-        "limit": "$103,110",
-        "opened": "12/27/2021",
-        "note": "$1,491/mo"
+        "note": "current · UTILIZATION 89% · same BIN as Jeff's, DIFFERENT account"
       }
     ],
-    "closedPositive": "Dept of Ed ×2 (2009, paid 3/2020) · Kia Motor lease (closed 11/2020) · Wells Fargo Auto (paid $25,601, 1/2022) · Mr Cooper old mtg (transferred 7/2024) · Cap One secured (closed 3/2012) · Citizens auto (closed 2019) · Home Point mtg (transferred 7/2024)",
+    "closedPositive": "Dept of Ed ×2 (2009, paid 3/2020) · Kia Motor lease (closed 11/2020) · Wells Fargo Auto (paid $25,601, 1/2022) · RBS Citizens auto (paid/closed 11/2023) · Garden Savings FCU auto (paid 2019) · Home Point mtg (transferred 6/2022) · Mr Cooper old mtg (transferred 7/2024)",
     "inquiries": {
-      "experianHard": "RIA FINANCIAL SERVICES (4/11/2025) · M&T BANK (6/3/2024) · KIA/700 Credit (12/1/2023) · ALLY ×2 (12/1/2023) · HYUNDAI (12/1/2023) · KIA FINANCE (12/1/2023) — Dec 2023 car-shopping cluster ages out Jan 2026",
-      "tu": "all soft",
-      "eq": "all soft"
+      "tu": "3 HARD, all 04/04/2026 — car-shopping cluster: TD AUTO FINANCE · JPMORGAN CHASE BANK NA · LAND ROVER PARAMUS via 700CRLAND. One cluster counts as ~1 for scoring; ages out Apr 2028.",
+      "experianHard": "RIA FINANCIAL SERVICES (4/11/2025) · M&T BANK (6/3/2024) · Dec 2023 car cluster (KIA/ALLY/HYUNDAI) aged out Jan 2026",
+      "eq": "not in this pull (TU only)"
     }
   },
   "flags": [
     {
       "emoji": "🔴",
-      "text": "Student loan 120+ days late",
-      "meta": "only negative on file · federal → cure + accuracy dispute, not deletion"
+      "text": "Student loan now in DEFAULT COLLECTION",
+      "meta": "Aidvantage transferred 11/17/2025 → US Dept of Ed default group, 2 collection lines totaling $2,955 (was $4,046 single line). Federal → cure + accuracy dispute, not deletion."
+    },
+    {
+      "emoji": "🔴",
+      "text": "Cards maxed out",
+      "meta": "Apple 99% ($5,183/$5,250) · JPMCB 98% ($14,828/$15,100) · CapOne 89% ($580/$651). Utilization is the #1 fixable score drag right now."
     },
     {
       "emoji": "🟡",
-      "text": "Co-signor on $70,182 business loan",
+      "text": "Removal dates conflict on same debt",
+      "meta": "Collections say removal 02/2027 but original line says 11/2031 (DOFD 12/22/2024). Verify + dispute the wrong one."
+    },
+    {
+      "emoji": "🟡",
+      "text": "Co-signor on $58,372 business loan",
       "meta": "Union County Econ Dev · liability if primary defaults · verify accuracy"
     },
     {
-      "emoji": "🟡",
-      "text": "Old addresses on file",
-      "meta": "725 Sayre, 107 Judy, 807 McGrillvay · dispute to prevent mixed file"
-    },
-    {
       "emoji": "🟢",
-      "text": "No collections, BK, judgments, or public records",
-      "meta": "clean file otherwise"
-    },
-    {
-      "emoji": "⏳",
-      "text": "Reports 8 months old",
-      "meta": "Dec 2025 pull · fresh scored pulls recommended before Round 1"
+      "text": "Everything else current",
+      "meta": "Mortgage, auto, lease, business loan all pays-as-agreed · no BK/judgments/public records"
     }
   ],
   "actionPlan": {
-    "campaign": "Student Loan MOV Dispute — DEPT OF ED/AIDVANTAGE #…0420",
-    "packDate": "Aug 12, 2026",
+    "campaign": "Student Loan Default Collection — DEPT OF ED/AIDVANTAGE → US DEPT OF EDUCATION (2 collection lines)",
+    "packDate": "Aug 13, 2026",
     "round": 1,
-    "method": "SoyDaat FCRA — Round 1: accuracy/MOV disputes to all bureaus + direct furnisher §623. Every letter: USPS Certified Mail + Return Receipt.",
+    "method": "SoyDaat FCRA — Round 1: accuracy/MOV disputes to all bureaus + direct furnisher §623 to BOTH the original (Aidvantage) and the new default servicer (US Dept of Ed). Every letter: USPS Certified Mail + Return Receipt. Federal loan = cure delinquency path, not deletion.",
     "steps": [
       {
         "id": "l1",
-        "label": "Mail MOV Dispute → Experian (P.O. Box 4500, Allen, TX 75013)",
+        "label": "Mail MOV Dispute → TransUnion (P.O. Box 2000, Chester, PA 19016-2000)",
         "status": "pending",
-        "meta": "Certified Mail + Return Receipt"
+        "meta": "Fresh 08/13/26 report — dispute the 2 collection lines + transferred line data points (removal 02/2027 vs 11/2031, balances)"
       },
       {
         "id": "l2",
-        "label": "Mail MOV Dispute → TransUnion (P.O. Box 2000, Chester, PA 19016-2000)",
+        "label": "Mail MOV Dispute → Experian (P.O. Box 4500, Allen, TX 75013)",
         "status": "pending",
-        "meta": "Certified Mail + Return Receipt"
+        "meta": "Re-pull EX report (Dec 2025 stale) to confirm same 3 lines appear"
       },
       {
         "id": "l3",
         "label": "Mail MOV Dispute → Equifax (P.O. Box 740256, Atlanta, GA 30374-0256)",
         "status": "pending",
-        "meta": "Certified Mail + Return Receipt"
+        "meta": "Re-pull EQ report to confirm same 3 lines appear"
       },
       {
         "id": "l4",
-        "label": "Mail Direct Furnisher Dispute (FCRA §623) → Aidvantage (1891 Metro Center Dr, Reston, VA 20190)",
+        "label": "Direct Furnisher Dispute (FCRA §623) → Aidvantage (1891 Metro Center Dr, Reston, VA 20190)",
         "status": "pending",
-        "meta": "Certified Mail + Return Receipt"
+        "meta": "Challenge transfer accuracy + original payment history"
       },
       {
         "id": "l5",
-        "label": "FDCPA Validation to every collector that contacts Anthony about this loan",
+        "label": "Direct Furnisher Dispute (FCRA §623) → US Dept of Education default group (3130 Fairview Park Dr, Suite 800, Falls Church, VA)",
         "status": "pending",
-        "meta": "fill per collector, send same day"
+        "meta": "Challenge the 2 collection lines: removal dates, balances, placement accuracy"
       },
       {
         "id": "l6",
@@ -177,9 +195,9 @@
       },
       {
         "id": "l7",
-        "label": "Pull fresh scored credit reports (3 bureaus)",
+        "label": "Pull fresh SCORED reports (3 bureaus) for score baseline",
         "status": "pending",
-        "meta": "Dec 2025 reports are stale for Round 1"
+        "meta": "TU direct PDF has no score — use Brave/Credit Karma/myFICO"
       }
     ],
     "deadlines": [
@@ -197,13 +215,14 @@
       },
       {
         "label": "Bureau says 'verified'",
-        "days": "→ Round 3: CFPB complaint + final demand (Letter 11)"
+        "days": "→ Round 3: CFPB complaint + final demand"
       }
     ],
     "disputePoints": [
-      "Balance differs per bureau: EQ $4,027 vs TU/EX $4,046",
-      "Past due differs: EX $654 vs EQ $603",
-      "Removal estimate differs: TU 11/2031 vs EX Jan 2032"
+      "Removal estimates conflict on the SAME debt: collections 02/2027 vs original line 11/2031 (DOFD 12/22/2024 → 7yr = 12/2031)",
+      "Two collection lines for one consolidated loan — verify the split/assignment is accurate",
+      "Balances dropped from $4,046 (Dec 2025) to $2,955 total — verify current principal vs fees",
+      "Transfer timing: Aidvantage closed 11/17/2025, US Dept Ed lines opened 11/24/2025 — no double-reporting"
     ]
   },
   "quickCommands": [
@@ -215,68 +234,68 @@
     {
       "emoji": "✍️",
       "label": "Draft Next Letter",
-      "cmd": "Draft the next dispute letter for Anthony Duran's student loan campaign (Dept of Ed/Aidvantage). Check /opt/data/finance/credit/dispute-letters-2026-08/anthony_mov/ first."
+      "cmd": "Draft the next dispute letter for Anthony Duran's student loan campaign (Aidvantage transfer → US Dept of Ed 2 collection lines). Check /opt/data/finance/credit/dispute-letters-2026-08/anthony_mov/ first."
     },
     {
       "emoji": "📊",
       "label": "Fresh Report",
-      "cmd": "Help Anthony Duran pull fresh scored credit reports (3 bureaus) and analyze them. Old pull: Dec 13, 2025."
+      "cmd": "Help Anthony Duran pull fresh SCORED credit reports (3 bureaus). TU pulled 08/13/26 (no score in PDF) — still need EQ + EX re-pulls and scored views."
+    },
+    {
+      "emoji": "💳",
+      "label": "Utilization Plan",
+      "cmd": "Build a paydown plan for Anthony Duran's maxed cards: Apple 99%, JPMCB 98%, CapOne 89%. Target under 30% utilization before next pull."
     },
     {
       "emoji": "🏠",
       "label": "Co-signor Check",
-      "cmd": "Verify the Union County Economic Dev business loan ($70,182) co-signor line on Anthony Duran's report is still accurate."
-    },
-    {
-      "emoji": "🧹",
-      "label": "Address Cleanup",
-      "cmd": "Prepare address-dispute letters for Anthony Duran: remove old addresses (725 Sayre Ave, 107 Judy Dr, 807 McGrillvay Pl)."
+      "cmd": "Verify the Union County Economic Dev business loan ($58,372) co-signor line on Anthony Duran's report is still accurate."
     },
     {
       "emoji": "🎯",
       "label": "Score Plan",
-      "cmd": "Build a 90-day credit score improvement plan for Anthony Duran targeting the student loan delinquency cure."
+      "cmd": "Build a 90-day credit score improvement plan for Anthony Duran: cure student loan delinquency + pay down card utilization."
     }
   ],
   "sessions": [
+    {
+      "title": "Anthony Fresh TU Pull",
+      "who": "Anthony R",
+      "when": "Aug 13, 2026 — fresh transunion.com disclosure analyzed",
+      "cmd": "Continue the Anthony Duran credit analysis with the FRESH 08/13/26 TU pull at /opt/data/finance/credit/anthony_aug2026/transunion_081326.pdf. The Aidvantage loan transferred to US Dept of Ed as 2 collection lines ($2,955). Update the MOV campaign for the new furnisher."
+    },
     {
       "title": "Anthony Credit Analysis",
       "who": "Anthony R",
       "when": "Dec 13, 2025 pull analyzed",
       "cmd": "Continue the Anthony Duran credit report analysis. Review /opt/data/finance/credit/anthony_aug2026/ANALYSIS.md and the MOV campaign tracker, then report current status and next steps."
-    },
-    {
-      "title": "MOV Pack Generation",
-      "who": "KFS",
-      "when": "Aug 12, 2026",
-      "cmd": "Continue the Anthony Duran student loan MOV campaign. Letters 1-5 drafted in /opt/data/finance/credit/dispute-letters-2026-08/anthony_mov/ — check mailing status and update the tracker."
     }
   ],
   "financial": [
     {
       "label": "Total Open Balances",
-      "value": 637805,
-      "fmt": "$637,805",
+      "value": 607873,
+      "fmt": "$607,873",
       "kind": "neg",
-      "note": "incl. mortgage + auto + co-signor line"
+      "note": "incl. mortgage + auto + business + 2 collections"
     },
     {
-      "label": "Student Loan Balance",
-      "value": 4046,
-      "fmt": "~$4,046",
+      "label": "Student Loan Collections",
+      "value": 2955,
+      "fmt": "$2,955",
       "kind": "neg",
-      "note": "the only adverse item"
+      "note": "was $4,046 single line Dec 2025 — now 2 lines at US Dept of Ed"
     },
     {
       "label": "Open Accounts",
-      "value": 8,
-      "fmt": "8 · all current",
+      "value": 7,
+      "fmt": "7 healthy · all current",
       "kind": "pos"
     },
     {
       "label": "Derogatory Items",
-      "value": 1,
-      "fmt": "1 of 1 disputed",
+      "value": 3,
+      "fmt": "3 (1 debt, 3 tradelines)",
       "kind": "neutral"
     }
   ]
