@@ -42,6 +42,7 @@ miniapp/
   "profile": { "role", "reportDate", "reportSource", "history", "location", "employer", "piiNote" },
   "credit": {
     "scores": { "TU": 683, "EX": 675, "EFX": 620 } | null,   // null when report has no scores
+    "scoresTarget": 720 | null,   // OPTIONAL — target score tick on the gauges
     "scoresNote": "string",
     "negative": [ { "creditor", "account", "opened", "type", "balance", "pastDue",
                     "rating", "dofd", "lastPayment", "removalEst", "strategy" } ],
@@ -62,6 +63,16 @@ miniapp/
   "financial": [ { "label", "value", "fmt", "kind": "pos|neg|neutral", "goal?", "note?" } ]
 }
 ```
+
+## UI (v2.1 — interactive dashboard)
+
+- **🎯 Next-Step hero**: the first incomplete action-plan step renders as a pinned card under the client bar with a live progress ring, "Mark Done" and "Ask Hermes" (sends the step as a command). All steps done → celebration card + copy-status button. Driven entirely by `actionPlan.steps` + per-device localStorage checkmarks.
+- **📊 Score gauges**: when `credit.scores` is present, each bureau renders as an SVG donut with a VantageScore 3.0 band label (Excellent/Good/Fair/Poor/Very Poor) and an optional white tick at `scoresTarget`. No scores → `scoresNote` shows instead.
+- **🔴 Negative cards**: tap to expand → full per-bureau details + strategy + 3 action buttons (Draft letter / MOV / Copy details) that send tailored commands. Expanded state remembered per device.
+- **⚡ Per-step ask buttons**: every action-plan step has a ⚡ button that sends a self-contained "execute this step" command.
+- **🌐 i18n**: fixed labels translate for `lang: "es"` (César). Data text stays as authored.
+- **💡 Tap-to-copy accounts**: tapping an open account copies a "check status" command. All sections animate in (`.reveal`).
+- Commands are emitted via `send()` → `tg.sendData` (when inside Telegram) + clipboard fallback, so they work as copy-paste even without the adapter round-trip.
 
 ## Adding a new client (the workflow)
 
