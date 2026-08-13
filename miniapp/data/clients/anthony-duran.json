@@ -126,9 +126,14 @@
   },
   "flags": [
     {
+      "emoji": "🟣",
+      "text": "BORROWER DEFENSE ANGLE — school was Anthem Institute (Parsippany NJ)",
+      "meta": "MPN signed 06/25/2010 confirms attendance. Anthem Education Group closed campuses 8/2014 after bankruptcy; Anthem Institute is on Sweet v. Cardona Exhibit C list → eligible for borrower-defense DISCHARGE + refund of payments made. Check if a BDR application was ever filed (auto-discharge if pending by 6/22/2022); otherwise file at studentaid.gov/borrower-defense."
+    },
+    {
       "emoji": "🔴",
       "text": "Student loan now in DEFAULT COLLECTION",
-      "meta": "Aidvantage transferred 11/17/2025 → US Dept of Ed default group, 2 collection lines totaling $2,955 (was $4,046 single line). Federal → cure + accuracy dispute, not deletion."
+      "meta": "Aidvantage transferred 11/17/2025 → US Dept of Ed default group, 2 collection lines totaling $2,955 (was $4,046 single line). Parallel path: BDR discharge + accuracy dispute."
     },
     {
       "emoji": "🔴",
@@ -152,55 +157,59 @@
     }
   ],
   "actionPlan": {
-    "campaign": "Student Loan Default Collection — DEPT OF ED/AIDVANTAGE → US DEPT OF EDUCATION (2 collection lines)",
+    "campaign": "BORROWER DEFENSE DISCHARGE (Anthem Institute) + parallel accuracy disputes — primary path is debt DISCHARGE, not removal",
     "packDate": "Aug 13, 2026",
     "round": 1,
-    "method": "SoyDaat FCRA — Round 1: accuracy/MOV disputes to all bureaus + direct furnisher §623 to BOTH the original (Aidvantage) and the new default servicer (US Dept of Ed). Every letter: USPS Certified Mail + Return Receipt. Federal loan = cure delinquency path, not deletion.",
+    "method": "PRIMARY: Borrower Defense to Repayment (BDR) at studentaid.gov/borrower-defense — MPN proves attendance at Anthem Institute (Parsippany NJ), a Sweet v. Cardona Exhibit C school that closed 8/2014 after bankruptcy. If approved: full discharge + refund of all payments made. PARALLEL: SoyDaat accuracy disputes for the credit-report lines while BDR processes.",
     "steps": [
+      {
+        "id": "b1",
+        "label": "CHECK: has Anthony EVER filed a borrower defense application?",
+        "status": "pending",
+        "meta": "Log into studentaid.gov → check application status. If pending by 06/22/2022 → AUTOMATIC Sweet v. Cardona discharge (Anthem on Exhibit C). If never filed → file now."
+      },
+      {
+        "id": "b2",
+        "label": "FILE borrower defense application → studentaid.gov/borrower-defense",
+        "status": "pending",
+        "meta": "Cite Anthem Institute (school code G10851, Parsippany NJ), 8/2014 closure, misrepresentation claims. Attach MPN as proof of attendance. Include ALL loans incl. the 2020 consolidation."
+      },
+      {
+        "id": "b3",
+        "label": "Stop payments / request forbearance while BDR is pending",
+        "status": "pending",
+        "meta": "BDR approval refunds past payments — DO NOT pay off or consolidate while pending. Request collection forbearance."
+      },
       {
         "id": "l1",
         "label": "Mail MOV Dispute → TransUnion (P.O. Box 2000, Chester, PA 19016-2000)",
         "status": "pending",
-        "meta": "Fresh 08/13/26 report — dispute the 2 collection lines + transferred line data points (removal 02/2027 vs 11/2031, balances)"
+        "meta": "Duplicate 3× reporting of one debt + removal-date conflict (02/2027 vs 11/2031)"
       },
       {
         "id": "l2",
         "label": "Mail MOV Dispute → Experian (P.O. Box 4500, Allen, TX 75013)",
         "status": "pending",
-        "meta": "Re-pull EX report (Dec 2025 stale) to confirm same 3 lines appear"
+        "meta": "Re-pull EX first (Dec 2025 stale), then dispute same points"
       },
       {
         "id": "l3",
         "label": "Mail MOV Dispute → Equifax (P.O. Box 740256, Atlanta, GA 30374-0256)",
         "status": "pending",
-        "meta": "Re-pull EQ report to confirm same 3 lines appear"
+        "meta": "Re-pull EQ first, then dispute same points"
       },
       {
         "id": "l4",
-        "label": "Direct Furnisher Dispute (FCRA §623) → Aidvantage (1891 Metro Center Dr, Reston, VA 20190)",
-        "status": "pending",
-        "meta": "Challenge transfer accuracy + original payment history"
-      },
-      {
-        "id": "l5",
-        "label": "Direct Furnisher Dispute (FCRA §623) → US Dept of Education default group (3130 Fairview Park Dr, Suite 800, Falls Church, VA)",
-        "status": "pending",
-        "meta": "Challenge the 2 collection lines: removal dates, balances, placement accuracy"
-      },
-      {
-        "id": "l6",
         "label": "Log all Certified #s + Return Receipt #s in the campaign tracker",
         "status": "pending",
         "meta": "start 30-day clock from DELIVERY date"
-      },
-      {
-        "id": "l7",
-        "label": "Pull fresh SCORED reports (3 bureaus) for score baseline",
-        "status": "pending",
-        "meta": "TU direct PDF has no score — use Brave/Credit Karma/myFICO"
       }
     ],
     "deadlines": [
+      {
+        "label": "BDR application decision",
+        "days": "varies (months–years); status at studentaid.gov or 1-855-279-6207"
+      },
       {
         "label": "Bureau investigation",
         "days": "30 days from delivery"
@@ -210,18 +219,15 @@
         "days": "15 days"
       },
       {
-        "label": "Debt validation (FDCPA)",
-        "days": "30 days"
-      },
-      {
         "label": "Bureau says 'verified'",
         "days": "→ Round 3: CFPB complaint + final demand"
       }
     ],
     "disputePoints": [
+      "School fraud angle: Anthem Institute closed 8/2014 after bankruptcy; on Sweet v. Cardona Exhibit C",
+      "BDR discharge → credit lines must be removed as discharged debt",
       "Removal estimates conflict on the SAME debt: collections 02/2027 vs original line 11/2031 (DOFD 12/22/2024 → 7yr = 12/2031)",
       "Two collection lines for one consolidated loan — verify the split/assignment is accurate",
-      "Balances dropped from $4,046 (Dec 2025) to $2,955 total — verify current principal vs fees",
       "Transfer timing: Aidvantage closed 11/17/2025, US Dept Ed lines opened 11/24/2025 — no double-reporting"
     ]
   },
