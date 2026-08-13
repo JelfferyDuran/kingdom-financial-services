@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
-Kingdom Hermes — snapshot updater.
+Kingdom Hermes — snapshot updater (multi-client).
 
-Regenerates miniapp/data.json with a fresh updatedAt timestamp and pushes
-the change to GitHub so the Telegram Mini App always shows a live snapshot.
+Refreshes updatedAt on the client manifest + every client data file and
+pushes to GitHub so the Telegram Mini App always shows fresh data.
 
 Usage:
-    python3 update_snapshot.py            # refresh timestamp, commit, push
-    python3 update_snapshot.py --no-push  # refresh timestamp only
+    python3 update_snapshot.py            # refresh timestamps, commit, push
+    python3 update_snapshot.py --no-push  # refresh timestamps only
 
-Extend this script as real data sources come online (ledger CSVs, bank
-exports, credit reports): read them, fold values into the data dict below,
-and the miniapp picks up the new numbers automatically.
+Extend this script to pull from real data sources (Supabase exports,
+ledger CSVs, credit report analysis outputs) as they come online.
 """
 import argparse
 import datetime
@@ -21,8 +20,14 @@ import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(HERE, "..", "data.json")
-REPO_ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+MINIAPP = os.path.abspath(os.path.join(HERE, ".."))
+DATA_DIR = os.path.join(MINIAPP, "data")
+CLIENTS_DIR = os.path.join(DATA_DIR, "clients")
+REPO_ROOT = os.path.abspath(os.path.join(MINIAPP, ".."))
+
+TOUCH_FILES = [
+    os.path.join(DATA_DIR, "clients.json"),
+]
 
 
 def utcnow_iso() -> str:
@@ -31,35 +36,48 @@ def utcnow_iso() -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--no-push", action="store_true", help="update file but do not commit/push")
+    ap.add_argument("--no-push", action="store_true")
     args = ap.parse_args()
 
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    now = utcnow_iso()
+    touched = []
 
-    data["updatedAt"] = utcnow_iso()
-
-    with open(DATA_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    # Manifest
+    mpath = os.path.join(DATA_DIR, "clients.json")
+    with open(mpath, "r", encoding="utf-8") as f:
+        m = json.load(f)
+    m["updatedAt"] = now
+    with open(mpath, "w", encoding="utf-8") as f:
+        json.dump(m, f, ensure_ascii=False, indent=2)
         f.write("\n")
+    touched.append(mpath)
 
-    print(f"data.json updated -> {data['updatedAt']}")
+    # Every client file
+    for entry in sorted(os.listdir(CLIENTS_DIR)):
+        if not entry.endswith(".json"):
+            continue
+        cpath = os.path.join(CLIENTS_DIR, entry)
+        with open(cpath, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        d["updatedAt"] = now
+        with open(cpath, "w", encoding="utf-8") as f:
+            json.dump(d, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        touched.append(cpath)
+
+    print(f"refreshed {len(touched)} files -> {now}")
 
     if args.no_push:
         return 0
 
-    # Commit + push from repo root
-    r = subprocess.run(["git", "diff", "--quiet", "--", "miniapp/data.json"],
+    r = subprocess.run(["git", "diff", "--quiet", "--", "miniapp/data"],
                        cwd=REPO_ROOT, capture_output=True)
     if r.returncode == 0:
-        print("no changes to push")
-        return 0
+        return 0  # silent when nothing changed
 
-    subprocess.run(["git", "add", "miniapp/data.json"], cwd=REPO_ROOT, check=True)
-    subprocess.run(
-        ["git", "commit", "-m", f"chore(miniapp): refresh snapshot {data['updatedAt']}"],
-        cwd=REPO_ROOT, check=True,
-    )
+    subprocess.run(["git", "add", "miniapp/data"], cwd=REPO_ROOT, check=True)
+    subprocess.run(["git", "commit", "-m", f"chore(miniapp): refresh snapshots {now}"],
+                   cwd=REPO_ROOT, check=True)
     subprocess.run(["git", "push", "origin", "HEAD"], cwd=REPO_ROOT, check=True)
     print("pushed to origin")
     return 0

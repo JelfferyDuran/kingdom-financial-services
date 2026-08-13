@@ -1,0 +1,26 @@
+{
+  "updatedAt": "2026-08-13T01:39:46Z",
+  "clients": [
+    {
+      "slug": "anthony-duran",
+      "name": "Anthony Duran",
+      "title": "Credit Report Dashboard",
+      "file": "data/clients/anthony-duran.json",
+      "default": true
+    },
+    {
+      "slug": "cesar-larancuent",
+      "name": "César Larancuent",
+      "title": "Centro de Control de Crédito",
+      "file": "data/clients/cesar-larancuent.json",
+      "default": false
+    },
+    {
+      "slug": "general",
+      "name": "General",
+      "title": "Kingdom Hermes — All Sessions",
+      "file": "data/clients/general.json",
+      "default": false
+    }
+  ]
+}

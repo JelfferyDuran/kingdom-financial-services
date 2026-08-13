@@ -1,26 +1,32 @@
-# Kingdom Hermes — Telegram Mini App
+# Kingdom Hermes — Telegram Mini App (multi-client)
 
-A command launcher + live dashboard for your Hermes sessions, opened inside Telegram.
+Command launcher + live dashboard for KFS clients and Hermes sessions, opened inside Telegram.
 
 ## Live URL
 `https://jelfferyduran.github.io/kingdom-financial-services/miniapp/`
 
+## Clients
+- **Anthony Duran** — Credit Report Dashboard (default): student-loan MOV campaign,
+  action plan with interactive checklist, accounts, flags.
+- **César Larancuent** — Centro de Control de Crédito (Spanish).
+- **General** — Noel's all-sessions workspace.
+
+Add clients via `data/clients.json` + `data/clients/<slug>.json` — see `AGENTS.md` at repo root.
+
 ## How it works (Tier 1)
-- **Read-only dashboard**: `data.json` is fetched on open (with embedded fallback if offline).
-- **Commands**: tap any quick command (or type your own) → it's copied to the clipboard →
-  tap **Open Chat** → paste into the Hermes chat → the agent runs it.
-- **`sendData`**: when opened in Telegram, the Mini App also emits a `web_app_data`
-  payload for future native round-trip support (Tier 2).
+- **Read-only dashboard**: per-client JSON fetched on open (embedded fallback offline).
+- **Commands**: tap → copied to clipboard → **Open Chat** → paste into the Hermes chat.
+- **🧠 Send Context to Hermes**: copies the full client context bundle (profile, negative
+  items, action-plan progress, flags) so the agent picks up exactly where the dashboard left off.
+- **Action Plan**: interactive checklist; progress persists per device; plan summary copies
+  to the chat so the agent updates the campaign tracker.
+- **`sendData`**: when opened in Telegram, the app also emits `web_app_data` for future
+  native round-trip support (Tier 2).
 
-## Editing data
-Edit `miniapp/data.json` and push — the snapshot `updatedAt` refreshes.
-Quick commands can also be customized per-device inside the app (✏️ Edit).
+## Data
+- `miniapp/data/clients.json` — client manifest
+- `miniapp/data/clients/<slug>.json` — per-client data (schema in AGENTS.md)
+- `miniapp/scripts/update_snapshot.py` — refreshes timestamps + pushes (daily cron)
 
-## Automation
-`miniapp/scripts/update_snapshot.py` refreshes `updatedAt` and pushes.
-Scheduled as a Hermes cron job (daily) so the dashboard always shows a fresh snapshot.
-
-## Roadmap (Tier 2)
-- Hermes Telegram adapter support for `web_app_data` → true button-to-agent round trip.
-- Live session list pulled from the Hermes session store.
-- Push relay for scheduled digests into the Mini App.
+## Deploy
+Push to `main` → GitHub Pages publishes automatically (branch deploy, no build).

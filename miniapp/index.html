@@ -7,80 +7,89 @@
 <title>Kingdom Hermes</title>
 <style>
   :root {
-    --bg: #14152a;
-    --card: #1e2038;
-    --card2: #262849;
-    --border: #2e3057;
-    --text: #e8eaf6;
-    --muted: #9aa0c0;
-    --accent: #7c5cfc;
-    --accent2: #a78bfa;
-    --gold: #f59e0b;
-    --green: #22c55e;
-    --red: #ef4444;
-    --blue: #3b82f6;
-    --radius: 14px;
+    --bg: #14152a; --card: #1e2038; --card2: #262849; --border: #2e3057;
+    --text: #e8eaf6; --muted: #9aa0c0; --accent: #7c5cfc; --accent2: #a78bfa;
+    --gold: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --radius: 14px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 14px 14px 110px;
-    max-width: 460px;
-    margin: 0 auto;
-    min-height: 100vh;
-  }
-  .header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-  .logo {
-    width: 42px; height: 42px; flex-shrink: 0;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 13px; display: flex; align-items: center; justify-content: center;
-    font-size: 21px; box-shadow: 0 4px 16px rgba(124,92,252,.35);
-  }
-  .header h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.2px; }
-  .header .sub { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
-  .status-pill {
-    margin-left: auto; display: flex; align-items: center; gap: 5px;
-    font-size: 11px; font-weight: 600; color: var(--green);
-    background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25);
-    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 14px 14px 116px; max-width: 460px; margin: 0 auto; min-height: 100vh; }
+  .header { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+  .logo { width: 42px; height: 42px; flex-shrink: 0; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 21px; box-shadow: 0 4px 16px rgba(124,92,252,.35); }
+  .header h1 { font-size: 17px; font-weight: 700; letter-spacing: -0.2px; line-height: 1.2; }
+  .header .sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .status-pill { margin-left: auto; display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--green); background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25); padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
   .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
 
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 15px; margin-bottom: 12px;
-  }
-  .card-title {
-    font-size: 11px; font-weight: 700; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  .client-bar { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; scrollbar-width: none; }
+  .client-bar::-webkit-scrollbar { display: none; }
+  .client-chip { flex-shrink: 0; background: var(--card); border: 1px solid var(--border); color: var(--muted); border-radius: 20px; padding: 7px 14px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all .15s; white-space: nowrap; }
+  .client-chip.active { background: var(--accent); border-color: transparent; color: #fff; }
+  .client-chip:active { transform: scale(.95); }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; margin-bottom: 12px; }
+  .card-title { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 11px; display: flex; align-items: center; justify-content: space-between; }
   .card-title .hint { font-size: 10px; letter-spacing: 0; text-transform: none; opacity: .7; }
+
+  .btn { border: none; border-radius: 11px; padding: 11px 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: transform .12s; width: 100%; }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #6d4aff); color: #fff; box-shadow: 0 6px 20px rgba(124,92,252,.3); }
+  .btn-ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
+
+  .kv { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
+  .kv:last-of-type { border-bottom: none; }
+  .kv .k { color: var(--muted); flex-shrink: 0; }
+  .kv .v { text-align: right; font-weight: 600; }
+
+  .neg-card { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3); border-radius: 12px; padding: 13px; margin-bottom: 10px; }
+  .neg-card .cred { font-size: 14.5px; font-weight: 700; color: #fca5a5; }
+  .neg-card .acct { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .neg-card .strategy { font-size: 12px; color: var(--text); background: rgba(0,0,0,.25); border-radius: 9px; padding: 9px; margin-top: 8px; line-height: 1.5; }
+
+  .acct-item { padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .acct-item:last-child { border-bottom: none; }
+  .acct-item .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .acct-item .cred { font-size: 13.5px; font-weight: 600; }
+  .acct-item .bal { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .acct-item .meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  details.card summary { cursor: pointer; list-style: none; }
+  details.card summary::-webkit-details-marker { display: none; }
+  details.card summary .chev { float: right; font-size: 12px; color: var(--muted); }
+
+  .step { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step .box { width: 22px; height: 22px; border-radius: 7px; border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; color: transparent; cursor: pointer; transition: all .15s; background: var(--card2); margin-top: 1px; }
+  .step.done .box { background: var(--green); border-color: var(--green); color: #fff; }
+  .step .slabel { font-size: 13px; line-height: 1.4; }
+  .step .smeta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .step.done .slabel { text-decoration: line-through; opacity: .6; }
+  .plan-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .plan-progress .bar { flex: 1; height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .plan-progress .fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--green)); border-radius: 4px; transition: width .5s ease; }
+  .plan-progress .pct { font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .deadline { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); padding: 5px 0; border-bottom: 1px dashed var(--border); }
+  .deadline:last-child { border: none; }
+  .dispute-pt { font-size: 12px; color: #fca5a5; padding: 4px 0 4px 14px; position: relative; }
+  .dispute-pt::before { content: '⚠'; position: absolute; left: 0; }
+
+  .flag-row { display: flex; align-items: flex-start; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .flag-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .flag-row .femoji { font-size: 15px; flex-shrink: 0; }
+  .flag-row .fmeta { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .action-btn { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px 10px; color: var(--text); font-size: 12.5px; font-weight: 500; cursor: pointer; transition: transform .12s, background .12s; line-height: 1.35; text-align: center; }
+  .action-btn:active { transform: scale(.95); background: #31345f; }
+  .action-btn .emoji { display: block; font-size: 21px; margin-bottom: 5px; }
 
   .session-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .session-item:last-child { border-bottom: none; padding-bottom: 2px; }
   .session-item .who { font-size: 14px; font-weight: 600; }
   .session-item .when { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
-  .pill-btn {
-    background: var(--card2); border: 1px solid var(--border); color: var(--text);
-    font-size: 11.5px; font-weight: 600; padding: 6px 13px; border-radius: 20px;
-    cursor: pointer; transition: transform .12s, background .12s; flex-shrink: 0;
-  }
-  .pill-btn:active { transform: scale(.94); background: #31345f; }
+  .pill-btn { background: var(--card2); border: 1px solid var(--border); color: var(--text); font-size: 11.5px; font-weight: 600; padding: 6px 13px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+  .pill-btn:active { transform: scale(.94); }
   .pill-btn.accent { background: var(--accent); border-color: transparent; }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .action-btn {
-    background: var(--card2); border: 1px solid var(--border); border-radius: 12px;
-    padding: 12px 8px 10px; color: var(--text); font-size: 12.5px; font-weight: 500;
-    cursor: pointer; transition: transform .12s, background .12s; line-height: 1.35; text-align: center;
-  }
-  .action-btn:active { transform: scale(.95); background: #31345f; }
-  .action-btn .emoji { display: block; font-size: 21px; margin-bottom: 5px; }
-  .action-btn .mini { font-size: 10px; color: var(--muted); display: block; margin-top: 2px; }
 
   .fin-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8.5px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
   .fin-row:last-of-type { border-bottom: none; }
@@ -92,58 +101,18 @@
   .prog .fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold), var(--accent)); transition: width .6s ease; }
   .prog .meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 5px; }
 
-  .flag-row { display: flex; align-items: flex-start; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .flag-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .flag-row .femoji { font-size: 15px; flex-shrink: 0; }
-  .flag-row .ftxt { color: var(--text); }
-  .flag-row .fmeta { font-size: 11px; color: var(--muted); margin-top: 1px; }
-
-  .open-chat {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    background: linear-gradient(135deg, var(--accent), #6d4aff);
-    border: none; border-radius: 13px; color: #fff; font-size: 14.5px; font-weight: 700;
-    padding: 14px; width: 100%; cursor: pointer; margin-bottom: 12px;
-    box-shadow: 0 6px 20px rgba(124,92,252,.3); transition: transform .12s;
-  }
-  .open-chat:active { transform: scale(.97); }
-
-  .cmd-bar {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-    background: rgba(20,21,42,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border-top: 1px solid var(--border); padding: 11px 14px calc(11px + env(safe-area-inset-bottom));
-    display: flex; gap: 8px; align-items: center; max-width: 460px; margin: 0 auto;
-  }
-  .cmd-bar input {
-    flex: 1; background: var(--card2); border: 1px solid var(--border); border-radius: 11px;
-    padding: 11px 14px; color: var(--text); font-size: 14px; outline: none; min-width: 0;
-  }
+  .cmd-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(20,21,42,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--border); padding: 11px 14px calc(11px + env(safe-area-inset-bottom)); display: flex; gap: 8px; align-items: center; max-width: 460px; margin: 0 auto; }
+  .cmd-bar input { flex: 1; background: var(--card2); border: 1px solid var(--border); border-radius: 11px; padding: 11px 14px; color: var(--text); font-size: 14px; outline: none; min-width: 0; }
   .cmd-bar input:focus { border-color: var(--accent); }
   .cmd-bar input::placeholder { color: var(--muted); }
-  .cmd-bar button {
-    background: var(--accent); color: #fff; border: none; border-radius: 11px;
-    padding: 11px 17px; font-size: 14px; font-weight: 700; cursor: pointer; flex-shrink: 0;
-  }
-  .cmd-bar button:active { opacity: .8; }
+  .cmd-bar button { background: var(--accent); color: #fff; border: none; border-radius: 11px; padding: 11px 17px; font-size: 14px; font-weight: 700; cursor: pointer; flex-shrink: 0; }
 
-  .toast {
-    position: fixed; bottom: 86px; left: 50%; transform: translateX(-50%) translateY(8px);
-    background: #2e3057; border: 1px solid #3d3f6e; color: var(--text);
-    padding: 11px 18px; border-radius: 12px; font-size: 13px; font-weight: 500;
-    box-shadow: 0 10px 34px rgba(0,0,0,.45); opacity: 0; transition: all .25s ease;
-    pointer-events: none; z-index: 100; max-width: 90%; text-align: center;
-  }
+  .toast { position: fixed; bottom: 86px; left: 50%; transform: translateX(-50%) translateY(8px); background: #2e3057; border: 1px solid #3d3f6e; color: var(--text); padding: 11px 18px; border-radius: 12px; font-size: 13px; font-weight: 500; box-shadow: 0 10px 34px rgba(0,0,0,.45); opacity: 0; transition: all .25s ease; pointer-events: none; z-index: 100; max-width: 90%; text-align: center; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .modal-backdrop {
-    position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 90;
-    display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px);
-  }
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 90; display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px); }
   .modal-backdrop.open { display: flex; }
-  .modal {
-    background: var(--card); border: 1px solid var(--border); border-radius: 18px 18px 0 0;
-    padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); width: 100%; max-width: 460px;
-    max-height: 78vh; overflow-y: auto;
-  }
+  .modal { background: var(--card); border: 1px solid var(--border); border-radius: 18px 18px 0 0; padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); width: 100%; max-width: 460px; max-height: 78vh; overflow-y: auto; }
   .modal h2 { font-size: 16px; margin-bottom: 4px; }
   .modal p { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
   .qm-row { display: flex; gap: 8px; margin-bottom: 9px; align-items: center; }
@@ -152,12 +121,10 @@
   .qm-row .rm { background: none; border: none; color: var(--red); font-size: 17px; cursor: pointer; padding: 6px; }
   .modal .actions { display: flex; gap: 8px; margin-top: 14px; }
   .modal .actions button { flex: 1; border-radius: 10px; padding: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: none; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border) !important; }
+  .btn-primary2 { background: var(--accent); color: #fff; }
+  .btn-ghost2 { background: var(--card2); color: var(--text); border: 1px solid var(--border) !important; }
 
   .footer { text-align: center; font-size: 10.5px; color: var(--muted); margin-top: 4px; line-height: 1.7; }
-  .skeleton { background: linear-gradient(90deg, var(--card) 25%, var(--card2) 50%, var(--card) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 8px; }
-  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 </style>
 </head>
 <body>
@@ -165,44 +132,23 @@
 <div class="header">
   <div class="logo">⚡</div>
   <div>
-    <h1>Kingdom Hermes</h1>
-    <div class="sub" id="snapshotSub">loading snapshot…</div>
+    <h1 id="appTitle">Kingdom Hermes</h1>
+    <div class="sub" id="snapshotSub">loading…</div>
   </div>
   <span class="status-pill"><span class="dot"></span>Online</span>
 </div>
 
-<button class="open-chat" id="openChatBtn">💬 Open Chat &amp; Paste</button>
+<!-- Client switcher -->
+<div class="client-bar" id="clientBar"></div>
 
-<!-- Recent Sessions -->
-<div class="card" id="sessionsCard">
-  <div class="card-title"><span>📋 Recent Sessions</span><span class="hint">tap to continue</span></div>
-  <div id="sessionsList"></div>
-</div>
+<button class="btn btn-primary" id="ctxBtn" style="margin-bottom:12px;">🧠 Send Context to Hermes</button>
 
-<!-- Quick Commands -->
-<div class="card">
-  <div class="card-title"><span>⚡ Quick Commands</span><button class="pill-btn" id="editCmds" style="padding:4px 10px;font-size:10.5px;">✏️ Edit</button></div>
-  <div class="grid" id="quickGrid"></div>
-</div>
-
-<!-- Financial Snapshot -->
-<div class="card" id="financeCard">
-  <div class="card-title"><span>💰 Financial Snapshot</span></div>
-  <div id="financeBody"></div>
-</div>
-
-<!-- Flags -->
-<div class="card" id="flagsCard">
-  <div class="card-title">🚩 Flags</div>
-  <div id="flagsBody"></div>
-</div>
+<div id="appBody"></div>
 
 <div class="footer">
-  Kingdom Hermes · v1.0<br>
-  Built for Kingdom Financial Services · <span id="footerTs">–</span>
+  Kingdom Hermes · v2.0 multi-client · <span id="footerTs">–</span>
 </div>
 
-<!-- Command bar -->
 <div class="cmd-bar">
   <input type="text" id="cmdInput" placeholder="Type a command for Hermes…" autocomplete="off" />
   <button id="cmdSend">Copy</button>
@@ -214,12 +160,12 @@
 <div class="modal-backdrop" id="editModal">
   <div class="modal">
     <h2>⚡ Customize Quick Commands</h2>
-    <p>These are saved on this device and work offline.</p>
+    <p>Saved on this device, per client.</p>
     <div id="qmList"></div>
     <div class="actions">
-      <button class="btn-ghost" id="qmAdd">＋ Add</button>
-      <button class="btn-ghost" id="qmReset">↺ Reset</button>
-      <button class="btn-primary" id="qmDone">Done</button>
+      <button class="btn-ghost2" id="qmAdd">＋ Add</button>
+      <button class="btn-ghost2" id="qmReset">↺ Reset</button>
+      <button class="btn-primary2" id="qmDone">Done</button>
     </div>
   </div>
 </div>
@@ -227,165 +173,326 @@
 <script>
 /* ============ Telegram WebApp SDK ============ */
 const tg = (window.Telegram && window.Telegram.WebApp) ? window.Telegram.WebApp : null;
-let inTelegram = false;
 if (tg) {
   try {
-    inTelegram = true;
-    tg.ready();
-    tg.expand();
+    tg.ready(); tg.expand();
     tg.setHeaderColor && tg.setHeaderColor('#14152a');
     tg.setBackgroundColor && tg.setBackgroundColor('#14152a');
-    // Apply Telegram-native theme colors when available
-    const tp = tg.themeParams || {};
-    const applyTheme = (dark) => {
-      const root = document.documentElement.style;
-      if (tp.bg_color) root.setProperty('--bg', tp.bg_color);
-      if (tp.secondary_bg_color) root.setProperty('--card', tp.secondary_bg_color);
-      if (tp.text_color) root.setProperty('--text', tp.text_color);
-      if (tp.hint_color) root.setProperty('--muted', tp.hint_color);
-      if (tp.button_color) root.setProperty('--accent', tp.button_color);
-      if (tp.button_text_color) root.setProperty('--accent-text', tp.button_text_color);
-    };
-    applyTheme(tg.colorScheme === 'dark');
-  } catch (e) { /* non-critical */ }
+  } catch (e) {}
 }
-
 const BOT_USERNAME = 'kingdomfi_bot';
-const DATA_URL = 'data.json';
-const LS_CMDS_KEY = 'kh_quick_cmds';
-const LS_OVERRIDE_KEY = 'kh_override';
 
-/* ============ Snapshot data (fetched, with embedded fallback) ============ */
-const FALLBACK = {
-  updatedAt: '2026-08-12T23:59:00Z',
-  sessions: [
-    { title: 'Credit Report Analysis', who: 'Anthony R', when: '3 min ago', cmd: 'Continue working on the credit report analysis for Anthony R Duran Martinez. Review the 3-bureau reports in /opt/data/finance/credit/ and summarize current status, disputes filed, and next steps.' },
-    { title: 'Subscription Audit', who: 'Noel', when: '2h ago', cmd: 'Continue the subscription audit. List every active subscription, monthly cost, annual cost, and flag any that can be canceled.' },
-    { title: 'Budget Review Q3', who: 'Kristina', when: 'Yesterday', cmd: 'Continue the Q3 budget review for the joint accounts. Summarize spending by category, savings rate, and recommended adjustments.' }
-  ],
-  quickCommands: [
-    { emoji: '💳', label: 'Financial Audit', cmd: 'Run a full financial audit of my bank statements for the past 90 days. Show totals, categories, flags, and recommendations.' },
-    { emoji: '🔍', label: 'Scan Subs', cmd: 'Find all active subscriptions across my accounts and flag any I can cancel. Show monthly and annual totals.' },
-    { emoji: '🏆', label: 'Savings Report', cmd: 'Show my savings progress tiers (gold, silver, bronze), current balances, and the next milestone with a plan to reach it.' },
-    { emoji: '📊', label: 'Credit Report', cmd: 'Analyze the credit report for Anthony R Duran Martinez. Summarize accounts, adverse items, and recommended dispute next steps.' },
-    { emoji: '🏥', label: 'Health Score', cmd: 'Give my overall financial health score out of 100 with a breakdown by category and the top 3 actions to raise it.' },
-    { emoji: '📅', label: 'Bills Due', cmd: 'List all upcoming bills and due dates this month with amounts, sorted by date.' }
-  ],
-  financial: [
-    { label: 'Total Assets', value: 8340, fmt: '$8,340.00', kind: 'pos' },
-    { label: 'Total Liabilities', value: 4046, fmt: '$4,046.00', kind: 'neg' },
-    { label: 'Net Worth', value: 4294, fmt: '$4,294.00', kind: 'pos' },
-    { label: 'Emergency Fund', value: 1500, goal: 3000, fmt: '$1,500 / $3,000', kind: 'neutral' }
-  ],
-  flags: [
-    { emoji: '⚠️', text: 'Dept of Ed / Aidvantage student loan 120+ days late', meta: '~$4,046 · DOFD 12/22/2024 · dispute in progress' },
-    { emoji: '🔗', text: 'Ally auto lease is joint with Jeff (Jelffery N Duran)', meta: 'co-borrower reporting affects both credit files' },
-    { emoji: '🔔', text: 'Subscriptions haven\u2019t been re-audited this month', meta: 'last audit: Aug 10' },
-    { emoji: '✅', text: 'Budget on track', meta: 'Q3 spending within plan' }
-  ]
+/* ============ Fallbacks (offline) ============ */
+const FALLBACK_MANIFEST = { clients: [
+  { slug: 'anthony-duran', name: 'Anthony Duran', title: 'Credit Report Dashboard', file: 'data/clients/anthony-duran.json', default: true },
+  { slug: 'general', name: 'General', title: 'All Sessions', file: 'data/clients/general.json', default: false }
+]};
+const FALLBACK_CLIENT = {
+  slug: 'anthony-duran', name: 'Anthony R Duran Martinez', display: 'Anthony Duran', title: 'Credit Report Dashboard', lang: 'en',
+  updatedAt: null,
+  profile: { role: 'KFS client', reportDate: 'Dec 13, 2025', reportSource: 'annualcreditreport.com (no scores)' },
+  credit: { scores: null, negative: [{ creditor: 'DEPT OF ED / AIDVANTAGE', account: 'Student Loan', balance: '~$4,046', rating: '120+ days late', dofd: '12/22/2024', strategy: 'Federal loan — cure + accuracy dispute, not deletion.' }], openAccounts: [], closedPositive: '', inquiries: {} },
+  flags: [{ emoji: '⚠️', text: 'Student loan 120+ days late', meta: 'only adverse item' }],
+  actionPlan: { campaign: 'MOV Dispute Campaign', round: 1, steps: [], deadlines: [], disputePoints: [] },
+  quickCommands: [], sessions: [], financial: []
 };
 
-let data = FALLBACK;
-let quickCmds = loadQuickCmds();
+let manifest = FALLBACK_MANIFEST;
+let clients = [];
+let current = null;         // current client data
+let currentSlug = null;
+let quickCmds = [];
 
+const LS_LAST = 'kh_last_client';
+const LS_CMDS = 'kh_qcmds_';
+const LS_CHECK = 'kh_check_';
+
+/* ============ Load ============ */
+function fetchJSON(url, fallback) {
+  return fetch(url + '?t=' + Date.now(), { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .catch(e => { console.warn('fetch failed, fallback:', url, e); return fallback; });
+}
+
+function boot() {
+  fetchJSON('data/clients.json', FALLBACK_MANIFEST).then(m => {
+    manifest = m;
+    clients = (m.clients || []).slice();
+    renderClientBar();
+    const saved = localStorage.getItem(LS_LAST);
+    const last = clients.find(c => c.slug === saved);
+    const def = clients.find(c => c.default) || clients[0];
+    selectClient(last ? last.slug : (def ? def.slug : 'general'));
+  });
+}
+
+function renderClientBar() {
+  const bar = document.getElementById('clientBar');
+  bar.innerHTML = '';
+  clients.forEach(c => {
+    const chip = document.createElement('button');
+    chip.className = 'client-chip' + (c.slug === currentSlug ? ' active' : '');
+    chip.textContent = c.name;
+    chip.onclick = () => selectClient(c.slug);
+    bar.appendChild(chip);
+  });
+}
+
+function selectClient(slug) {
+  currentSlug = slug;
+  try { localStorage.setItem(LS_LAST, slug); } catch (e) {}
+  renderClientBar();
+  const meta = clients.find(c => c.slug === slug) || { file: 'data/clients/' + slug + '.json' };
+  document.getElementById('appBody').innerHTML = '<div class="card"><div class="card-title">Loading client…</div></div>';
+  fetchJSON(meta.file, FALLBACK_CLIENT).then(d => {
+    current = Object.assign({}, FALLBACK_CLIENT, d);
+    quickCmds = loadQuickCmds();
+    render();
+  });
+}
+
+/* ============ Checklist state ============ */
+function checkKey(id) { return LS_CHECK + currentSlug + '_' + id; }
+function isDone(step) {
+  if (step.status === 'done') return true;
+  try { return localStorage.getItem(checkKey(step.id)) === '1'; } catch (e) { return false; }
+}
+function toggleStep(id) {
+  try {
+    const k = checkKey(id);
+    const v = localStorage.getItem(k) === '1' ? null : '1';
+    if (v) localStorage.setItem(k, v); else localStorage.removeItem(k);
+  } catch (e) {}
+  render();
+}
+
+/* ============ Render ============ */
+function render() {
+  const c = current;
+  document.getElementById('appTitle').textContent = c.display || c.name || 'Kingdom Hermes';
+  document.getElementById('snapshotSub').textContent = c.title + (c.updatedAt ? ' · ' + fmtWhen(c.updatedAt) : '');
+  document.getElementById('footerTs').textContent = 'snapshot ' + (c.updatedAt ? fmtWhen(c.updatedAt) : '—');
+
+  let h = '';
+
+  // Profile card
+  h += '<div class="card"><div class="card-title">👤 Client Profile</div>';
+  if (c.profile) {
+    if (c.profile.role) h += kv('Role', c.profile.role);
+    if (c.profile.reportDate) h += kv('Report date', c.profile.reportDate);
+    if (c.profile.reportSource) h += kv('Source', c.profile.reportSource);
+    if (c.profile.history) h += kv('History', c.profile.history);
+    if (c.profile.location) h += kv('Location', c.profile.location);
+    if (c.profile.employer) h += kv('Employer', c.profile.employer);
+  }
+  h += '</div>';
+
+  // Credit dashboard
+  if (c.credit) {
+    h += '<div class="card"><div class="card-title">📊 Credit Dashboard</div>';
+    if (c.credit.scores) {
+      h += '<div class="grid" style="margin-bottom:10px;">' + Object.entries(c.credit.scores).map(([b, v]) =>
+        '<div style="background:var(--card2);border-radius:11px;padding:10px;text-align:center;"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">' + esc(b) + '</div><div style="font-size:22px;font-weight:800;">' + esc(v) + '</div></div>').join('') + '</div>';
+    }
+    if (c.credit.scoresNote) h += '<div style="font-size:11.5px;color:var(--gold);margin-bottom:10px;">⏳ ' + esc(c.credit.scoresNote) + '</div>';
+    (c.credit.negative || []).forEach(n => {
+      h += '<div class="neg-card"><div class="cred">🔴 ' + esc(n.creditor) + '</div><div class="acct">' + esc(n.account || '') + (n.opened ? ' · opened ' + esc(n.opened) : '') + '</div>';
+      if (n.balance) h += kv('Balance', n.balance);
+      if (n.pastDue) h += kv('Past due', n.pastDue);
+      if (n.rating) h += kv('Rating', n.rating);
+      if (n.dofd) h += kv('DOFD', n.dofd);
+      if (n.removalEst) h += kv('Removal est.', n.removalEst);
+      if (n.strategy) h += '<div class="strategy">🎯 ' + esc(n.strategy) + '</div>';
+      h += '</div>';
+    });
+    if (!(c.credit.negative || []).length) h += '<div style="font-size:13px;color:var(--green);">🟢 No negative items on file.</div>';
+    h += '</div>';
+
+    // Accounts (collapsible)
+    const open = (c.credit.openAccounts || []);
+    if (open.length) {
+      h += '<details class="card"><summary><span class="card-title" style="margin:0;display:inline;">💳 Open Accounts <span class="hint">' + open.length + '</span></span><span class="chev">▾</span></summary><div style="margin-top:8px;">';
+      open.forEach(a => {
+        h += '<div class="acct-item"><div class="top"><span class="cred">' + esc(a.type || '') + ' ' + esc(a.creditor) + '</span><span class="bal">' + esc(a.balance || '—') + '</span></div><div class="meta">' +
+          [a.limit ? 'limit ' + a.limit : '', a.opened ? 'opened ' + a.opened : '', a.note].filter(Boolean).join(' · ') + '</div></div>';
+      });
+      h += '</div></details>';
+    }
+    if (c.credit.closedPositive) h += '<details class="card"><summary><span class="card-title" style="margin:0;display:inline;">✅ Closed / Paid (keep for age)</span><span class="chev">▾</span></summary><div style="font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:8px;">' + esc(c.credit.closedPositive) + '</div></details>';
+    const iq = c.credit.inquiries || {};
+    if (Object.keys(iq).length) {
+      h += '<details class="card"><summary><span class="card-title" style="margin:0;display:inline;">🔎 Inquiries</span><span class="chev">▾</span></summary><div style="font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6;">';
+      if (iq.experianHard) h += '<div style="margin-bottom:6px;"><b style="color:var(--text);">EX hard:</b> ' + esc(iq.experianHard) + '</div>';
+      if (iq.tu) h += '<div>TU: ' + esc(iq.tu) + '</div>';
+      if (iq.eq) h += '<div>EQ: ' + esc(iq.eq) + '</div>';
+      h += '</div></details>';
+    }
+  }
+
+  // Action plan
+  if (c.actionPlan && c.actionPlan.steps && c.actionPlan.steps.length) {
+    const steps = c.actionPlan.steps;
+    const doneCount = steps.filter(isDone).length;
+    const pct = Math.round(doneCount / steps.length * 100);
+    h += '<div class="card"><div class="card-title"><span>🎯 Action Plan · Round ' + esc(c.actionPlan.round || '—') + '</span><span class="hint">' + doneCount + '/' + steps.length + ' done</span></div>';
+    h += '<div class="plan-progress"><div class="bar"><div class="fill" style="width:' + pct + '%"></div></div><span class="pct">' + pct + '%</span></div>';
+    if (c.actionPlan.campaign) h += '<div style="font-size:12.5px;font-weight:600;margin:10px 0 2px;">' + esc(c.actionPlan.campaign) + '</div>';
+    if (c.actionPlan.method) h += '<div style="font-size:11.5px;color:var(--muted);margin-bottom:6px;line-height:1.5;">' + esc(c.actionPlan.method) + '</div>';
+    steps.forEach(s => {
+      const done = isDone(s);
+      h += '<div class="step' + (done ? ' done' : '') + '" onclick="toggleStep(\'' + s.id + '\')"><div class="box">✓</div><div><div class="slabel">' + esc(s.label) + '</div>' + (s.meta ? '<div class="smeta">' + esc(s.meta) + '</div>' : '') + '</div></div>';
+    });
+    if ((c.actionPlan.deadlines || []).length) {
+      h += '<div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border);"><div class="card-title" style="margin-bottom:6px;">⏰ Deadlines</div>';
+      c.actionPlan.deadlines.forEach(d => { h += '<div class="deadline"><span>' + esc(d.label) + '</span><span style="font-weight:600;color:var(--text);">' + esc(d.days) + '</span></div>'; });
+      h += '</div>';
+    }
+    if ((c.actionPlan.disputePoints || []).length) {
+      h += '<div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border);"><div class="card-title" style="margin-bottom:4px;">⚖️ Dispute Points</div>';
+      c.actionPlan.disputePoints.forEach(p => { h += '<div class="dispute-pt">' + esc(p) + '</div>'; });
+      h += '</div>';
+    }
+    h += '<button class="btn btn-ghost" style="margin-top:12px;" onclick="copyPlanSummary()">📋 Copy plan summary</button>';
+    h += '</div>';
+  }
+
+  // Flags
+  if ((c.flags || []).length) {
+    h += '<div class="card"><div class="card-title">🚩 Flags</div>';
+    c.flags.forEach(g => { h += '<div class="flag-row"><span class="femoji">' + (g.emoji || '🚩') + '</span><div><div>' + esc(g.text) + '</div>' + (g.meta ? '<div class="fmeta">' + esc(g.meta) + '</div>' : '') + '</div></div>'; });
+    h += '</div>';
+  }
+
+  // Quick commands
+  h += '<div class="card"><div class="card-title"><span>⚡ Quick Commands</span><button class="pill-btn" onclick="openQmEditor()" style="padding:4px 10px;font-size:10.5px;">✏️ Edit</button></div><div class="grid">';
+  quickCmds.slice(0, 8).forEach(q => {
+    h += '<button class="action-btn" onclick="send(\'' + escJs(q.cmd) + '\', \'⚡ ' + escJs(q.label || 'Command') + ' → copied!\')"><span class="emoji">' + (q.emoji || '⚡') + '</span>' + esc(q.label || 'Command') + '</button>';
+  });
+  h += '</div></div>';
+
+  // Sessions
+  if ((c.sessions || []).length) {
+    h += '<div class="card"><div class="card-title"><span>📋 Sessions</span><span class="hint">tap to continue</span></div>';
+    c.sessions.slice(0, 5).forEach(s => {
+      h += '<div class="session-item"><div><div class="who">' + esc(s.title) + '</div><div class="when">' + (s.who ? esc(s.who) + ' · ' : '') + esc(s.when || '') + '</div></div><button class="pill-btn accent" onclick="send(\'' + escJs(s.cmd || 'Continue working on: ' + s.title) + '\', \'📋 ' + escJs(s.title) + ' → copied!\')">Continue</button></div>';
+    });
+    h += '</div>';
+  }
+
+  // Financial
+  if ((c.financial || []).length) {
+    h += '<div class="card"><div class="card-title">💰 Financial Snapshot</div>';
+    c.financial.forEach(f => {
+      if (f.goal) {
+        const p = Math.min(100, Math.round((f.value / f.goal) * 100));
+        const tier = p >= 100 ? '🥇' : p >= 60 ? '🥈' : p >= 30 ? '🥉' : '🌱';
+        h += '<div class="fin-row"><span class="lbl">' + esc(f.label) + '</span><span class="amt neutral">' + esc(f.fmt) + '</span></div><div class="prog"><div class="bar"><div class="fill" style="width:' + p + '%"></div></div><div class="meta"><span>' + tier + ' ' + p + '% to goal</span><span>+' + fmtMoney(f.value) + '</span></div></div>';
+      } else {
+        h += '<div class="fin-row"><span class="lbl">' + esc(f.label) + (f.note ? ' <span style="font-size:10px;opacity:.7;">(' + esc(f.note) + ')</span>' : '') + '</span><span class="amt ' + (f.kind || 'neutral') + '">' + esc(f.fmt || fmtMoney(f.value)) + '</span></div>';
+      }
+    });
+    h += '</div>';
+  }
+
+  document.getElementById('appBody').innerHTML = h;
+}
+
+function kv(k, v) { return '<div class="kv"><span class="k">' + esc(k) + '</span><span class="v">' + esc(v) + '</span></div>'; }
+
+/* ============ Context bundle (the session bridge) ============ */
+document.getElementById('ctxBtn').onclick = copyContext;
+function copyContext() {
+  const c = current;
+  if (!c) return showToast('No client loaded yet');
+  const lines = [];
+  lines.push('🧠 KFS CLIENT CONTEXT — ' + (c.name || c.display || currentSlug));
+  lines.push('Dashboard: ' + (c.title || '') + (c.updatedAt ? ' (updated ' + fmtWhen(c.updatedAt) + ')' : ''));
+  if (c.profile && c.profile.reportDate) lines.push('Report: ' + c.profile.reportDate + (c.profile.reportSource ? ' · ' + c.profile.reportSource : ''));
+  if (c.credit && c.credit.negative && c.credit.negative.length) {
+    lines.push('');
+    lines.push('NEGATIVE ITEMS:');
+    c.credit.negative.forEach(n => lines.push('• ' + n.creditor + (n.balance ? ' · ' + n.balance : '') + (n.rating ? ' · ' + n.rating : '')));
+  }
+  if (c.actionPlan && c.actionPlan.steps && c.actionPlan.steps.length) {
+    const steps = c.actionPlan.steps;
+    const done = steps.filter(isDone).length;
+    lines.push('');
+    lines.push('ACTION PLAN (' + c.actionPlan.campaign + ') — ' + done + '/' + steps.length + ' done:');
+    steps.forEach(s => lines.push((isDone(s) ? '✅' : '☐') + ' ' + s.label));
+    if (c.actionPlan.round) lines.push('Round: ' + c.actionPlan.round);
+  }
+  if (c.flags && c.flags.length) {
+    lines.push('');
+    lines.push('FLAGS:');
+    c.flags.forEach(f => lines.push('• ' + f.text + (f.meta ? ' — ' + f.meta : '')));
+  }
+  lines.push('');
+  lines.push('CONTINUE THIS CLIENT\u2019S WORK. Check the campaign tracker and local files first, then report status and the single next action.');
+  send(lines.join('\n'), '🧠 Client context copied — paste it in the chat!');
+}
+
+/* ============ Plan summary ============ */
+function copyPlanSummary() {
+  const c = current;
+  if (!c || !c.actionPlan) return;
+  const steps = c.actionPlan.steps;
+  const done = steps.filter(isDone).length;
+  const txt = '📋 ' + c.actionPlan.campaign + '\nProgress: ' + done + '/' + steps.length + ' done\n' +
+    steps.map(s => (isDone(s) ? '✅' : '☐') + ' ' + s.label).join('\n') +
+    '\n\nUpdate the campaign tracker with this status.';
+  send(txt, '📋 Plan summary copied!');
+}
+
+/* ============ Quick commands (per-client, localStorage) ============ */
 function loadQuickCmds() {
   try {
-    const raw = localStorage.getItem(LS_CMDS_KEY);
+    const raw = localStorage.getItem(LS_CMDS + currentSlug);
     if (raw) { const arr = JSON.parse(raw); if (Array.isArray(arr) && arr.length) return arr; }
   } catch (e) {}
-  return FALLBACK.quickCommands.slice();
+  return (current.quickCommands || []).slice();
 }
-
-/* ============ Fetch live snapshot ============ */
-function fetchSnapshot() {
-  const t = Date.now();
-  fetch(DATA_URL + '?t=' + t, { cache: 'no-store' })
-    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(j => { data = Object.assign({}, FALLBACK, j); render(); })
-    .catch(e => { console.warn('snapshot fetch failed, using fallback:', e); render(); });
+function openQmEditor() {
+  renderQmEditor(); document.getElementById('editModal').classList.add('open');
 }
-
-/* ============ Rendering ============ */
-function render() {
-  // header snapshot meta
-  const when = fmtWhen(data.updatedAt);
-  document.getElementById('snapshotSub').textContent = 'data: ' + when;
-  document.getElementById('footerTs').textContent = 'snapshot ' + when;
-
-  // sessions
-  const sl = document.getElementById('sessionsList');
-  sl.innerHTML = '';
-  (data.sessions || []).slice(0, 5).forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'session-item';
-    div.innerHTML = '<div><div class="who"></div><div class="when"></div></div>';
-    div.querySelector('.who').textContent = s.title || 'Session';
-    div.querySelector('.when').textContent = (s.who ? s.who + ' · ' : '') + (s.when || '');
-    const btn = document.createElement('button');
-    btn.className = 'pill-btn accent';
-    btn.textContent = 'Continue';
-    btn.onclick = () => send(s.cmd || ('Continue working on: ' + s.title), '📋 ' + (s.title || 'session') + ' → copied!');
-    div.appendChild(btn);
-    sl.appendChild(div);
-  });
-
-  // quick commands
-  const qg = document.getElementById('quickGrid');
-  qg.innerHTML = '';
-  quickCmds.slice(0, 8).forEach(q => {
-    const b = document.createElement('button');
-    b.className = 'action-btn';
-    b.innerHTML = '<span class="emoji">' + (q.emoji || '⚡') + '</span>' + esc(q.label || 'Command');
-    b.onclick = () => send(q.cmd, '⚡ ' + (q.label || 'Command') + ' → copied!');
-    qg.appendChild(b);
-  });
-
-  // financial
-  const fb = document.getElementById('financeBody');
-  fb.innerHTML = '';
-  (data.financial || []).forEach(f => {
-    if (f.goal) {
-      const pct = Math.min(100, Math.round((f.value / f.goal) * 100));
-      const tier = pct >= 100 ? '🥇' : pct >= 60 ? '🥈' : pct >= 30 ? '🥉' : '🌱';
-      fb.innerHTML += '<div class="fin-row"><span class="lbl">' + esc(f.label) + '</span><span class="amt neutral">' + esc(f.fmt) + '</span></div>' +
-        '<div class="prog"><div class="bar"><div class="fill" style="width:' + pct + '%"></div></div>' +
-        '<div class="meta"><span>' + tier + ' ' + pct + '% to goal</span><span>+' + fmtMoney(f.value) + '</span></div></div>';
-    } else {
-      fb.innerHTML += '<div class="fin-row"><span class="lbl">' + esc(f.label) + '</span><span class="amt ' + (f.kind || 'neutral') + '">' + esc(f.fmt || fmtMoney(f.value)) + '</span></div>';
-    }
-  });
-
-  // flags
-  const fl = document.getElementById('flagsBody');
-  fl.innerHTML = '';
-  (data.flags || []).forEach(g => {
-    fl.innerHTML += '<div class="flag-row"><span class="femoji">' + (g.emoji || '🚩') + '</span><div><div class="ftxt">' + esc(g.text) + '</div>' +
-      (g.meta ? '<div class="fmeta">' + esc(g.meta) + '</div>' : '') + '</div></div>';
+function renderQmEditor() {
+  const list = document.getElementById('qmList');
+  list.innerHTML = '';
+  quickCmds.forEach((q, i) => {
+    const row = document.createElement('div');
+    row.className = 'qm-row';
+    row.innerHTML = '<input class="qm-emoji" maxlength="4" value="' + esc(q.emoji || '⚡') + '"><input class="qm-label" placeholder="Label" value="' + esc(q.label || '') + '"><button class="rm">✕</button>';
+    const ins = row.querySelectorAll('input');
+    ins[0].oninput = e => quickCmds[i].emoji = e.target.value;
+    ins[1].oninput = e => quickCmds[i].label = e.target.value;
+    row.querySelector('.rm').onclick = () => { quickCmds.splice(i, 1); renderQmEditor(); };
+    list.appendChild(row);
   });
 }
+document.getElementById('qmDone').onclick = () => {
+  try { localStorage.setItem(LS_CMDS + currentSlug, JSON.stringify(quickCmds)); } catch (e) {}
+  document.getElementById('editModal').classList.remove('open');
+  render();
+};
+document.getElementById('qmAdd').onclick = () => { quickCmds.push({ emoji: '⚡', label: 'New command', cmd: 'Describe what Hermes should do…' }); renderQmEditor(); };
+document.getElementById('qmReset').onclick = () => {
+  quickCmds = (current.quickCommands || []).slice();
+  try { localStorage.removeItem(LS_CMDS + currentSlug); } catch (e) {}
+  renderQmEditor();
+};
+document.getElementById('editModal').addEventListener('click', e => { if (e.target === document.getElementById('editModal')) document.getElementById('editModal').classList.remove('open'); });
 
 /* ============ Actions ============ */
 function send(text, toastMsg) {
   if (!text || !text.trim()) return;
   text = text.trim();
-
-  // 1) Try native Telegram WebApp data path (works when adapter supports web_app_data)
-  if (tg && tg.sendData) {
-    try {
-      tg.sendData(JSON.stringify({ type: 'command', text: text, from: 'miniapp', at: new Date().toISOString() }));
-    } catch (e) { /* fall through to clipboard */ }
-  }
-
-  // 2) Clipboard always: paste into the Hermes chat
+  if (tg && tg.sendData) { try { tg.sendData(JSON.stringify({ type: 'command', text, from: 'miniapp', at: new Date().toISOString() })); } catch (e) {} }
   copyText(text);
   showToast(toastMsg || '📋 Copied — open the chat and send it!');
-  haptic(0);
+  if (tg && tg.HapticFeedback) { try { tg.HapticFeedback.impactOccurred('light'); } catch (e) {} }
 }
-
 function copyText(txt) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(txt).catch(() => legacyCopy(txt));
-  } else legacyCopy(txt);
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).catch(() => legacyCopy(txt));
+  else legacyCopy(txt);
 }
 function legacyCopy(txt) {
   const el = document.createElement('textarea');
@@ -394,26 +501,23 @@ function legacyCopy(txt) {
   try { document.execCommand('copy'); } catch (e) {}
   document.body.removeChild(el);
 }
+document.getElementById('cmdSend').onclick = () => {
+  const inp = document.getElementById('cmdInput');
+  const v = inp.value.trim();
+  if (!v) return;
+  send(v, '📋 Command copied — open the chat and send it!');
+  inp.value = '';
+};
+document.getElementById('cmdInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('cmdSend').click(); });
 
-function haptic(style) {
-  if (tg && tg.HapticFeedback) { try { tg.HapticFeedback.impactOccurred(style === 0 ? 'light' : 'medium'); } catch (e) {} }
-}
-
-function openChat() {
-  if (tg && tg.openTelegramLink) { try { tg.openTelegramLink('https://t.me/' + BOT_USERNAME); return; } catch (e) {} }
-  window.open('https://t.me/' + BOT_USERNAME, '_blank');
-}
-
-/* ============ Toast / time helpers ============ */
+/* ============ Helpers ============ */
 let toastTimer = null;
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
 }
-
 function fmtWhen(iso) {
   if (!iso) return 'now';
   const d = new Date(iso);
@@ -424,64 +528,11 @@ function fmtWhen(iso) {
   if (s < 86400) return Math.floor(s / 3600) + 'h ago';
   return Math.floor(s / 86400) + 'd ago';
 }
-function fmtMoney(n) {
-  return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-function esc(s) {
-  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
+function fmtMoney(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function escJs(s) { return String(s == null ? '' : s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n'); }
 
-/* ============ Command bar ============ */
-document.getElementById('cmdSend').onclick = () => {
-  const inp = document.getElementById('cmdInput');
-  const v = inp.value.trim();
-  if (!v) return;
-  send(v, '📋 Command copied — open the chat and send it!');
-  inp.value = '';
-};
-document.getElementById('cmdInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('cmdSend').click(); });
-document.getElementById('openChatBtn').onclick = openChat;
-
-/* ============ Edit quick commands (localStorage) ============ */
-const editModal = document.getElementById('editModal');
-const qmList = document.getElementById('qmList');
-
-function renderQmEditor() {
-  qmList.innerHTML = '';
-  quickCmds.forEach((q, i) => {
-    const row = document.createElement('div');
-    row.className = 'qm-row';
-    row.innerHTML = '<input class="qm-emoji" maxlength="4" value="' + esc(q.emoji || '⚡') + '">' +
-                    '<input class="qm-label" placeholder="Label" value="' + esc(q.label || '') + '">' +
-                    '<button class="rm">✕</button>';
-    const inputs = row.querySelectorAll('input');
-    inputs[0].oninput = e => quickCmds[i].emoji = e.target.value;
-    inputs[1].oninput = e => quickCmds[i].label = e.target.value;
-    row.querySelector('.rm').onclick = () => { quickCmds.splice(i, 1); renderQmEditor(); };
-    qmList.appendChild(row);
-  });
-  // hidden full-cmd field per row is managed via prompt-lite: reuse label click-to-edit via details
-}
-
-document.getElementById('editCmds').onclick = () => { renderQmEditor(); editModal.classList.add('open'); };
-document.getElementById('qmDone').onclick = () => {
-  try { localStorage.setItem(LS_CMDS_KEY, JSON.stringify(quickCmds)); } catch (e) {}
-  editModal.classList.remove('open');
-  render();
-};
-document.getElementById('qmAdd').onclick = () => {
-  quickCmds.push({ emoji: '⚡', label: 'New command', cmd: 'Describe what Hermes should do…' });
-  renderQmEditor();
-};
-document.getElementById('qmReset').onclick = () => {
-  quickCmds = FALLBACK.quickCommands.slice();
-  try { localStorage.removeItem(LS_CMDS_KEY); } catch (e) {}
-  renderQmEditor();
-};
-editModal.addEventListener('click', e => { if (e.target === editModal) editModal.classList.remove('open'); });
-
-/* ============ Boot ============ */
-fetchSnapshot();
+boot();
 </script>
 </body>
 </html>
