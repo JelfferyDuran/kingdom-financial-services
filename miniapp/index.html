@@ -3,23 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#14152a">
+<meta name="theme-color" content="#0e0f1d">
 <title>Kingdom Hermes</title>
 <style>
   :root {
-    --bg: #14152a; --card: #1e2038; --card2: #262849; --border: #2e3057;
-    --text: #e8eaf6; --muted: #9aa0c0; --accent: #7c5cfc; --accent2: #a78bfa;
-    --gold: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --radius: 14px;
+    --bg: #0e0f1d; --bg2: #141529; --card: #191b31; --card2: #212342; --border: #2a2c4e;
+    --text: #eceefb; --muted: #9aa1c7; --accent: #7c5cfc; --accent2: #a78bfa;
+    --gold: #f5b84c; --green: #34d399; --red: #f87171; --blue: #60a5fa; --radius: 16px;
+    --shadow: 0 8px 30px rgba(0,0,0,.35);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 14px 14px 116px; max-width: 460px; margin: 0 auto; min-height: 100vh; }
-  .header { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
-  .logo { width: 42px; height: 42px; flex-shrink: 0; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 21px; box-shadow: 0 4px 16px rgba(124,92,252,.35); }
-  .header h1 { font-size: 17px; font-weight: 700; letter-spacing: -0.2px; line-height: 1.2; }
-  .header .sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
-  .status-pill { margin-left: auto; display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--green); background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25); padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
-  .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); background-attachment: fixed; color: var(--text); padding: 16px 14px 118px; max-width: 460px; margin: 0 auto; min-height: 100vh; }
+  .header { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+  .logo { width: 40px; height: 40px; flex-shrink: 0; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 19px; box-shadow: 0 4px 18px rgba(124,92,252,.4); }
+  .header h1 { font-size: 16.5px; font-weight: 750; letter-spacing: -0.3px; line-height: 1.15; }
+  .header .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .status-pill { margin-left: auto; display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 650; color: var(--green); background: rgba(52,211,153,.1); border: 1px solid rgba(52,211,153,.22); padding: 4px 9px; border-radius: 20px; white-space: nowrap; }
+  .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2.2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
 
   .client-bar { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; scrollbar-width: none; }
   .client-bar::-webkit-scrollbar { display: none; }
@@ -27,14 +29,15 @@
   .client-chip.active { background: var(--accent); border-color: transparent; color: #fff; }
   .client-chip:active { transform: scale(.95); }
 
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; margin-bottom: 12px; }
-  .card-title { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 11px; display: flex; align-items: center; justify-content: space-between; }
-  .card-title .hint { font-size: 10px; letter-spacing: 0; text-transform: none; opacity: .7; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .card-title { font-size: 10.5px; font-weight: 750; color: var(--muted); text-transform: uppercase; letter-spacing: 1.3px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+  .card-title .hint { font-size: 10px; letter-spacing: 0; text-transform: none; opacity: .75; font-weight: 600; }
 
-  .btn { border: none; border-radius: 11px; padding: 11px 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: transform .12s; width: 100%; }
+  .btn { border: none; border-radius: 12px; padding: 11px 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: transform .12s, opacity .15s; width: 100%; }
   .btn:active { transform: scale(.97); }
-  .btn-primary { background: linear-gradient(135deg, var(--accent), #6d4aff); color: #fff; box-shadow: 0 6px 20px rgba(124,92,252,.3); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #6d4aff); color: #fff; box-shadow: 0 6px 22px rgba(124,92,252,.32); }
   .btn-ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
+  .btn-gold { background: linear-gradient(135deg, #f5b84c, #e09f3c); color: #1a1405; box-shadow: 0 6px 22px rgba(245,184,76,.25); }
 
   .kv { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
   .kv:last-of-type { border-bottom: none; }
@@ -42,45 +45,45 @@
   .kv .v { text-align: right; font-weight: 600; }
 
   /* ===== Next-step hero ===== */
-  .next-card { background: linear-gradient(135deg, rgba(124,92,252,.16), rgba(245,158,11,.10)), var(--card); border: 1px solid rgba(124,92,252,.45); border-radius: 16px; padding: 15px; margin-bottom: 12px; position: relative; overflow: hidden; }
-  .next-card::after { content: ''; position: absolute; top: -40px; right: -40px; width: 130px; height: 130px; background: radial-gradient(circle, rgba(124,92,252,.18), transparent 70%); pointer-events: none; }
-  .next-top { display: flex; align-items: center; gap: 12px; }
+  .next-card { background: linear-gradient(135deg, rgba(124,92,252,.18), rgba(245,184,76,.08)), var(--card); border: 1px solid rgba(124,92,252,.5); border-radius: 18px; padding: 16px; margin-bottom: 12px; position: relative; overflow: hidden; box-shadow: 0 10px 34px rgba(124,92,252,.18); }
+  .next-card::after { content: ''; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(124,92,252,.2), transparent 70%); pointer-events: none; }
+  .next-top { display: flex; align-items: center; gap: 13px; }
   .next-ring { flex-shrink: 0; }
-  .next-label { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent2); text-transform: uppercase; margin-bottom: 3px; }
-  .next-title { font-size: 15.5px; font-weight: 700; line-height: 1.35; }
-  .next-meta { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+  .next-label { font-size: 10px; font-weight: 800; letter-spacing: 1.6px; color: var(--accent2); text-transform: uppercase; margin-bottom: 4px; }
+  .next-title { font-size: 15px; font-weight: 700; line-height: 1.35; }
+  .next-meta { font-size: 11.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
   .next-actions { display: flex; gap: 8px; margin-top: 13px; }
   .next-actions .btn { padding: 10px 12px; font-size: 12.5px; }
-  .next-done { text-align: center; padding: 4px 0 2px; }
-  .next-done .big { font-size: 26px; }
-  .next-done .msg { font-size: 14px; font-weight: 700; margin: 6px 0 2px; }
-  .next-done .sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .next-done { text-align: center; padding: 6px 0 2px; }
+  .next-done .big { font-size: 30px; }
+  .next-done .msg { font-size: 14.5px; font-weight: 750; margin: 6px 0 2px; }
+  .next-done .sub { font-size: 12px; color: var(--muted); margin-bottom: 13px; }
 
   /* ===== Score gauges ===== */
-  .gauge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; margin-bottom: 10px; }
-  .gauge { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 10px 6px 9px; text-align: center; }
+  .gauge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(98px, 1fr)); gap: 9px; margin-bottom: 10px; }
+  .gauge { background: var(--card2); border: 1px solid var(--border); border-radius: 13px; padding: 11px 6px 10px; text-align: center; }
   .gauge svg { display: block; margin: 0 auto; }
-  .gauge .bureau { font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 2px; }
-  .gauge .band { font-size: 9.5px; font-weight: 700; margin-top: 2px; }
+  .gauge .bureau { font-size: 9.5px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 1.3px; margin-bottom: 3px; }
+  .gauge .band { font-size: 9.5px; font-weight: 700; margin-top: 3px; }
 
   /* ===== Negative item cards ===== */
-  .neg-card { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3); border-radius: 12px; padding: 13px; margin-bottom: 10px; }
+  .neg-card { background: rgba(248,113,113,.06); border: 1px solid rgba(248,113,113,.28); border-radius: 13px; padding: 14px; margin-bottom: 10px; }
   .neg-head { display: flex; align-items: center; gap: 9px; cursor: pointer; user-select: none; }
-  .neg-head .cred { font-size: 14.5px; font-weight: 700; color: #fca5a5; flex: 1; line-height: 1.3; }
+  .neg-head .cred { font-size: 14px; font-weight: 700; color: #fca5a5; flex: 1; line-height: 1.3; }
   .neg-head .chev { color: var(--muted); font-size: 13px; transition: transform .2s; flex-shrink: 0; }
   .neg-card.open .neg-head .chev { transform: rotate(180deg); }
   .neg-summary { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
   .neg-body { display: none; margin-top: 10px; }
   .neg-card.open .neg-body { display: block; animation: fadeIn .25s ease; }
-  .neg-card .strategy { font-size: 12px; color: var(--text); background: rgba(0,0,0,.25); border-radius: 9px; padding: 9px; margin-top: 8px; line-height: 1.5; }
-  .neg-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; margin-top: 10px; }
-  .neg-actions button { background: var(--card2); border: 1px solid var(--border); color: var(--text); border-radius: 9px; padding: 9px 4px; font-size: 11px; font-weight: 600; cursor: pointer; transition: transform .12s; line-height: 1.3; }
+  .neg-card .strategy { font-size: 12px; color: var(--text); background: rgba(0,0,0,.28); border-radius: 10px; padding: 10px; margin-top: 8px; line-height: 1.55; }
+  .neg-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; margin-top: 11px; }
+  .neg-actions button { background: var(--card2); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 9px 4px; font-size: 11px; font-weight: 650; cursor: pointer; transition: transform .12s; line-height: 1.3; }
   .neg-actions button:active { transform: scale(.94); }
   .neg-actions button .e { display: block; font-size: 15px; margin-bottom: 3px; }
 
-  .acct-item { padding: 9px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+  .acct-item { padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; border-radius: 8px; padding-left: 6px; padding-right: 6px; margin: 0 -6px; }
   .acct-item:last-child { border-bottom: none; }
-  .acct-item:active { background: rgba(255,255,255,.03); }
+  .acct-item:active { background: rgba(255,255,255,.04); }
   .acct-item .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
   .acct-item .cred { font-size: 13.5px; font-weight: 600; }
   .acct-item .bal { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -93,17 +96,17 @@
   .step { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); }
   .step:last-child { border-bottom: none; }
   .step .box { width: 22px; height: 22px; border-radius: 7px; border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; color: transparent; cursor: pointer; transition: all .15s; background: var(--card2); margin-top: 1px; }
-  .step.done .box { background: var(--green); border-color: var(--green); color: #fff; }
+  .step.done .box { background: var(--green); border-color: var(--green); color: #06281c; }
   .step .slabel { font-size: 13px; line-height: 1.4; }
   .step .smeta { font-size: 11px; color: var(--muted); margin-top: 2px; }
   .step.done .slabel { text-decoration: line-through; opacity: .6; }
-  .step .ask { margin-left: auto; flex-shrink: 0; background: var(--card2); border: 1px solid var(--border); color: var(--accent2); border-radius: 8px; padding: 6px 9px; font-size: 11px; font-weight: 700; cursor: pointer; transition: transform .12s; align-self: center; }
+  .step .ask { margin-left: auto; flex-shrink: 0; background: var(--card2); border: 1px solid var(--border); color: var(--accent2); border-radius: 9px; padding: 6px 10px; font-size: 11px; font-weight: 700; cursor: pointer; transition: transform .12s; align-self: center; }
   .step .ask:active { transform: scale(.92); }
   .plan-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
   .plan-progress .bar { flex: 1; height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; }
   .plan-progress .fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--green)); border-radius: 4px; transition: width .5s ease; }
   .plan-progress .pct { font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; }
-  .deadline { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); padding: 5px 0; border-bottom: 1px dashed var(--border); }
+  .deadline { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--muted); padding: 6px 0; border-bottom: 1px dashed var(--border); }
   .deadline:last-child { border: none; }
   .deadline .dl-label { color: var(--text); font-weight: 600; text-align: right; max-width: 55%; }
   .dispute-pt { font-size: 12px; color: #fca5a5; padding: 4px 0 4px 14px; position: relative; }
@@ -115,17 +118,17 @@
   .flag-row .fmeta { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .action-btn { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px 10px; color: var(--text); font-size: 12.5px; font-weight: 500; cursor: pointer; transition: transform .12s, background .12s; line-height: 1.35; text-align: center; }
-  .action-btn:active { transform: scale(.95); background: #31345f; }
+  .action-btn { background: var(--card2); border: 1px solid var(--border); border-radius: 13px; padding: 13px 8px 11px; color: var(--text); font-size: 12.5px; font-weight: 550; cursor: pointer; transition: transform .12s, background .12s; line-height: 1.35; text-align: center; }
+  .action-btn:active { transform: scale(.95); background: #2a2c52; }
   .action-btn .emoji { display: block; font-size: 21px; margin-bottom: 5px; }
 
   .session-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .session-item:last-child { border-bottom: none; padding-bottom: 2px; }
   .session-item .who { font-size: 14px; font-weight: 600; }
   .session-item .when { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
-  .pill-btn { background: var(--card2); border: 1px solid var(--border); color: var(--text); font-size: 11.5px; font-weight: 600; padding: 6px 13px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+  .pill-btn { background: var(--card2); border: 1px solid var(--border); color: var(--text); font-size: 11.5px; font-weight: 650; padding: 6px 13px; border-radius: 20px; cursor: pointer; flex-shrink: 0; transition: transform .12s; }
   .pill-btn:active { transform: scale(.94); }
-  .pill-btn.accent { background: var(--accent); border-color: transparent; }
+  .pill-btn.accent { background: var(--accent); border-color: transparent; color: #fff; }
 
   .fin-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8.5px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
   .fin-row:last-of-type { border-bottom: none; }
@@ -137,18 +140,18 @@
   .prog .fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold), var(--accent)); transition: width .6s ease; }
   .prog .meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 5px; }
 
-  .cmd-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(20,21,42,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--border); padding: 11px 14px calc(11px + env(safe-area-inset-bottom)); display: flex; gap: 8px; align-items: center; max-width: 460px; margin: 0 auto; }
+  .cmd-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: rgba(14,15,29,.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid var(--border); padding: 11px 14px calc(11px + env(safe-area-inset-bottom)); display: flex; gap: 8px; align-items: center; max-width: 460px; margin: 0 auto; }
   .cmd-bar input { flex: 1; background: var(--card2); border: 1px solid var(--border); border-radius: 11px; padding: 11px 14px; color: var(--text); font-size: 14px; outline: none; min-width: 0; }
   .cmd-bar input:focus { border-color: var(--accent); }
   .cmd-bar input::placeholder { color: var(--muted); }
   .cmd-bar button { background: var(--accent); color: #fff; border: none; border-radius: 11px; padding: 11px 17px; font-size: 14px; font-weight: 700; cursor: pointer; flex-shrink: 0; }
 
-  .toast { position: fixed; bottom: 86px; left: 50%; transform: translateX(-50%) translateY(8px); background: #2e3057; border: 1px solid #3d3f6e; color: var(--text); padding: 11px 18px; border-radius: 12px; font-size: 13px; font-weight: 500; box-shadow: 0 10px 34px rgba(0,0,0,.45); opacity: 0; transition: all .25s ease; pointer-events: none; z-index: 100; max-width: 90%; text-align: center; }
+  .toast { position: fixed; bottom: 86px; left: 50%; transform: translateX(-50%) translateY(8px); background: #262849; border: 1px solid #3d3f6e; color: var(--text); padding: 11px 18px; border-radius: 13px; font-size: 13px; font-weight: 550; box-shadow: 0 10px 34px rgba(0,0,0,.5); opacity: 0; transition: all .25s ease; pointer-events: none; z-index: 100; max-width: 90%; text-align: center; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 90; display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(3px); }
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.62); z-index: 90; display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(4px); }
   .modal-backdrop.open { display: flex; }
-  .modal { background: var(--card); border: 1px solid var(--border); border-radius: 18px 18px 0 0; padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); width: 100%; max-width: 460px; max-height: 78vh; overflow-y: auto; }
+  .modal { background: var(--card); border: 1px solid var(--border); border-radius: 20px 20px 0 0; padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); width: 100%; max-width: 460px; max-height: 78vh; overflow-y: auto; }
   .modal h2 { font-size: 16px; margin-bottom: 4px; }
   .modal p { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
   .qm-row { display: flex; gap: 8px; margin-bottom: 9px; align-items: center; }
@@ -156,14 +159,19 @@
   .qm-row input:focus { border-color: var(--accent); }
   .qm-row .rm { background: none; border: none; color: var(--red); font-size: 17px; cursor: pointer; padding: 6px; }
   .modal .actions { display: flex; gap: 8px; margin-top: 14px; }
-  .modal .actions button { flex: 1; border-radius: 10px; padding: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: none; }
+  .modal .actions button { flex: 1; border-radius: 11px; padding: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: none; }
   .btn-primary2 { background: var(--accent); color: #fff; }
   .btn-ghost2 { background: var(--card2); color: var(--text); border: 1px solid var(--border) !important; }
 
-  .footer { text-align: center; font-size: 10.5px; color: var(--muted); margin-top: 4px; line-height: 1.7; }
+  .footer { text-align: center; font-size: 10.5px; color: var(--muted); margin-top: 6px; line-height: 1.7; }
 
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { animation: fadeIn .35s ease both; }
+
+  .auth-banner { display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, rgba(245,184,76,.12), rgba(124,92,252,.1)); border: 1px solid rgba(245,184,76,.35); border-radius: 14px; padding: 11px 13px; margin-bottom: 12px; font-size: 12.5px; line-height: 1.4; }
+  .auth-banner .ab-actions { margin-left: auto; display: flex; gap: 6px; flex-shrink: 0; }
+  .auth-banner .ab-actions button { background: var(--card2); border: 1px solid var(--border); color: var(--text); border-radius: 9px; padding: 6px 10px; font-size: 11px; font-weight: 650; cursor: pointer; }
+  .sync-ok { color: var(--green); }
 </style>
 </head>
 <body>
@@ -180,12 +188,14 @@
 <!-- Client switcher -->
 <div class="client-bar" id="clientBar"></div>
 
+<div id="authBanner"></div>
+
 <button class="btn btn-primary" id="ctxBtn" style="margin-bottom:12px;">🧠 Send Context to Hermes</button>
 
 <div id="appBody"></div>
 
 <div class="footer">
-  Kingdom Hermes · v2.1 interactive · <span id="footerTs">–</span>
+  Kingdom Hermes · v2.2 · <span id="footerTs">–</span>
 </div>
 
 <div class="cmd-bar">
@@ -215,11 +225,30 @@ const tg = (window.Telegram && window.Telegram.WebApp) ? window.Telegram.WebApp 
 if (tg) {
   try {
     tg.ready(); tg.expand();
-    tg.setHeaderColor && tg.setHeaderColor('#14152a');
-    tg.setBackgroundColor && tg.setBackgroundColor('#14152a');
+    tg.setHeaderColor && tg.setHeaderColor('#0e0f1d');
+    tg.setBackgroundColor && tg.setBackgroundColor('#0e0f1d');
   } catch (e) {}
 }
 const BOT_USERNAME = 'kingdomfi_bot';
+
+/* ============ Supabase bridge (real-data progress) ============
+   Enabled by SUPABASE_ENABLED=true below. Requires the migration in
+   miniapp/supabase/migrations/ to be applied (see AGENTS.md). */
+const SUPABASE_URL = 'https://rckqjverdckszsrzjkzs.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJja3FqdmVyZGNrc3pzenJqemtzeiIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzUwMDAwMDAwLCJleHAiOjIwNjUzNjAwMDB9.placeholder';
+const SUPABASE_ENABLED = false; // flip true after running the migration
+let supabaseClient = null;
+function loadSupabase() {
+  if (!SUPABASE_ENABLED || supabaseClient) return Promise.resolve(supabaseClient);
+  return new Promise((resolve) => {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/@supabase/supabase-js@2';
+    s.onload = () => { try { supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) { supabaseClient = null; } resolve(supabaseClient); };
+    s.onerror = () => resolve(null);
+    document.head.appendChild(s);
+  });
+}
+let authUser = null; // { email, slug } when signed in
 
 /* ============ Fallbacks (offline) ============ */
 const FALLBACK_MANIFEST = { clients: [
@@ -238,9 +267,10 @@ const FALLBACK_CLIENT = {
 
 let manifest = FALLBACK_MANIFEST;
 let clients = [];
-let current = null;         // current client data
+let current = null;
 let currentSlug = null;
 let quickCmds = [];
+let lockedClient = null; // ?client= slug → hide switcher
 
 const LS_LAST = 'kh_last_client';
 const LS_CMDS = 'kh_qcmds_';
@@ -255,12 +285,12 @@ const I18N = {
     inquiries: '🔎 Inquiries', exHard: 'EX hard:', next: '🎯 Next Step', nextAsk: '⚡ Ask Hermes',
     markDone: '✓ Mark Done', undo: '↺ Undo', allDone: '🎉', allDoneMsg: 'All steps complete!',
     allDoneSub: 'Send the final status to Hermes to close the round.',
-    plan: '🎯 Action Plan', planDone: 'done', campaign: '', deadlines: '⏰ Deadlines',
+    plan: '🎯 Action Plan', planDone: 'done', deadlines: '⏰ Deadlines',
     disputePoints: '⚖️ Dispute Points', copyPlan: '📋 Copy plan summary', flags: '🚩 Flags',
     quick: '⚡ Quick Commands', edit: '✏️ Edit', sessions: '📋 Sessions', tapContinue: 'tap to continue',
     financial: '💰 Financial Snapshot', toGoal: '% to goal', draft: '📄', draftLabel: 'Draft letter',
     mov: '🔎', movLabel: 'MOV', copy: '📋', copyLabel: 'Copy', noNeg: '🟢 No negative items on file.',
-    loading: 'Loading client…', planComplete: '🎉 All steps done — send status to Hermes'
+    loading: 'Loading client…', sync: 'Cloud-synced', signOut: 'Sign out'
   },
   es: {
     profile: '👤 Perfil del Cliente', role: 'Rol', reportDate: 'Fecha del reporte', source: 'Fuente',
@@ -269,27 +299,27 @@ const I18N = {
     inquiries: '🔎 Consultas', exHard: 'EX duras:', next: '🎯 Próximo Paso', nextAsk: '⚡ Preguntar',
     markDone: '✓ Hecho', undo: '↺ Deshacer', allDone: '🎉', allDoneMsg: '¡Todos los pasos completados!',
     allDoneSub: 'Envía el estado final a Hermes para cerrar la ronda.',
-    plan: '🎯 Plan de Acción', planDone: 'hecho', campaign: '', deadlines: '⏰ Fechas Límite',
+    plan: '🎯 Plan de Acción', planDone: 'hecho', deadlines: '⏰ Fechas Límite',
     disputePoints: '⚖️ Puntos de Disputa', copyPlan: '📋 Copiar resumen del plan', flags: '🚩 Banderas',
     quick: '⚡ Comandos Rápidos', edit: '✏️ Editar', sessions: '📋 Sesiones', tapContinue: 'toca para continuar',
     financial: '💰 Resumen Financiero', toGoal: '% de la meta', draft: '📄', draftLabel: 'Carta',
     mov: '🔎', movLabel: 'MOV', copy: '📋', copyLabel: 'Copiar', noNeg: '🟢 Sin ítems negativos en el archivo.',
-    loading: 'Cargando cliente…', planComplete: '🎉 Todos los pasos hechos — envía el estado a Hermes'
+    loading: 'Cargando cliente…', sync: 'Sincronizado en la nube', signOut: 'Cerrar sesión'
   }
 };
 function T(c, key) { const t = I18N[(c && c.lang) || 'en'] || I18N.en; return t[key] || I18N.en[key] || key; }
 
 /* ============ VantageScore 3.0 bands ============ */
 const BANDS = [
-  { min: 781, max: 850, label: 'Excellent', color: '#22c55e' },
-  { min: 661, max: 780, label: 'Good', color: '#84cc16' },
-  { min: 601, max: 660, label: 'Fair', color: '#f59e0b' },
-  { min: 500, max: 600, label: 'Poor', color: '#f97316' },
-  { min: 300, max: 499, label: 'Very Poor', color: '#ef4444' }
+  { min: 781, max: 850, label: 'Excellent', color: '#34d399' },
+  { min: 661, max: 780, label: 'Good', color: '#a3e635' },
+  { min: 601, max: 660, label: 'Fair', color: '#f5b84c' },
+  { min: 500, max: 600, label: 'Poor', color: '#fb923c' },
+  { min: 300, max: 499, label: 'Very Poor', color: '#f87171' }
 ];
 function bandFor(score) {
-  const n = Number(score); if (isNaN(n)) return { label: '—', color: '#9aa0c0' };
-  return BANDS.find(b => n >= b.min && n <= b.max) || { label: '—', color: '#9aa0c0' };
+  const n = Number(score); if (isNaN(n)) return { label: '—', color: '#9aa1c7' };
+  return BANDS.find(b => n >= b.min && n <= b.max) || { label: '—', color: '#9aa1c7' };
 }
 function gaugeSVG(bureau, score, target) {
   const n = Number(score); if (isNaN(n)) return '';
@@ -306,7 +336,7 @@ function gaugeSVG(bureau, score, target) {
     targetArc = '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#fff" stroke-width="3" stroke-linecap="round"/>';
   }
   return '<svg width="84" height="84" viewBox="0 0 84 84">' +
-    '<circle cx="42" cy="42" r="' + R + '" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="9"/>' +
+    '<circle cx="42" cy="42" r="' + R + '" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="9"/>' +
     '<circle cx="42" cy="42" r="' + R + '" fill="none" stroke="' + band.color + '" stroke-width="9" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + dash.toFixed(1) + '" transform="rotate(-90 42 42)" style="transition: stroke-dashoffset .9s ease;"/>' +
     targetArc +
     '<text x="42" y="42" text-anchor="middle" dominant-baseline="central" font-size="20" font-weight="800" fill="#fff">' + n + '</text>' +
@@ -321,20 +351,87 @@ function fetchJSON(url, fallback) {
 }
 
 function boot() {
+  const q = new URLSearchParams(location.search);
+  const wanted = q.get('client');
   fetchJSON('data/clients.json', FALLBACK_MANIFEST).then(m => {
     manifest = m;
     clients = (m.clients || []).slice();
+    if (wanted && clients.find(c => c.slug === wanted)) lockedClient = wanted;
     renderClientBar();
     const saved = localStorage.getItem(LS_LAST);
     const last = clients.find(c => c.slug === saved);
     const def = clients.find(c => c.default) || clients[0];
-    selectClient(last ? last.slug : (def ? def.slug : 'general'));
+    selectClient(lockedClient || (last ? last.slug : (def ? def.slug : 'general')));
+    bootSupabase();
   });
+}
+
+function bootSupabase() {
+  if (!SUPABASE_ENABLED) return;
+  loadSupabase().then(sb => {
+    if (!sb) return;
+    sb.auth.getSession().then(({ data }) => {
+      const s = data.session;
+      if (s && s.user && s.user.email) {
+        authUser = { email: s.user.email };
+        // resolve slug from profiles table (migration adds slug column)
+        sb.from('profiles').select('slug').eq('email', s.user.email).limit(1)
+          .then(({ data }) => { if (data && data[0]) authUser.slug = data[0].slug; renderAuthBanner(); syncRemoteProgress(); })
+          .catch(() => renderAuthBanner());
+      } else renderAuthBanner();
+    }).catch(() => renderAuthBanner());
+  });
+}
+
+function renderAuthBanner() {
+  const el = document.getElementById('authBanner');
+  if (!SUPABASE_ENABLED) { el.innerHTML = ''; return; }
+  if (authUser && authUser.email) {
+    const ok = authUser.slug ? (authUser.slug === currentSlug) : false;
+    el.innerHTML = '<div class="auth-banner"><span>' + (ok ? '✅ ' + T(current, 'sync') : '👤 ' + esc(authUser.email)) + '</span><div class="ab-actions"><button onclick="sbSignOut()">' + T(current, 'signOut') + '</button></div></div>';
+  } else {
+    el.innerHTML = '<div class="auth-banner"><span>🔐 Client access — sign in with your email to sync progress.</span><div class="ab-actions"><button onclick="sbSignIn()">Sign in</button></div></div>';
+  }
+}
+function sbSignIn() {
+  const email = prompt('Enter your email to receive a magic link:');
+  if (!email) return;
+  loadSupabase().then(sb => {
+    if (!sb) return showToast('Cloud sync unavailable');
+    sb.auth.signInWithOtp({ email, options: { shouldCreateUser: true } })
+      .then(({ error }) => error ? showToast('Error: ' + error.message) : showToast('✉️ Magic link sent — check your inbox'));
+  });
+}
+function sbSignOut() {
+  loadSupabase().then(sb => { if (sb) sb.auth.signOut(); authUser = null; renderAuthBanner(); });
+}
+
+/* ============ Remote progress (Supabase) ============ */
+async function syncRemoteProgress() {
+  if (!SUPABASE_ENABLED || !authUser || !authUser.slug || !supabaseClient) return;
+  try {
+    const { data } = await supabaseClient.from('client_progress').select('step_id,done').eq('client_slug', authUser.slug);
+    if (data) {
+      data.forEach(r => { try { localStorage.setItem(checkKey(r.step_id), r.done ? '1' : '0'); } catch (e) {} });
+      render();
+    }
+  } catch (e) { console.warn('sync pull failed:', e); }
+}
+async function pushRemoteProgress(id, done) {
+  if (!SUPABASE_ENABLED || !authUser || !authUser.slug || !supabaseClient) return;
+  try {
+    await supabaseClient.from('client_progress').upsert(
+      { client_slug: authUser.slug, step_id: id, done, updated_at: new Date().toISOString() },
+      { onConflict: 'client_slug,step_id' }
+    );
+  } catch (e) { console.warn('sync push failed:', e); }
 }
 
 function renderClientBar() {
   const bar = document.getElementById('clientBar');
   bar.innerHTML = '';
+  if (lockedClient) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
   clients.forEach(c => {
     const chip = document.createElement('button');
     chip.className = 'client-chip' + (c.slug === currentSlug ? ' active' : '');
@@ -354,6 +451,7 @@ function selectClient(slug) {
     current = Object.assign({}, FALLBACK_CLIENT, d);
     quickCmds = loadQuickCmds();
     render();
+    renderAuthBanner();
   });
 }
 
@@ -364,11 +462,12 @@ function isDone(step) {
   try { return localStorage.getItem(checkKey(step.id)) === '1'; } catch (e) { return false; }
 }
 function toggleStep(id) {
+  const done = !isDone({ id });
   try {
     const k = checkKey(id);
-    const v = localStorage.getItem(k) === '1' ? null : '1';
-    if (v) localStorage.setItem(k, v); else localStorage.removeItem(k);
+    if (done) localStorage.setItem(k, '1'); else localStorage.removeItem(k);
   } catch (e) {}
+  pushRemoteProgress(id, done);
   render();
 }
 function firstNextStep() {
@@ -378,6 +477,63 @@ function firstNextStep() {
 function allStepsDone() {
   const steps = (current.actionPlan && current.actionPlan.steps) || [];
   return steps.length > 0 && steps.every(isDone);
+}
+
+/* ============ LLM prompt builder (best practices) ============ */
+/* Every command the app emits follows the same structure:
+   ROLE → CONTEXT (who/what/report/campaign/sources) → TASK → RULES → OUTPUT. */
+function clientContext() {
+  const c = current;
+  const who = c.name || c.display || currentSlug;
+  const lines = [];
+  lines.push('CLIENT: ' + who + ' (slug: ' + currentSlug + ')');
+  if (c.profile && c.profile.reportDate) lines.push('REPORT: ' + c.profile.reportDate + (c.profile.reportSource ? ' — ' + c.profile.reportSource : ''));
+  if (c.actionPlan && c.actionPlan.campaign) lines.push('CAMPAIGN: ' + c.actionPlan.campaign + (c.actionPlan.round ? ' (Round ' + c.actionPlan.round + ')' : ''));
+  lines.push('SOURCES: /opt/data/finance/credit/ · campaign tracker /opt/data/finance/credit/dispute-letters-2026-08/CAMPAIGN_TRACKER.md');
+  return lines.join('\n');
+}
+function promptBuilder(task, extraRules) {
+  const rules = [
+    'Follow the soydaat-fcra-disputes framework and the AGENTS.md conventions.',
+    'Verify against local source files first; never invent balances, dates, or tracking numbers.',
+    'Mask account numbers; no PII in public repos.',
+    'USPS Certified Mail + Return Receipt for anything mailed; log tracking numbers the day it ships.',
+    'Report what you did, what changed, and the single next action.'
+  ];
+  if (extraRules) rules.push(extraRules);
+  return '🧠 HERMES — KFS TASK\n\n' + clientContext() + '\n\nTASK:\n' + task + '\n\nRULES:\n' + rules.map(r => '• ' + r).join('\n') + '\n\nOUTPUT: concise status + the single next action.';
+}
+function stepCmd(id) {
+  const c = current;
+  const step = ((c.actionPlan && c.actionPlan.steps) || []).find(s => s.id === id);
+  if (!step) return '';
+  return promptBuilder('Execute action-plan step: ' + step.label + (step.meta ? ' (' + step.meta + ')' : '') + '. Do the actual work now — draft, mail, or log as appropriate.');
+}
+function negLetterPrompt(n) {
+  const who = current ? (current.name || current.display || currentSlug) : currentSlug;
+  return promptBuilder('Draft the next dispute letter for ' + (n.creditor || 'this item') + (n.account ? ' (' + n.account + ')' : '') + ' — follow the current round of the campaign. Check the existing MOV pack before drafting.', 'If this is a federal student loan (Dept of Ed/Aidvantage), the path is cure + accuracy dispute — never FCRA deletion.');
+}
+function negMovPrompt(n) {
+  const who = current ? (current.name || current.display || currentSlug) : currentSlug;
+  return promptBuilder('Draft a Method of Verification (MOV) demand for ' + (n.creditor || 'this item') + ' per FCRA §611(a)(7). Include per-bureau balance differences: ' + (n.balance || 'TBD') + '.');
+}
+function acctCmd(creditor, type) {
+  const who = current ? (current.name || current.display || currentSlug) : currentSlug;
+  return promptBuilder('Check the status of the ' + (type ? type + ' ' : '') + creditor + ' account for ' + who + ' on the latest credit report — balance, payment status, and whether anything needs action.');
+}
+function planStatusCmd() {
+  const c = current;
+  const steps = (c.actionPlan && c.actionPlan.steps) || [];
+  const who = c.name || c.display || currentSlug;
+  const done = steps.filter(isDone).length;
+  const lines = [];
+  lines.push('📋 ' + (c.actionPlan && c.actionPlan.campaign ? c.actionPlan.campaign : 'Action plan') + ' — ' + who);
+  lines.push('Progress: ' + done + '/' + steps.length + ' done');
+  steps.forEach(s => lines.push((isDone(s) ? '✅' : '☐') + ' ' + s.label));
+  lines.push('Round: ' + (c.actionPlan.round || '—'));
+  lines.push('');
+  lines.push('Update the campaign tracker with this status, then report the single next action.');
+  return lines.join('\n');
 }
 
 /* ============ Render ============ */
@@ -399,7 +555,7 @@ function render() {
     const ring = '<svg class="next-ring" width="54" height="54" viewBox="0 0 54 54">' +
       '<circle cx="27" cy="27" r="' + R + '" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/>' +
       '<circle cx="27" cy="27" r="' + R + '" fill="none" stroke="url(#gr)" stroke-width="6" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct / 100)).toFixed(1) + '" transform="rotate(-90 27 27)" style="transition: stroke-dashoffset .6s ease;"/>' +
-      '<defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#22c55e"/></linearGradient></defs>' +
+      '<defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f5b84c"/><stop offset="100%" stop-color="#34d399"/></linearGradient></defs>' +
       '<text x="27" y="27" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="800" fill="#fff">' + pct + '%</text>' +
       '</svg>';
     if (allStepsDone()) {
@@ -538,7 +694,6 @@ function kv(k, v) { return '<div class="kv"><span class="k">' + esc(k) + '</span
 /* ============ Negative item card ============ */
 function negCardHTML(c, n, i) {
   const open = localStorage.getItem('kh_negopen_' + currentSlug + '_' + i) === '1';
-  const who = c.name || c.display || currentSlug;
   let body = '';
   if (n.balance) body += kv('Balance', n.balance);
   if (n.pastDue) body += kv('Past due', n.pastDue);
@@ -548,17 +703,14 @@ function negCardHTML(c, n, i) {
   if (n.removalEst) body += kv('Removal est.', n.removalEst);
   if (n.strategy) body += '<div class="strategy">🎯 ' + esc(n.strategy) + '</div>';
   const summary = [n.balance, n.rating].filter(Boolean).join(' · ');
-  const letterCmd = "Draft the next dispute letter for " + who + " — " + (n.creditor || 'this item') + (n.account ? ' (' + n.account + ')' : '') + ". Check /opt/data/finance/credit/dispute-letters-2026-08/ first, follow the soydaat-fcra-disputes framework.";
-  const movCmd = "Draft a Method of Verification (MOV) demand for " + who + " — " + (n.creditor || 'this item') + " per FCRA §611(a)(7). Include per-bureau balance differences: " + (n.balance || 'TBD') + ".";
-  const copyCmd = (n.creditor || '') + (n.account ? ' — ' + n.account : '') + (n.balance ? ' · Balance ' + n.balance : '') + (n.rating ? ' · ' + n.rating : '') + (n.dofd ? ' · DOFD ' + n.dofd : '') + (n.removalEst ? ' · Removal ' + n.removalEst : '');
   return '<div class="neg-card' + (open ? ' open' : '') + '" id="neg' + i + '">' +
     '<div class="neg-head" onclick="toggleNeg(' + i + ')"><span class="cred">🔴 ' + esc(n.creditor) + '</span><span class="chev">▾</span></div>' +
     '<div class="neg-summary">' + esc(summary || (n.account || '')) + '</div>' +
     '<div class="neg-body">' + body +
       '<div class="neg-actions">' +
-        '<button onclick="send(\'' + escJs(letterCmd) + '\', \'📄 Letter command copied!\')"><span class="e">📄</span>' + T(c,'draftLabel') + '</button>' +
-        '<button onclick="send(\'' + escJs(movCmd) + '\', \'🔎 MOV command copied!\')"><span class="e">🔎</span>' + T(c,'movLabel') + '</button>' +
-        '<button onclick="send(\'' + escJs(copyCmd) + '\', \'📋 Details copied!\')"><span class="e">📋</span>' + T(c,'copyLabel') + '</button>' +
+        '<button onclick="send(negLetterCmd(' + i + '), \'📄 Letter command copied!\')"><span class="e">📄</span>' + T(c,'draftLabel') + '</button>' +
+        '<button onclick="send(negMovCmd(' + i + '), \'🔎 MOV command copied!\')"><span class="e">🔎</span>' + T(c,'movLabel') + '</button>' +
+        '<button onclick="send(negCopyCmd(' + i + '), \'📋 Details copied!\')"><span class="e">📋</span>' + T(c,'copyLabel') + '</button>' +
       '</div>' +
     '</div></div>';
 }
@@ -570,32 +722,12 @@ function toggleNeg(i) {
   } catch (e) {}
   render();
 }
-
-/* ============ Command builders ============ */
-function stepCmd(id) {
-  const c = current;
-  const step = ((c.actionPlan && c.actionPlan.steps) || []).find(s => s.id === id);
-  if (!step) return '';
-  const who = c.name || c.display || currentSlug;
-  return '[' + who + '] Execute action-plan step: ' + step.label + (step.meta ? ' (' + step.meta + ')' : '') + '. Do the actual work now (draft/mail/log), then report back what is done and the single next action.';
-}
-function acctCmd(creditor, type) {
-  const who = current ? (current.name || current.display || currentSlug) : currentSlug;
-  return 'Check the status of the ' + (type ? type + ' ' : '') + creditor + ' account for ' + who + ' on the latest credit report — balance, payment status, and whether anything needs action.';
-}
-function planStatusCmd() {
-  const c = current;
-  const steps = (c.actionPlan && c.actionPlan.steps) || [];
-  const who = c.name || c.display || currentSlug;
-  const done = steps.filter(isDone).length;
-  const lines = [];
-  lines.push('📋 ' + (c.actionPlan && c.actionPlan.campaign ? c.actionPlan.campaign : 'Action plan') + ' for ' + who);
-  lines.push('Progress: ' + done + '/' + steps.length + ' done');
-  steps.forEach(s => lines.push((isDone(s) ? '✅' : '☐') + ' ' + s.label));
-  lines.push('Round: ' + (c.actionPlan.round || '—'));
-  lines.push('');
-  lines.push('Update the campaign tracker with this status and report the next action.');
-  return lines.join('\n');
+function neg(i) { return ((current.credit && current.credit.negative) || [])[i] || {}; }
+function negLetterCmd(i) { return negLetterPrompt(neg(i)); }
+function negMovCmd(i) { return negMovPrompt(neg(i)); }
+function negCopyCmd(i) {
+  const n = neg(i);
+  return (n.creditor || '') + (n.account ? ' — ' + n.account : '') + (n.balance ? ' · Balance ' + n.balance : '') + (n.rating ? ' · ' + n.rating : '') + (n.dofd ? ' · DOFD ' + n.dofd : '') + (n.removalEst ? ' · Removal ' + n.removalEst : '');
 }
 
 /* ============ Context bundle (the session bridge) ============ */

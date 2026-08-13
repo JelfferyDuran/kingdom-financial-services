@@ -64,15 +64,18 @@ miniapp/
 }
 ```
 
-## UI (v2.1 — interactive dashboard)
+## UI (v2.2 — interactive dashboard)
 
-- **🎯 Next-Step hero**: the first incomplete action-plan step renders as a pinned card under the client bar with a live progress ring, "Mark Done" and "Ask Hermes" (sends the step as a command). All steps done → celebration card + copy-status button. Driven entirely by `actionPlan.steps` + per-device localStorage checkmarks.
-- **📊 Score gauges**: when `credit.scores` is present, each bureau renders as an SVG donut with a VantageScore 3.0 band label (Excellent/Good/Fair/Poor/Very Poor) and an optional white tick at `scoresTarget`. No scores → `scoresNote` shows instead.
-- **🔴 Negative cards**: tap to expand → full per-bureau details + strategy + 3 action buttons (Draft letter / MOV / Copy details) that send tailored commands. Expanded state remembered per device.
-- **⚡ Per-step ask buttons**: every action-plan step has a ⚡ button that sends a self-contained "execute this step" command.
-- **🌐 i18n**: fixed labels translate for `lang: "es"` (César). Data text stays as authored.
-- **💡 Tap-to-copy accounts**: tapping an open account copies a "check status" command. All sections animate in (`.reveal`).
-- Commands are emitted via `send()` → `tg.sendData` (when inside Telegram) + clipboard fallback, so they work as copy-paste even without the adapter round-trip.
+- **🎯 Next-Step hero**: the first incomplete action-plan step renders as a pinned card under the client bar with a live progress ring, "Mark Done" and "Ask Hermes". All steps done → celebration card + copy-status button. Checkmarks persist per device (localStorage) AND sync to Supabase when the bridge is enabled (see below).
+- **📊 Score gauges**: when `credit.scores` is present, each bureau renders as an SVG donut with a VantageScore 3.0 band label and an optional white tick at `scoresTarget`. No scores → `scoresNote` shows instead.
+- **🔴 Negative cards**: tap to expand → full per-bureau details + strategy + 3 action buttons (Draft letter / MOV / Copy details) that send tailored prompts. Expanded state remembered per device.
+- **⚡ Per-step ask buttons**: every action-plan step has a ⚡ button that sends a self-contained "execute this step" prompt.
+- **🧠 LLM prompt standard (non-negotiable)**: every command the app emits follows `promptBuilder()`: `🧠 HERMES — KFS TASK` header → CLIENT/REPORT/CAMPAIGN/SOURCES context → TASK → RULES (soydaat framework, verify sources, no invented numbers, mask PII, certified mail, report next action) → OUTPUT format. When editing commands in `quickCommands` or data files, keep this structure — it is what makes button commands work well with any agent.
+- **🔒 Client access links**: `?client=<slug>` locks the app to one client (client switcher hidden) — give each client their own URL.
+- **☁️ Supabase progress bridge**: `SUPABASE_ENABLED=false` by default. After running `miniapp/supabase/migrations/20260813_enable_multi_client_progress.sql` in the Supabase dashboard and seeding `profiles.slug` per client, paste the real anon key from the Supabase dashboard into `SUPABASE_ANON_KEY` and flip `SUPABASE_ENABLED=true` — checkmarks then sync per client via OTP magic-link login (César's existing Supabase project, RLS-protected). The current key is a placeholder that fails closed; never rely on a redacted key from a public repo.
+- **🌐 i18n**: fixed labels translate for `lang: "es"`. Data text stays as authored.
+- **💡 Tap-to-copy accounts**: tapping an open account copies a "check status" prompt. Sections animate in (`.reveal`).
+- Commands emit via `send()` → `tg.sendData` (inside Telegram) + clipboard fallback.
 
 ## Adding a new client (the workflow)
 
@@ -137,7 +140,8 @@ curl -s https://jelfferyduran.github.io/kingdom-financial-services/miniapp/data/
 
 ## Roadmap (Tier 2)
 
+- **Enable the Supabase bridge** — apply `miniapp/supabase/migrations/20260813_enable_multi_client_progress.sql` in the Supabase dashboard, seed `profiles.slug`, then flip `SUPABASE_ENABLED=true` in `miniapp/index.html` → per-client cloud progress (already coded).
 - `web_app_data` round-trip in the Hermes Telegram adapter → buttons send commands
-  directly (no copy-paste).
+  directly (no copy-paste). Requires platform-side adapter change (hosted VPS is platform-managed).
 - Live session list from the Hermes session store (`state.db`).
-- Optional Supabase backend (like `cesar-cr-tracker`) for auth + per-client DB.
+- Seed César's real Supabase data (scores, accounts, checklist) into `cesar-larancuent.json` from the `cesar-cr-tracker` app.
