@@ -6,14 +6,14 @@
       "name": "Anthony Duran",
       "title": "Credit Report Dashboard",
       "file": "data/clients/anthony-duran.json",
-      "default": true
+      "default": false
     },
     {
       "slug": "cesar-larancuent",
       "name": "César Larancuent",
       "title": "Centro de Control de Crédito",
       "file": "data/clients/cesar-larancuent.json",
-      "default": false
+      "default": true
     },
     {
       "slug": "general",
