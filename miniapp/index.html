@@ -235,8 +235,8 @@ const BOT_USERNAME = 'kingdomfi_bot';
    Enabled by SUPABASE_ENABLED=true below. Requires the migration in
    miniapp/supabase/migrations/ to be applied (see AGENTS.md). */
 const SUPABASE_URL = 'https://rckqjverdckszsrzjkzs.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJja3FqdmVyZGNrc3pzenJqemtzeiIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzUwMDAwMDAwLCJleHAiOjIwNjUzNjAwMDB9.placeholder';
-const SUPABASE_ENABLED = false; // flip true after running the migration
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJja3FqdmVyZGNrc3pzcnpqa3pzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUwMDc2OTAsImV4cCI6MjEwMDU4MzY5MH0.yDi7NpCiwixH6RT1awWf_uHd4D0Df_UV7wR2-MOui5k';
+const SUPABASE_ENABLED = true; // bridge ON — migration applied 2026-08-14
 let supabaseClient = null;
 function loadSupabase() {
   if (!SUPABASE_ENABLED || supabaseClient) return Promise.resolve(supabaseClient);
