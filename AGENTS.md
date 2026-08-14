@@ -27,6 +27,11 @@ miniapp/
       <slug>.json                ← per-client data (schema below)
   scripts/
     update_snapshot.py           ← refreshes updatedAt on all data files + pushes (cron)
+supabase/
+  README.md                      ← kfs-core pattern: one project, one schema per app
+  kfs-core/
+    espinal_schema.sql           ← Case-dossier schema (schema: "espinal")
+    espinal_seed.sql             ← Case 001 seed
 ```
 
 ## Client data schema (`data/clients/<slug>.json`)
