@@ -91,6 +91,57 @@ const FALLBACK = { status:{sites_up:0,sites_total:0,automations_ok:0,automations
 let DATA = FALLBACK;
 const $ = s => document.querySelector(s);
 
+/* ============ ?client= locked-mode URL state ============
+   Pattern: telegram-miniapps skill — `?client=<slug>` locked mode.
+   - Entry parse: syncLockedState() reads location.search at boot.
+   - Resolve against the clients manifest (../data/clients.json) plus an
+     embedded fallback list; a MISSING or UNKNOWN slug → unlocked (null).
+   - Shared state (readable by the rest of the app / tests):
+       lockedClient  (global, slug or null)
+       KOS_STATE.locked / KOS_STATE.client   (getters)
+       document.body.classList 'locked-mode' + document.body.dataset.client
+   - clientUrl()/navigate() preserve ?client= on internal navigation/deep
+     links; popstate/hashchange re-sync the flag on back/forward/hash. */
+const FALLBACK_CLIENTS = ['anthony-duran', 'cesar-larancuent', 'general'];
+let lockedClient = null;      // shared locked-mode flag: slug when locked, null when unlocked
+let manifestClients = [];     // slugs loaded from ../data/clients.json at boot
+
+function clientParam() {
+  return (new URLSearchParams(location.search).get('client') || '').trim();
+}
+function resolveClient(slug) {
+  if (!slug) return null;
+  if (manifestClients.includes(slug) || FALLBACK_CLIENTS.includes(slug)) return slug;
+  return null; // unknown → normal unlocked mode
+}
+function syncLockedState() {
+  lockedClient = resolveClient(clientParam());
+  document.body.classList.toggle('locked-mode', !!lockedClient);
+  document.body.dataset.client = lockedClient || '';
+  return lockedClient;
+}
+// Rewrite an internal URL so it keeps ?client=; external links stay clean.
+function clientUrl(href) {
+  if (!lockedClient) return href;
+  const u = new URL(href, location.href);
+  if (u.origin !== location.origin) return href; // external → untouched
+  u.searchParams.set('client', lockedClient);
+  return u.pathname + u.search + u.hash;
+}
+// Internal navigation that preserves the locked-mode param.
+function navigate(href) {
+  if (href.charAt(0) === '#') { location.hash = href; return; } // hash nav never touches ?client=
+  history.pushState({ client: lockedClient }, '', clientUrl(href));
+  syncLockedState();
+}
+window.addEventListener('popstate', syncLockedState);
+window.addEventListener('hashchange', syncLockedState);
+window.KOS_STATE = {
+  get client() { return lockedClient; },
+  get locked() { return !!lockedClient; },
+  clientParam, clientUrl, navigate, sync: syncLockedState
+};
+
 function sparkPath(pts, w, h){
   if (!pts || pts.length < 2) return "";
   const step = w/(pts.length-1);
@@ -153,6 +204,17 @@ $("#ask").onclick = ()=>{
   if (window.Telegram && Telegram.WebApp) Telegram.WebApp.sendData(cmd);
   else if (navigator.clipboard) navigator.clipboard.writeText(cmd).then(()=>{ $("#ask").textContent = "Copied ✓ — paste into the bot chat"; setTimeout(()=>{ $("#ask").textContent = "🧠 Ask Hermes about the Kingdom"; }, 2000); });
 };
+/* boot: parse ?client= at entry; resolve against the manifest when it loads */
+syncLockedState();
+fetch("../data/clients.json?t=" + Date.now(), { cache: "no-store" })
+  .then(r => r.ok ? r.json() : null)
+  .then(m => {
+    if (m && Array.isArray(m.clients)) {
+      manifestClients = m.clients.map(c => c.slug).filter(Boolean);
+      syncLockedState(); // re-resolve once real manifest is known
+    }
+  })
+  .catch(() => {});
 fetch("data.json?t=" + Date.now(), { cache:"no-store" })
   .then(r => r.ok ? r.json() : null)
   .then(d => { if (d) DATA = d; render(); })
