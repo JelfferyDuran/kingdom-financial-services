@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>KINGDOM OS — Mini App</title>
+<meta name="description" content="Sanitized Kingdom OS mirror — the command center in your pocket.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  :root{
+    --bg0:#070D1A; --bg1:#0A1428; --bg2:#0F1D38; --panel:#101F3C; --line:#1E3358; --line2:#2A4A7A;
+    --gold:#C9A227; --gold-b:#E3C568; --cream:#F2EDE3; --dim:#93A0B8; --faint:#7E8CAE;
+    --green:#3FB98A; --yellow:#E3A43C; --red:#E0564F; --blue:#5B8DEF;
+    --serif:'Cinzel',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{background:radial-gradient(700px 340px at 85% -5%,rgba(201,162,39,.07),transparent 60%),var(--bg1);
+    color:var(--cream);font-family:var(--sans);font-size:14px;line-height:1.5;min-height:100vh;padding:16px 16px 32px}
+  .wrap{max-width:520px;margin:0 auto}
+  header{display:flex;align-items:center;gap:12px;padding:6px 2px 14px}
+  .crown{font-size:30px;filter:drop-shadow(0 2px 8px rgba(201,162,39,.35))}
+  header h1{font-family:var(--serif);font-size:19px;letter-spacing:2.5px;color:var(--gold-b)}
+  header p{font-size:9.5px;letter-spacing:2px;color:var(--faint);text-transform:uppercase}
+  .fresh{font-size:10.5px;color:var(--faint);font-family:var(--mono);margin:2px 0 14px}
+  .grid{display:grid;gap:10px}
+  .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .card h3{font-family:var(--serif);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-b);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .card h3:after{content:"";flex:1;height:1px;background:var(--line)}
+  .stat .lbl{font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--faint)}
+  .stat .num{font-family:var(--mono);font-size:24px;font-weight:700;margin-top:3px}
+  .stat .num small{font-size:12px;color:var(--dim)}
+  .stat.gold .num{color:var(--gold-b)}
+  .stat.ok .num{color:var(--green)} .stat.warn .num{color:var(--yellow)} .stat.bad .num{color:var(--red)}
+  .spark{width:100%;height:74px;display:block}
+  .spark-line{fill:none;stroke:var(--gold);stroke-width:2}
+  .spark-line.blue{stroke:var(--blue)} .spark-area{fill:rgba(201,162,39,.10)}
+  a.site{display:block;text-decoration:none;color:var(--cream);background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:11px 12px;transition:border-color .15s}
+  a.site:active{border-color:var(--gold)}
+  a.site .nm{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  a.site .ur{font-size:9.5px;color:var(--faint);font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+  .badge{display:inline-flex;align-items:center;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:99px;border:1px solid}
+  .badge.up,.badge.active{color:var(--green);border-color:rgba(63,185,138,.4);background:rgba(63,185,138,.1)}
+  .badge.dead{color:var(--red);border-color:rgba(224,86,79,.4);background:rgba(224,86,79,.1)}
+  .badge.stale,.badge.paused{color:var(--yellow);border-color:rgba(227,164,60,.4);background:rgba(227,164,60,.1)}
+  .case{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--line)}
+  .case:last-child{border-bottom:0}
+  .case .nm{font-weight:600;font-size:12.5px;flex:1}
+  .case .dk{font-size:9px;color:var(--faint);font-family:var(--mono)}
+  .road{font-size:12px;padding:7px 0;border-bottom:1px dashed var(--line);display:flex;gap:8px;align-items:baseline}
+  .road:last-child{border-bottom:0}
+  .road .ok{color:var(--green)} .road .nx{color:var(--gold-b)} .road .pl{color:var(--faint)}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:12px;
+    border:1px solid var(--line2);background:var(--bg2);color:var(--cream);font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+  .btn.primary{background:linear-gradient(135deg,#A8841F,#C9A227);border-color:#A8841F;color:#0A1428}
+  .btn.primary:active{filter:brightness(1.1)}
+  .foot{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+  .hint{font-size:10px;color:var(--faint);text-align:center;margin-top:10px;line-height:1.6}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-family:var(--mono);color:var(--dim);background:var(--bg2);border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+  @media(max-width:380px){.g4{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="crown">👑</div>
+    <div><h1>KINGDOM OS</h1><p>KFS Command Center · Mini App</p></div>
+  </header>
+  <div class="fresh" id="fresh">connecting…</div>
+
+  <div class="grid g4" id="stats" style="margin-bottom:12px"></div>
+  <div class="card" style="margin-bottom:12px"><h3>📈 Fleet health</h3><div id="health"><div class="dim" style="font-size:12px">loading…</div></div></div>
+  <div class="card" style="margin-bottom:12px"><h3>🚀 Quick launch</h3><div class="grid g2" id="sites"></div></div>
+  <div class="card" style="margin-bottom:12px"><h3>⚖️ Case trackers</h3><div id="cases"></div></div>
+  <div class="card" style="margin-bottom:12px"><h3>🧭 The build</h3><div id="roadmap"></div></div>
+
+  <div class="foot">
+    <button class="btn" id="ask">🧠 Ask Hermes about the Kingdom</button>
+    <a class="btn primary" id="full" href="http://kfs-os.tail258ffd.ts.net" target="_blank">🏰 Open full OS <span style="font-size:10px">(tailnet)</span></a>
+  </div>
+  <div class="hint">This mirror is sanitized — no finances, clients or case files.<br>Full data lives on the tailnet OS. · <span id="gen"></span></div>
+</div>
+
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const FALLBACK = { status:{sites_up:0,sites_total:0,automations_ok:0,automations_total:0,flags:0},
+  sites:[], cases:[], health:[], generated_at:"offline snapshot" };
+let DATA = FALLBACK;
+const $ = s => document.querySelector(s);
+
+function sparkPath(pts, w, h){
+  if (!pts || pts.length < 2) return "";
+  const step = w/(pts.length-1);
+  return pts.map((p,i)=>`${i?"L":"M"}${(i*step).toFixed(1)},${(h-Math.max(0,Math.min(1,p))*h).toFixed(1)}`).join(" ");
+}
+function ago(ts){
+  if (!ts) return "—";
+  const d = Math.floor((Date.now()-new Date(ts).getTime())/86400000);
+  if (d<=0) return "today"; if (d===1) return "1d ago"; return d+"d ago";
+}
+function render(){
+  const st = DATA.status||{};
+  const stat = (lbl, num, sub, cls) => `<div class="card stat ${cls||""}"><div class="lbl">${lbl}</div><div class="num">${num}</div><div class="lbl" style="margin-top:4px">${sub}</div></div>`;
+  $("#stats").innerHTML =
+    stat("Sites", `${st.sites_up}/${st.sites_total}`, "online", st.sites_up===st.sites_total?"ok":st.sites_up?"warn":"bad") +
+    stat("Automations", `${st.automations_ok}/${st.automations_total}`, "jobs ok", st.automations_ok===st.automations_total?"ok":"warn") +
+    stat("Flags", st.flags||0, "attention", st.flags?"warn":"ok") +
+    stat("Data", ago(DATA.generated_at), "fresh", "gold");
+  $("#fresh").textContent = `◷ snapshot ${ago(DATA.generated_at)} · ${esc(String(DATA.generated_at||"").replace("T"," ").slice(0,16))}Z`;
+  $("#gen").textContent = "generated " + ago(DATA.generated_at);
+
+  const h = DATA.health||[];
+  if (h.length >= 2){
+    const w=760, hh=74;
+    const ups = h.map(x=>x.total?x.up/x.total:0);
+    const cr = h.map(x=>x.cron_total?x.cron_ok/x.cron_total:0);
+    const last = h[h.length-1];
+    $("#health").innerHTML = `<svg class="spark" viewBox="0 0 ${w} ${hh}" preserveAspectRatio="none">
+      <line x1="0" y1="${hh}" x2="${w}" y2="${hh}" stroke="var(--line)"/>
+      <path class="spark-area" d="${sparkPath(ups,w,hh)} L ${w},${hh} L 0,${hh} Z"/>
+      <path class="spark-line" d="${sparkPath(ups,w,hh)}"/>
+      <path class="spark-line blue" d="${sparkPath(cr,w,hh)}"/></svg>
+      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+      <span class="chip">🟢 sites ${last.up}/${last.total}</span><span class="chip">🔵 crons ${last.cron_ok}/${last.cron_total}</span></div>`;
+  } else {
+    $("#health").innerHTML = `<div class="dim" style="font-size:12px">history warming up — collector writes a point every run.</div>`;
+  }
+
+  $("#sites").innerHTML = (DATA.sites||[]).slice(0,8).map(s=>`<a class="site" href="${esc(s.url)}" target="_blank">
+    <div class="nm">${esc(s.name)}</div><div class="ur">${esc((s.url||"").replace("https://",""))}</div></a>`).join("")
+    || `<div class="dim" style="font-size:12px">no sites yet</div>`;
+
+  $("#cases").innerHTML = (DATA.cases||[]).map(c=>`<div class="case">
+    <span class="badge ${esc(c.status)}">${esc(c.status)}</span>
+    <div><div class="nm">${esc(c.name)}</div><div class="dk">${c.tracked?"auto tracker":"manual campaign"}</div></div>
+    ${c.url?`<a class="btn" style="width:auto;padding:6px 12px;font-size:11px" href="${esc(c.url)}" target="_blank">Hub ↗</a>`:""}</div>`).join("")
+    || `<div class="dim" style="font-size:12px">no cases yet</div>`;
+
+  const road = [
+    ["✅","Case Room · Insights · Health · Notes · Settings · Vault · Notifications · Kanban plan · Ledger · PWA · Search · Miniapp · Bots hub","ok"],
+    ["🛠","Finance live feeds · Miniapp client links · Multi-bot adapter","nx"],
+    ["⏳","AI briefing widgets · Voice commands · Vault sync · Role views","pl"],
+  ];
+  $("#roadmap").innerHTML = road.map(r=>`<div class="road"><span class="${r[2]}">${r[0]}</span><span>${esc(r[1])}</span></div>`).join("");
+}
+$("#ask").onclick = ()=>{
+  const cmd = "🧠 HERMES — KINGDOM OS SNAPSHOT\nDATA: " + (DATA.generated_at||"—") +
+    "\nSTATUS: " + (DATA.status?`${DATA.status.sites_up}/${DATA.status.sites_total} sites · ${DATA.status.automations_ok}/${DATA.status.automations_total} automations · ${DATA.status.flags} flags`:"—") +
+    "\nTASK: Give me the single most important thing in the Kingdom right now and the next action.\nRULES: Verify against local sources. Report concise status + one next action.\nOUTPUT: concise status + the single next action.";
+  if (window.Telegram && Telegram.WebApp) Telegram.WebApp.sendData(cmd);
+  else if (navigator.clipboard) navigator.clipboard.writeText(cmd).then(()=>{ $("#ask").textContent = "Copied ✓ — paste into the bot chat"; setTimeout(()=>{ $("#ask").textContent = "🧠 Ask Hermes about the Kingdom"; }, 2000); });
+};
+fetch("data.json?t=" + Date.now(), { cache:"no-store" })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d) DATA = d; render(); })
+  .catch(()=>render());
+if (window.Telegram && Telegram.WebApp){ try { Telegram.WebApp.ready(); Telegram.WebApp.expand(); } catch(e){} }
+</script>
+</body>
+</html>
