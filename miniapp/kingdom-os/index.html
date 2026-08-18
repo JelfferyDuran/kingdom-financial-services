@@ -60,6 +60,29 @@
   .foot{margin-top:18px;display:flex;flex-direction:column;gap:8px}
   .hint{font-size:10px;color:var(--faint);text-align:center;margin-top:10px;line-height:1.6}
   .chip{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-family:var(--mono);color:var(--dim);background:var(--bg2);border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+  /* ===== locked-mode UI kit ===== */
+  .lock-bar{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(201,162,39,.14),rgba(201,162,39,.04));border:1px solid rgba(201,162,39,.4);border-radius:12px;padding:10px 12px;margin-bottom:14px}
+  .lock-bar-ic{font-size:18px;filter:drop-shadow(0 0 6px rgba(201,162,39,.5))}
+  .lock-bar-tx{flex:1;min-width:0}
+  .lock-bar-tx b{font-family:var(--serif);letter-spacing:1.5px;color:var(--gold-b);font-size:12px;text-transform:uppercase}
+  .lock-bar-tx span{display:block;font-size:9.5px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}
+  .lock-chip{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold-b);border:1px solid rgba(201,162,39,.45);background:rgba(201,162,39,.1);padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .card h3 .lock-chip{margin-left:4px}
+  .ro-meta{font-size:9.5px;color:var(--faint);font-family:var(--mono);margin-top:8px}
+  .ro-kv{display:flex;justify-content:space-between;gap:12px;font-size:12px;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .ro-kv:last-child{border-bottom:0}
+  .ro-kv .k{color:var(--dim)}
+  .ro-kv .v{font-family:var(--mono);text-align:right}
+  .ro-account{padding:9px 2px;border-bottom:1px solid var(--line)}
+  .ro-account:last-child{border-bottom:0}
+  .ro-account .a1{display:flex;align-items:baseline;gap:8px}
+  .ro-account .a1 b{font-size:12.5px}
+  .ro-account .ty{font-size:9.5px;color:var(--faint);font-family:var(--mono)}
+  .ro-account .a2{font-size:10px;color:var(--dim);font-family:var(--mono);margin-top:3px}
+  .ro-account .a2.note{color:var(--faint);font-family:var(--sans)}
+  .ro-notice{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gold-b);border:1px dashed rgba(201,162,39,.4);background:rgba(201,162,39,.06);border-radius:10px;padding:8px 10px;margin-bottom:12px}
+  .gated,.btn[disabled],a[aria-disabled="true"]{opacity:.45;pointer-events:none;cursor:not-allowed;filter:grayscale(.4)}
+  body.locked-mode .hint{color:var(--faint)}
   @media(max-width:380px){.g4{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -78,8 +101,8 @@
   <div class="card" style="margin-bottom:12px"><h3>🧭 The build</h3><div id="roadmap"></div></div>
 
   <div class="foot">
-    <button class="btn" id="ask">🧠 Ask Hermes about the Kingdom</button>
-    <a class="btn primary" id="full" href="http://kfs-os.tail258ffd.ts.net" target="_blank">🏰 Open full OS <span style="font-size:10px">(tailnet)</span></a>
+    <button class="btn" id="ask" data-privileged="send">🧠 Ask Hermes about the Kingdom</button>
+    <a class="btn primary" id="full" href="http://kfs-os.tail258ffd.ts.net" target="_blank" data-hide-when-locked>🏰 Open full OS <span style="font-size:10px">(tailnet)</span></a>
   </div>
   <div class="hint">This mirror is sanitized — no finances, clients or case files.<br>Full data lives on the tailnet OS. · <span id="gen"></span></div>
 </div>
@@ -101,7 +124,9 @@ const $ = s => document.querySelector(s);
        KOS_STATE.locked / KOS_STATE.client   (getters)
        document.body.classList 'locked-mode' + document.body.dataset.client
    - clientUrl()/navigate() preserve ?client= on internal navigation/deep
-     links; popstate/hashchange re-sync the flag on back/forward/hash. */
+     links; popstate/hashchange re-sync the flag on back/forward/hash.
+   - syncLockedState() also re-applies the locked-mode UI kit (KOS_LOCKED)
+     so the restricted shell follows the URL on every nav. */
 const FALLBACK_CLIENTS = ['anthony-duran', 'cesar-larancuent', 'general'];
 let lockedClient = null;      // shared locked-mode flag: slug when locked, null when unlocked
 let manifestClients = [];     // slugs loaded from ../data/clients.json at boot
@@ -118,6 +143,7 @@ function syncLockedState() {
   lockedClient = resolveClient(clientParam());
   document.body.classList.toggle('locked-mode', !!lockedClient);
   document.body.dataset.client = lockedClient || '';
+  if (window.KOS_LOCKED) KOS_LOCKED.applyShell(); // restricted shell follows the flag
   return lockedClient;
 }
 // Rewrite an internal URL so it keeps ?client=; external links stay clean.
@@ -142,6 +168,136 @@ window.KOS_STATE = {
   clientParam, clientUrl, navigate, sync: syncLockedState
 };
 
+/* ============ 🔒 Locked-mode UI kit (reusable components) ============
+   Generic locked-mode components for ANY ?client= locked view. Consumes
+   the routing contract above (lockedClient / KOS_STATE / body.locked-mode)
+   and stays completely inert when unlocked.
+
+   COMPONENTS
+   - Shell / restricted layout:
+       KOS_LOCKED.shellHTML()   → lock banner HTML (client name + read-only chip)
+       KOS_LOCKED.applyShell()  → idempotent: inserts the banner at the top of
+                                  .wrap, gates privileged controls, hides locked
+                                  elements. Call after every render/navigation
+                                  (syncLockedState() already does).
+   - Read-only display variants (dashboard / account / card data):
+       roCard({icon,title,body,meta})   card container with 🔒 chip
+       roStat({lbl,num,sub,cls})        dashboard stat cell (display only)
+       roKV(k, v)                       key/value row
+       roAccount({creditor,type,balance,limit,opened,note})  account row
+       roList(items, renderItem)        list container (empty-state included)
+       roNotice(msg)                    read-only notice bar
+   - Action gating (send / edit / delete / approve):
+       PRIVILEGED_ACTIONS               the privileged action list
+       isPrivileged(action)             true for send|edit|delete|approve
+       gateAction(action, {label,icon,href,cls})
+                                        button/link that auto-DISABLES when locked
+       applyGates(root)                 disable every [data-privileged] under root
+       hideLocked(root)                 hide every [data-hide-when-locked] under root
+       guardClick(e)                    capture-phase guard: blocks clicks on
+                                        [data-privileged] elements while locked
+
+   DECLARATIVE DOM CONVENTIONS (no JS needed per element):
+       data-privileged="send|edit|delete|approve" → disabled in locked mode
+       data-hide-when-locked                       → display:none in locked mode
+   Both are honored by applyShell()/applyGates()/hideLocked()/guardClick(). */
+const KOS_LOCKED = (() => {
+  const PRIVILEGED_ACTIONS = ['send', 'edit', 'delete', 'approve'];
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  let clientNames = {}; // slug → display name, seeded from ../data/clients.json
+
+  const isLocked = () => !!lockedClient;
+  const isPrivileged = a => PRIVILEGED_ACTIONS.includes(String(a || "").toLowerCase());
+  function registerClientNames(clients) {
+    (clients || []).forEach(c => { if (c && c.slug) clientNames[c.slug] = c.name || c.slug; });
+  }
+  function clientLabel() {
+    if (!lockedClient) return "";
+    return clientNames[lockedClient] || lockedClient.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  }
+
+  /* ---- shell / restricted layout ---- */
+  function shellHTML() {
+    if (!isLocked()) return "";
+    return `<div class="lock-bar">
+  <span class="lock-bar-ic">🔒</span>
+  <div class="lock-bar-tx"><b>${esc(clientLabel())}</b><span>locked read-only view · client access</span></div>
+  <span class="lock-chip">read-only</span></div>`;
+  }
+  function applyShell() {
+    document.querySelectorAll(".lock-bar").forEach(b => b.remove()); // idempotent
+    if (!isLocked()) return null;
+    (document.querySelector(".wrap") || document.body).insertAdjacentHTML("afterbegin", shellHTML());
+    applyGates(document);
+    hideLocked(document);
+    return document.querySelector(".lock-bar");
+  }
+
+  /* ---- read-only display variants ---- */
+  function roCard({ icon = "📄", title = "", body = "", meta = "" } = {}) {
+    return `<div class="card ro-card"><h3>${icon} ${esc(title)}${isLocked() ? ' <span class="lock-chip">🔒 read-only</span>' : ""}</h3>${body}${meta ? `<div class="ro-meta">${esc(meta)}</div>` : ""}</div>`;
+  }
+  function roStat({ lbl = "", num = "—", sub = "", cls = "" } = {}) {
+    return `<div class="card stat ro-stat ${cls}"><div class="lbl">${esc(lbl)}</div><div class="num">${num}</div><div class="lbl" style="margin-top:4px">${esc(sub)}</div></div>`;
+  }
+  function roKV(k, v) {
+    return `<div class="ro-kv"><span class="k">${esc(k)}</span><span class="v">${v}</span></div>`;
+  }
+  function roAccount(a = {}) {
+    const cells = [];
+    if (a.balance) cells.push(`bal ${esc(a.balance)}`);
+    if (a.limit) cells.push(`lim ${esc(a.limit)}`);
+    if (a.opened) cells.push(`since ${esc(a.opened)}`);
+    return `<div class="ro-account"><div class="a1"><b>${esc(a.creditor || "")}</b>${a.type ? `<span class="ty">${esc(a.type)}</span>` : ""}</div>${cells.length ? `<div class="a2">${cells.join(" · ")}</div>` : ""}${a.note ? `<div class="a2 note">${esc(a.note)}</div>` : ""}</div>`;
+  }
+  function roList(items, renderItem) {
+    if (!items || !items.length) return `<div class="dim" style="font-size:12px">no data</div>`;
+    return items.map(renderItem).join("");
+  }
+  function roNotice(msg) {
+    return `<div class="ro-notice">🔒 ${esc(msg)}</div>`;
+  }
+
+  /* ---- action gating ---- */
+  function gateAction(action, { label, icon = "", href = "", cls = "btn" } = {}) {
+    const dis = isLocked() && isPrivileged(action);
+    const attrs = `data-privileged="${esc(action)}"${dis ? ' disabled aria-disabled="true" tabindex="-1"' : ""}`;
+    const inner = `${icon ? icon + " " : ""}${esc(label)}`;
+    return href
+      ? `<a class="${cls}" href="${esc(href)}" ${attrs}>${inner}</a>`
+      : `<button type="button" class="${cls}" ${attrs}>${inner}</button>`;
+  }
+  function applyGates(root = document) {
+    if (!isLocked()) return 0;
+    let n = 0;
+    root.querySelectorAll("[data-privileged]").forEach(el => {
+      el.setAttribute("disabled", "");
+      el.setAttribute("aria-disabled", "true");
+      if (el.tagName === "A") { el.removeAttribute("href"); el.style.pointerEvents = "none"; }
+      el.classList.add("gated");
+      n++;
+    });
+    return n;
+  }
+  function hideLocked(root = document) {
+    if (!isLocked()) return 0;
+    let n = 0;
+    root.querySelectorAll("[data-hide-when-locked]").forEach(el => { el.style.display = "none"; n++; });
+    return n;
+  }
+  function guardClick(e) {
+    if (!isLocked()) return;
+    const t = e.target && e.target.closest ? e.target.closest("[data-privileged]") : null;
+    if (t) { e.preventDefault(); e.stopPropagation(); }
+  }
+  document.addEventListener("click", guardClick, true); // capture: blocks before handlers
+
+  return { PRIVILEGED_ACTIONS, isLocked, isPrivileged, clientLabel, registerClientNames,
+    shellHTML, applyShell, roCard, roStat, roKV, roAccount, roList, roNotice,
+    gateAction, applyGates, hideLocked, guardClick };
+})();
+window.KOS_LOCKED = KOS_LOCKED;
+
 function sparkPath(pts, w, h){
   if (!pts || pts.length < 2) return "";
   const step = w/(pts.length-1);
@@ -154,7 +310,11 @@ function ago(ts){
 }
 function render(){
   const st = DATA.status||{};
-  const stat = (lbl, num, sub, cls) => `<div class="card stat ${cls||""}"><div class="lbl">${lbl}</div><div class="num">${num}</div><div class="lbl" style="margin-top:4px">${sub}</div></div>`;
+  const locked = !!(window.KOS_LOCKED && KOS_LOCKED.isLocked());
+  // In locked mode the dashboard stats render through the read-only variant.
+  const stat = (lbl, num, sub, cls) => locked
+    ? KOS_LOCKED.roStat({ lbl, num, sub, cls })
+    : `<div class="card stat ${cls||""}"><div class="lbl">${lbl}</div><div class="num">${num}</div><div class="lbl" style="margin-top:4px">${sub}</div></div>`;
   $("#stats").innerHTML =
     stat("Sites", `${st.sites_up}/${st.sites_total}`, "online", st.sites_up===st.sites_total?"ok":st.sites_up?"warn":"bad") +
     stat("Automations", `${st.automations_ok}/${st.automations_total}`, "jobs ok", st.automations_ok===st.automations_total?"ok":"warn") +
@@ -196,6 +356,15 @@ function render(){
     ["⏳","AI briefing widgets · Voice commands · Vault sync · Role views","pl"],
   ];
   $("#roadmap").innerHTML = road.map(r=>`<div class="road"><span class="${r[2]}">${r[0]}</span><span>${esc(r[1])}</span></div>`).join("");
+
+  // Locked mode: mark every section card read-only + re-gate anything re-rendered.
+  if (locked) {
+    document.querySelectorAll(".card h3").forEach(h3 => {
+      if (!h3.querySelector(".lock-chip")) h3.insertAdjacentHTML("beforeend", '<span class="lock-chip">🔒 read-only</span>');
+    });
+    KOS_LOCKED.applyGates(document);
+    KOS_LOCKED.hideLocked(document);
+  }
 }
 $("#ask").onclick = ()=>{
   const cmd = "🧠 HERMES — KINGDOM OS SNAPSHOT\nDATA: " + (DATA.generated_at||"—") +
@@ -211,8 +380,9 @@ fetch("../data/clients.json?t=" + Date.now(), { cache: "no-store" })
   .then(m => {
     if (m && Array.isArray(m.clients)) {
       manifestClients = m.clients.map(c => c.slug).filter(Boolean);
-      syncLockedState(); // re-resolve once real manifest is known
+      KOS_LOCKED.registerClientNames(m.clients);
     }
+    syncLockedState(); // re-resolve + re-apply shell with the real client name
   })
   .catch(() => {});
 fetch("data.json?t=" + Date.now(), { cache:"no-store" })
