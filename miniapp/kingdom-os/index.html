@@ -252,7 +252,7 @@ const KOS_LOCKED = (() => {
   }
   function roList(items, renderItem) {
     if (!items || !items.length) return `<div class="dim" style="font-size:12px">no data</div>`;
-    return items.map(renderItem).join("");
+    return `<div class="ro-list">${items.map(renderItem).join("")}</div>`;
   }
   function roNotice(msg) {
     return `<div class="ro-notice">🔒 ${esc(msg)}</div>`;
@@ -340,22 +340,34 @@ function render(){
     $("#health").innerHTML = `<div class="dim" style="font-size:12px">history warming up — collector writes a point every run.</div>`;
   }
 
-  $("#sites").innerHTML = (DATA.sites||[]).slice(0,8).map(s=>`<a class="site" href="${esc(s.url)}" target="_blank">
-    <div class="nm">${esc(s.name)}</div><div class="ur">${esc((s.url||"").replace("https://",""))}</div></a>`).join("")
-    || `<div class="dim" style="font-size:12px">no sites yet</div>`;
-
-  $("#cases").innerHTML = (DATA.cases||[]).map(c=>`<div class="case">
+  // Item renderers (shared by both modes; locked wraps them in the kit's roList).
+  const siteHTML = s => `<a class="site" href="${esc(s.url)}" target="_blank">
+    <div class="nm">${esc(s.name)}</div><div class="ur">${esc((s.url||"").replace("https://",""))}</div></a>`;
+  const caseHTML = c => `<div class="case">
     <span class="badge ${esc(c.status)}">${esc(c.status)}</span>
     <div><div class="nm">${esc(c.name)}</div><div class="dk">${c.tracked?"auto tracker":"manual campaign"}</div></div>
-    ${c.url?`<a class="btn" style="width:auto;padding:6px 12px;font-size:11px" href="${esc(c.url)}" target="_blank">Hub ↗</a>`:""}</div>`).join("")
-    || `<div class="dim" style="font-size:12px">no cases yet</div>`;
+    ${c.url?`<a class="btn" style="width:auto;padding:6px 12px;font-size:11px" href="${esc(c.url)}" target="_blank">Hub ↗</a>`:""}</div>`;
+  const roadHTML = r => `<div class="road"><span class="${r[2]}">${r[0]}</span><span>${esc(r[1])}</span></div>`;
+
+  // Locked mode: every screen section renders through the read-only kit
+  // components (roList) so no interactive control can slip into a client view.
+  // Unlocked mode keeps the original markup exactly as before.
+  const sites = DATA.sites || [];
+  $("#sites").innerHTML = locked
+    ? (sites.length ? KOS_LOCKED.roList(sites.slice(0,8), siteHTML) : `<div class="dim" style="font-size:12px">no sites yet</div>`)
+    : sites.slice(0,8).map(siteHTML).join("") || `<div class="dim" style="font-size:12px">no sites yet</div>`;
+
+  const cases = DATA.cases || [];
+  $("#cases").innerHTML = locked
+    ? (cases.length ? KOS_LOCKED.roList(cases, caseHTML) : `<div class="dim" style="font-size:12px">no cases yet</div>`)
+    : cases.map(caseHTML).join("") || `<div class="dim" style="font-size:12px">no cases yet</div>`;
 
   const road = [
     ["✅","Case Room · Insights · Health · Notes · Settings · Vault · Notifications · Kanban plan · Ledger · PWA · Search · Miniapp · Bots hub","ok"],
     ["🛠","Finance live feeds · Miniapp client links · Multi-bot adapter","nx"],
     ["⏳","AI briefing widgets · Voice commands · Vault sync · Role views","pl"],
   ];
-  $("#roadmap").innerHTML = road.map(r=>`<div class="road"><span class="${r[2]}">${r[0]}</span><span>${esc(r[1])}</span></div>`).join("");
+  $("#roadmap").innerHTML = locked ? KOS_LOCKED.roList(road, roadHTML) : road.map(roadHTML).join("");
 
   // Locked mode: mark every section card read-only + re-gate anything re-rendered.
   if (locked) {
