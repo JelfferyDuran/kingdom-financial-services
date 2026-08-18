@@ -1,0 +1,118 @@
+{
+ "generated_at": "2026-08-18T15:05:36+00:00",
+ "app": "kingdom-os",
+ "version": "1.2",
+ "status": {
+  "sites_up": 13,
+  "sites_total": 13,
+  "automations_ok": 9,
+  "automations_total": 11,
+  "flags": 10
+ },
+ "sites": [
+  {
+   "name": "KFS Landing",
+   "url": "https://jelfferyduran.github.io/kingdom-financial-services/",
+   "up": true
+  },
+  {
+   "name": "Kingdom Hermes Miniapp",
+   "url": "https://jelfferyduran.github.io/kingdom-financial-services/miniapp/",
+   "up": true
+  },
+  {
+   "name": "C\u00e9sar CR Tracker",
+   "url": "https://jelfferyduran.github.io/cesar-cr-tracker/",
+   "up": true
+  },
+  {
+   "name": "Credit Repair CMD",
+   "url": "https://jelfferyduran.github.io/credit-repair-cmd/",
+   "up": true
+  },
+  {
+   "name": "KFS Ledger",
+   "url": "https://jelfferyduran.github.io/kfs-ledger/",
+   "up": true
+  },
+  {
+   "name": "espinal-case-deploy",
+   "url": "https://espinal-case-deploy-jfotrcgdf-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "hamashiaj",
+   "url": "https://hamashiaj-ev5woj8lm-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "empanadas-monumental-elizabeth",
+   "url": "https://empanadas-monumental-elizabeth-bq1xy3ojg-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "anthony-supermarket-superkitchen",
+   "url": "https://anthony-supermarket-superkitchen-ho38f0zkw-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "anthony-supermarket",
+   "url": "https://anthony-supermarket-luquknst2-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "anthony-policies",
+   "url": "https://anthony-policies-ftczesfrg-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "bodeguetto",
+   "url": "https://bodeguetto-yp6ct1xu4-kingdom-noel.vercel.app",
+   "up": true
+  },
+  {
+   "name": "anthony-bdr-questionnaire",
+   "url": "https://anthony-bdr-questionnaire-gnl2d9c12-kingdom-noel.vercel.app",
+   "up": true
+  }
+ ],
+ "cases": [
+  {
+   "name": "Espinal (Alyne Silva Espinal)",
+   "slug": "espinal",
+   "url": "https://espinal-case-deploy.vercel.app",
+   "status": "ok",
+   "tracked": true
+  },
+  {
+   "name": "Clancy (Lindsay Clancy trial)",
+   "slug": "clancy",
+   "url": "https://espinal-case-deploy.vercel.app",
+   "status": "ok",
+   "tracked": true
+  },
+  {
+   "name": "CAC Wage Execution (DC-002546-16)",
+   "slug": "cac-dc002546-16",
+   "url": "https://github.com/JelfferyDuran/kfs-admin-os/tree/main/docs/cases/cac-dc002546-16",
+   "status": "active",
+   "tracked": false
+  }
+ ],
+ "health": [
+  {
+   "t": "2026-08-18T14:55:58+00:00",
+   "up": 13,
+   "total": 13,
+   "cron_ok": 9,
+   "cron_total": 11
+  },
+  {
+   "t": "2026-08-18T15:05:36+00:00",
+   "up": 13,
+   "total": 13,
+   "cron_ok": 9,
+   "cron_total": 11
+  }
+ ]
+}
