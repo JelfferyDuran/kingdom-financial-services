@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-18T19:58:16+00:00",
+ "generated_at": "2026-08-18T20:00:07+00:00",
  "app": "kingdom-os",
  "version": "1.2",
  "status": {
@@ -37,7 +37,7 @@
   },
   {
    "name": "kingdom-os",
-   "url": "https://kingdom-f6m1i1qpp-kingdom-noel.vercel.app",
+   "url": "https://kingdom-jkzu3zj10-kingdom-noel.vercel.app",
    "up": true
   },
   {
@@ -177,6 +177,13 @@
   },
   {
    "t": "2026-08-18T19:58:16+00:00",
+   "up": 14,
+   "total": 14,
+   "cron_ok": 9,
+   "cron_total": 11
+  },
+  {
+   "t": "2026-08-18T20:00:07+00:00",
    "up": 14,
    "total": 14,
    "cron_ok": 9,
