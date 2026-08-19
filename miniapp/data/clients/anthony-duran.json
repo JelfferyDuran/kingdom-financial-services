@@ -1,308 +1,308 @@
 {
- "slug": "anthony-duran",
- "name": "Anthony R Duran Martinez",
- "display": "Anthony Duran",
- "title": "Credit Report Dashboard",
- "lang": "en",
- "updatedAt": "2026-08-18T09:00:04Z",
- "profile": {
-  "role": "KFS client",
-  "reportDate": "Aug 13, 2026",
-  "reportSource": "transunion.com direct disclosure (fresh 08/13/26 pull) — no scores included",
-  "fileSince": "07/16/2008",
-  "history": "18y · oldest acct Oct 2009 · avg age ~6y on open accts",
-  "location": "Private",
-  "employer": "Private",
-  "piiNote": "Full identity (DOB/SSN/address) is stored locally, never in this repo."
- },
- "credit": {
-  "scores": null,
-  "scoresNote": "TU direct PDF has NO score — pull a scored report (Brave/Credit Karma/myFICO) to see the VantageScore 3.0 numbers.",
-  "negative": [
-   {
-    "creditor": "DEPT OF ED / AIDVANTAGE",
-    "account": "Student Loan #…0420 (masked)",
-    "opened": "03/04/2020",
-    "type": "Federal student loan · installment (99 mo)",
-    "balance": "—",
-    "pastDue": "—",
-    "rating": "Transferred; was 120 days past due",
-    "dofd": "12/22/2024",
-    "lastPayment": "11/17/2025",
-    "removalEst": "11/2031",
-    "strategy": "Closed 11/17/2025 — ACCT CLOSED DUE TO TRANSFER. Same federal debt now lives at US DEPT OF EDUCATION default group (2 collection lines below). Federal loan → NOT a deletion target; path = cure delinquency (FSA rehab/consolidation) + accuracy dispute of wrong data points."
-   },
-   {
-    "creditor": "US DEPT OF EDUCATION (Consolidated Direct Loans)",
-    "account": "Student Loan #7525****",
-    "opened": "11/24/2025",
-    "type": "Federal student loan — COLLECTION line 1 of 2",
-    "balance": "—",
-    "pastDue": "—",
-    "rating": "Collection (>CLA< placed for collection)",
-    "dofd": "see note",
-    "lastPayment": "05/12/2026",
-    "removalEst": "02/2027 (verify — conflicts with original 11/2031)",
-    "strategy": "Same consolidated direct loan as Aidvantage line, now at the Dept of Ed default servicer (3130 Fairview Park Dr, Falls Church VA). Federal → cure + accuracy dispute, NOT deletion. Removal-date inconsistency (02/2027 vs 11/2031) is a dispute point."
-   },
-   {
-    "creditor": "US DEPT OF EDUCATION (Consolidated Direct Loans)",
-    "account": "Student Loan #7525****",
-    "opened": "11/24/2025",
-    "type": "Federal student loan — COLLECTION line 2 of 2",
-    "balance": "—",
-    "pastDue": "—",
-    "rating": "Collection (>CLA< placed for collection)",
-    "dofd": "see note",
-    "lastPayment": "05/12/2026",
-    "removalEst": "02/2027 (verify — conflicts with original 11/2031)",
-    "strategy": "Second loan group of the same consolidated debt. Combined with line 1 = — total in collections (was — single line Dec 2025). Cure delinquency + accuracy dispute."
-   }
+  "slug": "anthony-duran",
+  "name": "Anthony R Duran Martinez",
+  "display": "Anthony Duran",
+  "title": "Credit Report Dashboard",
+  "lang": "en",
+  "updatedAt": "2026-08-19T09:11:47Z",
+  "profile": {
+    "role": "KFS client",
+    "reportDate": "Aug 13, 2026",
+    "reportSource": "transunion.com direct disclosure (fresh 08/13/26 pull) — no scores included",
+    "fileSince": "07/16/2008",
+    "history": "18y · oldest acct Oct 2009 · avg age ~6y on open accts",
+    "location": "Private",
+    "employer": "Private",
+    "piiNote": "Full identity (DOB/SSN/address) is stored locally, never in this repo."
+  },
+  "credit": {
+    "scores": null,
+    "scoresNote": "TU direct PDF has NO score — pull a scored report (Brave/Credit Karma/myFICO) to see the VantageScore 3.0 numbers.",
+    "negative": [
+      {
+        "creditor": "DEPT OF ED / AIDVANTAGE",
+        "account": "Student Loan #…0420 (masked)",
+        "opened": "03/04/2020",
+        "type": "Federal student loan · installment (99 mo)",
+        "balance": "—",
+        "pastDue": "—",
+        "rating": "Transferred; was 120 days past due",
+        "dofd": "12/22/2024",
+        "lastPayment": "11/17/2025",
+        "removalEst": "11/2031",
+        "strategy": "Closed 11/17/2025 — ACCT CLOSED DUE TO TRANSFER. Same federal debt now lives at US DEPT OF EDUCATION default group (2 collection lines below). Federal loan → NOT a deletion target; path = cure delinquency (FSA rehab/consolidation) + accuracy dispute of wrong data points."
+      },
+      {
+        "creditor": "US DEPT OF EDUCATION (Consolidated Direct Loans)",
+        "account": "Student Loan #7525****",
+        "opened": "11/24/2025",
+        "type": "Federal student loan — COLLECTION line 1 of 2",
+        "balance": "—",
+        "pastDue": "—",
+        "rating": "Collection (>CLA< placed for collection)",
+        "dofd": "see note",
+        "lastPayment": "05/12/2026",
+        "removalEst": "02/2027 (verify — conflicts with original 11/2031)",
+        "strategy": "Same consolidated direct loan as Aidvantage line, now at the Dept of Ed default servicer (3130 Fairview Park Dr, Falls Church VA). Federal → cure + accuracy dispute, NOT deletion. Removal-date inconsistency (02/2027 vs 11/2031) is a dispute point."
+      },
+      {
+        "creditor": "US DEPT OF EDUCATION (Consolidated Direct Loans)",
+        "account": "Student Loan #7525****",
+        "opened": "11/24/2025",
+        "type": "Federal student loan — COLLECTION line 2 of 2",
+        "balance": "—",
+        "pastDue": "—",
+        "rating": "Collection (>CLA< placed for collection)",
+        "dofd": "see note",
+        "lastPayment": "05/12/2026",
+        "removalEst": "02/2027 (verify — conflicts with original 11/2031)",
+        "strategy": "Second loan group of the same consolidated debt. Combined with line 1 = — total in collections (was — single line Dec 2025). Cure delinquency + accuracy dispute."
+      }
+    ],
+    "openAccounts": [
+      {
+        "creditor": "Rocket Mortgage",
+        "type": "🏠 Mortgage",
+        "balance": "—",
+        "limit": "—",
+        "opened": "11/30/2021",
+        "note": "— · current · servicer moved Mr Cooper → Rocket (transfer 7/2024)"
+      },
+      {
+        "creditor": "JPMCB Auto Finance",
+        "type": "🚗 Auto",
+        "balance": "—",
+        "limit": "—",
+        "opened": "11/02/2023",
+        "note": "— · current"
+      },
+      {
+        "creditor": "Union County Economic Dev",
+        "type": "🏢 Business",
+        "balance": "—",
+        "limit": "—",
+        "opened": "03/20/2019",
+        "note": "CO-SIGNOR · — · current"
+      },
+      {
+        "creditor": "JPMCB Card Services",
+        "type": "💳 Card",
+        "balance": "—",
+        "limit": "—",
+        "opened": "04/19/2016",
+        "note": "current · UTILIZATION 98% — pay down"
+      },
+      {
+        "creditor": "Apple Card (GS Bank)",
+        "type": "💳 Card",
+        "balance": "—",
+        "limit": "—",
+        "opened": "09/14/2020",
+        "note": "current · UTILIZATION 99% — pay down"
+      },
+      {
+        "creditor": "Ally Financial",
+        "type": "🚗 Auto lease",
+        "balance": "—",
+        "limit": "—",
+        "opened": "12/02/2023",
+        "note": "JOINT w/ co-borrower · — · current · lease ends Dec 2026"
+      },
+      {
+        "creditor": "Capital One",
+        "type": "💳 Card",
+        "balance": "—",
+        "limit": "—",
+        "opened": "09/13/2015",
+        "note": "current · UTILIZATION 89% · same BIN as Jeff's, DIFFERENT account"
+      }
+    ],
+    "closedPositive": "Dept of Ed ×2 (2009, paid 3/2020) · Kia Motor lease (closed 11/2020) · Wells Fargo Auto (paid — 1/2022) · RBS Citizens auto (paid/closed 11/2023) · Garden Savings FCU auto (paid 2019) · Home Point mtg (transferred 6/2022) · Mr Cooper old mtg (transferred 7/2024)",
+    "inquiries": {
+      "tu": "3 HARD, all 04/04/2026 — car-shopping cluster: TD AUTO FINANCE · JPMORGAN CHASE BANK NA · LAND ROVER PARAMUS via 700CRLAND. One cluster counts as ~1 for scoring; ages out Apr 2028.",
+      "experianHard": "RIA FINANCIAL SERVICES (4/11/2025) · M&T BANK (6/3/2024) · Dec 2023 car cluster (KIA/ALLY/HYUNDAI) aged out Jan 2026",
+      "eq": "not in this pull (TU only)"
+    }
+  },
+  "flags": [
+    {
+      "emoji": "🟣",
+      "text": "BORROWER DEFENSE ANGLE — school was Anthem Institute (Parsippany NJ)",
+      "meta": "MPN signed 06/25/2010 confirms attendance. Anthem Education Group closed campuses 8/2014 after bankruptcy; Anthem Institute is on Sweet v. Cardona Exhibit C list → eligible for borrower-defense DISCHARGE + refund of payments made. Check if a BDR application was ever filed (auto-discharge if pending by 6/22/2022); otherwise file at studentaid.gov/borrower-defense."
+    },
+    {
+      "emoji": "🔴",
+      "text": "Student loan now in DEFAULT COLLECTION",
+      "meta": "Aidvantage transferred 11/17/2025 → US Dept of Ed default group, 2 collection lines totaling — (was — single line). Parallel path: BDR discharge + accuracy dispute."
+    },
+    {
+      "emoji": "🔴",
+      "text": "Cards maxed out",
+      "meta": "Apple 99% (—/—) · JPMCB 98% (—/—) · CapOne 89% (—/—). Utilization is the #1 fixable score drag right now."
+    },
+    {
+      "emoji": "🟡",
+      "text": "Removal dates conflict on same debt",
+      "meta": "Collections say removal 02/2027 but original line says 11/2031 (DOFD 12/22/2024). Verify + dispute the wrong one."
+    },
+    {
+      "emoji": "🟡",
+      "text": "Co-signor on — business loan",
+      "meta": "Union County Econ Dev · liability if primary defaults · verify accuracy"
+    },
+    {
+      "emoji": "🟢",
+      "text": "Everything else current",
+      "meta": "Mortgage, auto, lease, business loan all pays-as-agreed · no BK/judgments/public records"
+    }
   ],
-  "openAccounts": [
-   {
-    "creditor": "Rocket Mortgage",
-    "type": "🏠 Mortgage",
-    "balance": "—",
-    "limit": "—",
-    "opened": "11/30/2021",
-    "note": "— · current · servicer moved Mr Cooper → Rocket (transfer 7/2024)"
-   },
-   {
-    "creditor": "JPMCB Auto Finance",
-    "type": "🚗 Auto",
-    "balance": "—",
-    "limit": "—",
-    "opened": "11/02/2023",
-    "note": "— · current"
-   },
-   {
-    "creditor": "Union County Economic Dev",
-    "type": "🏢 Business",
-    "balance": "—",
-    "limit": "—",
-    "opened": "03/20/2019",
-    "note": "CO-SIGNOR · — · current"
-   },
-   {
-    "creditor": "JPMCB Card Services",
-    "type": "💳 Card",
-    "balance": "—",
-    "limit": "—",
-    "opened": "04/19/2016",
-    "note": "current · UTILIZATION 98% — pay down"
-   },
-   {
-    "creditor": "Apple Card (GS Bank)",
-    "type": "💳 Card",
-    "balance": "—",
-    "limit": "—",
-    "opened": "09/14/2020",
-    "note": "current · UTILIZATION 99% — pay down"
-   },
-   {
-    "creditor": "Ally Financial",
-    "type": "🚗 Auto lease",
-    "balance": "—",
-    "limit": "—",
-    "opened": "12/02/2023",
-    "note": "JOINT w/ co-borrower · — · current · lease ends Dec 2026"
-   },
-   {
-    "creditor": "Capital One",
-    "type": "💳 Card",
-    "balance": "—",
-    "limit": "—",
-    "opened": "09/13/2015",
-    "note": "current · UTILIZATION 89% · same BIN as Jeff's, DIFFERENT account"
-   }
+  "actionPlan": {
+    "campaign": "BORROWER DEFENSE DISCHARGE (Anthem Institute) + parallel accuracy disputes — primary path is debt DISCHARGE, not removal",
+    "packDate": "Aug 13, 2026",
+    "round": 1,
+    "method": "PRIMARY: Borrower Defense to Repayment (BDR) at studentaid.gov/borrower-defense — MPN proves attendance at Anthem Institute (Parsippany NJ), a Sweet v. Cardona Exhibit C school that closed 8/2014 after bankruptcy. If approved: full discharge + refund of all payments made. PARALLEL: SoyDaat accuracy disputes for the credit-report lines while BDR processes.",
+    "steps": [
+      {
+        "id": "b1",
+        "label": "CHECK: has Anthony EVER filed a borrower defense application?",
+        "status": "pending",
+        "meta": "Log into studentaid.gov → check application status. If pending by 06/22/2022 → AUTOMATIC Sweet v. Cardona discharge (Anthem on Exhibit C). If never filed → file now."
+      },
+      {
+        "id": "b2",
+        "label": "FILE borrower defense application → studentaid.gov/borrower-defense",
+        "status": "pending",
+        "meta": "Cite Anthem Institute (school code G10851, Parsippany NJ), 8/2014 closure, misrepresentation claims. Attach MPN as proof of attendance. Include ALL loans incl. the 2020 consolidation."
+      },
+      {
+        "id": "b3",
+        "label": "Stop payments / request forbearance while BDR is pending",
+        "status": "pending",
+        "meta": "BDR approval refunds past payments — DO NOT pay off or consolidate while pending. Request collection forbearance."
+      },
+      {
+        "id": "l1",
+        "label": "Mail MOV Dispute → TransUnion (P.O. Box 2000, Chester, PA 19016-2000)",
+        "status": "pending",
+        "meta": "Duplicate 3× reporting of one debt + removal-date conflict (02/2027 vs 11/2031)"
+      },
+      {
+        "id": "l2",
+        "label": "Mail MOV Dispute → Experian (P.O. Box 4500, Allen, TX 75013)",
+        "status": "pending",
+        "meta": "Re-pull EX first (Dec 2025 stale), then dispute same points"
+      },
+      {
+        "id": "l3",
+        "label": "Mail MOV Dispute → Equifax (P.O. Box 740256, Atlanta, GA 30374-0256)",
+        "status": "pending",
+        "meta": "Re-pull EQ first, then dispute same points"
+      },
+      {
+        "id": "l4",
+        "label": "Log all Certified #s + Return Receipt #s in the campaign tracker",
+        "status": "pending",
+        "meta": "start 30-day clock from DELIVERY date"
+      }
+    ],
+    "deadlines": [
+      {
+        "label": "BDR application decision",
+        "days": "varies (months–years); status at studentaid.gov or 1-855-279-6207"
+      },
+      {
+        "label": "Bureau investigation",
+        "days": "30 days from delivery"
+      },
+      {
+        "label": "MOV response (§611(a)(7))",
+        "days": "15 days"
+      },
+      {
+        "label": "Bureau says 'verified'",
+        "days": "→ Round 3: CFPB complaint + final demand"
+      }
+    ],
+    "disputePoints": [
+      "School fraud angle: Anthem Institute closed 8/2014 after bankruptcy; on Sweet v. Cardona Exhibit C",
+      "BDR discharge → credit lines must be removed as discharged debt",
+      "Removal estimates conflict on the SAME debt: collections 02/2027 vs original line 11/2031 (DOFD 12/22/2024 → 7yr = 12/2031)",
+      "Two collection lines for one consolidated loan — verify the split/assignment is accurate",
+      "Transfer timing: Aidvantage closed 11/17/2025, US Dept Ed lines opened 11/24/2025 — no double-reporting"
+    ]
+  },
+  "quickCommands": [
+    {
+      "emoji": "📋",
+      "label": "Campaign Status",
+      "cmd": "Show Anthony Duran's credit dispute campaign status: which letters are sent, tracking numbers, deadlines, and next action."
+    },
+    {
+      "emoji": "✍️",
+      "label": "Draft Next Letter",
+      "cmd": "Draft the next dispute letter for Anthony Duran's student loan campaign (Aidvantage transfer → US Dept of Ed 2 collection lines). Check private storage first."
+    },
+    {
+      "emoji": "📊",
+      "label": "Fresh Report",
+      "cmd": "Help Anthony Duran pull fresh SCORED credit reports (3 bureaus). TU pulled 08/13/26 (no score in PDF) — still need EQ + EX re-pulls and scored views."
+    },
+    {
+      "emoji": "💳",
+      "label": "Utilization Plan",
+      "cmd": "Build a paydown plan for Anthony Duran's maxed cards: Apple 99%, JPMCB 98%, CapOne 89%. Target under 30% utilization before next pull."
+    },
+    {
+      "emoji": "🏠",
+      "label": "Co-signor Check",
+      "cmd": "Verify the Union County Economic Dev business loan (—) co-signor line on Anthony Duran's report is still accurate."
+    },
+    {
+      "emoji": "🎯",
+      "label": "Score Plan",
+      "cmd": "Build a 90-day credit score improvement plan for Anthony Duran: cure student loan delinquency + pay down card utilization."
+    }
   ],
-  "closedPositive": "Dept of Ed ×2 (2009, paid 3/2020) · Kia Motor lease (closed 11/2020) · Wells Fargo Auto (paid — 1/2022) · RBS Citizens auto (paid/closed 11/2023) · Garden Savings FCU auto (paid 2019) · Home Point mtg (transferred 6/2022) · Mr Cooper old mtg (transferred 7/2024)",
-  "inquiries": {
-   "tu": "3 HARD, all 04/04/2026 — car-shopping cluster: TD AUTO FINANCE · JPMORGAN CHASE BANK NA · LAND ROVER PARAMUS via 700CRLAND. One cluster counts as ~1 for scoring; ages out Apr 2028.",
-   "experianHard": "RIA FINANCIAL SERVICES (4/11/2025) · M&T BANK (6/3/2024) · Dec 2023 car cluster (KIA/ALLY/HYUNDAI) aged out Jan 2026",
-   "eq": "not in this pull (TU only)"
-  }
- },
- "flags": [
-  {
-   "emoji": "🟣",
-   "text": "BORROWER DEFENSE ANGLE — school was Anthem Institute (Parsippany NJ)",
-   "meta": "MPN signed 06/25/2010 confirms attendance. Anthem Education Group closed campuses 8/2014 after bankruptcy; Anthem Institute is on Sweet v. Cardona Exhibit C list → eligible for borrower-defense DISCHARGE + refund of payments made. Check if a BDR application was ever filed (auto-discharge if pending by 6/22/2022); otherwise file at studentaid.gov/borrower-defense."
-  },
-  {
-   "emoji": "🔴",
-   "text": "Student loan now in DEFAULT COLLECTION",
-   "meta": "Aidvantage transferred 11/17/2025 → US Dept of Ed default group, 2 collection lines totaling — (was — single line). Parallel path: BDR discharge + accuracy dispute."
-  },
-  {
-   "emoji": "🔴",
-   "text": "Cards maxed out",
-   "meta": "Apple 99% (—/—) · JPMCB 98% (—/—) · CapOne 89% (—/—). Utilization is the #1 fixable score drag right now."
-  },
-  {
-   "emoji": "🟡",
-   "text": "Removal dates conflict on same debt",
-   "meta": "Collections say removal 02/2027 but original line says 11/2031 (DOFD 12/22/2024). Verify + dispute the wrong one."
-  },
-  {
-   "emoji": "🟡",
-   "text": "Co-signor on — business loan",
-   "meta": "Union County Econ Dev · liability if primary defaults · verify accuracy"
-  },
-  {
-   "emoji": "🟢",
-   "text": "Everything else current",
-   "meta": "Mortgage, auto, lease, business loan all pays-as-agreed · no BK/judgments/public records"
-  }
- ],
- "actionPlan": {
-  "campaign": "BORROWER DEFENSE DISCHARGE (Anthem Institute) + parallel accuracy disputes — primary path is debt DISCHARGE, not removal",
-  "packDate": "Aug 13, 2026",
-  "round": 1,
-  "method": "PRIMARY: Borrower Defense to Repayment (BDR) at studentaid.gov/borrower-defense — MPN proves attendance at Anthem Institute (Parsippany NJ), a Sweet v. Cardona Exhibit C school that closed 8/2014 after bankruptcy. If approved: full discharge + refund of all payments made. PARALLEL: SoyDaat accuracy disputes for the credit-report lines while BDR processes.",
-  "steps": [
-   {
-    "id": "b1",
-    "label": "CHECK: has Anthony EVER filed a borrower defense application?",
-    "status": "pending",
-    "meta": "Log into studentaid.gov → check application status. If pending by 06/22/2022 → AUTOMATIC Sweet v. Cardona discharge (Anthem on Exhibit C). If never filed → file now."
-   },
-   {
-    "id": "b2",
-    "label": "FILE borrower defense application → studentaid.gov/borrower-defense",
-    "status": "pending",
-    "meta": "Cite Anthem Institute (school code G10851, Parsippany NJ), 8/2014 closure, misrepresentation claims. Attach MPN as proof of attendance. Include ALL loans incl. the 2020 consolidation."
-   },
-   {
-    "id": "b3",
-    "label": "Stop payments / request forbearance while BDR is pending",
-    "status": "pending",
-    "meta": "BDR approval refunds past payments — DO NOT pay off or consolidate while pending. Request collection forbearance."
-   },
-   {
-    "id": "l1",
-    "label": "Mail MOV Dispute → TransUnion (P.O. Box 2000, Chester, PA 19016-2000)",
-    "status": "pending",
-    "meta": "Duplicate 3× reporting of one debt + removal-date conflict (02/2027 vs 11/2031)"
-   },
-   {
-    "id": "l2",
-    "label": "Mail MOV Dispute → Experian (P.O. Box 4500, Allen, TX 75013)",
-    "status": "pending",
-    "meta": "Re-pull EX first (Dec 2025 stale), then dispute same points"
-   },
-   {
-    "id": "l3",
-    "label": "Mail MOV Dispute → Equifax (P.O. Box 740256, Atlanta, GA 30374-0256)",
-    "status": "pending",
-    "meta": "Re-pull EQ first, then dispute same points"
-   },
-   {
-    "id": "l4",
-    "label": "Log all Certified #s + Return Receipt #s in the campaign tracker",
-    "status": "pending",
-    "meta": "start 30-day clock from DELIVERY date"
-   }
+  "sessions": [
+    {
+      "title": "Anthony Fresh TU Pull",
+      "who": "Anthony R",
+      "when": "Aug 13, 2026 — fresh transunion.com disclosure analyzed",
+      "cmd": "Continue the Anthony Duran credit analysis with the FRESH 08/13/26 TU pull at private storage The Aidvantage loan transferred to US Dept of Ed as 2 collection lines (—). Update the MOV campaign for the new furnisher."
+    },
+    {
+      "title": "Anthony Credit Analysis",
+      "who": "Anthony R",
+      "when": "Dec 13, 2025 pull analyzed",
+      "cmd": "Continue the Anthony Duran credit report analysis. Review private storage and the MOV campaign tracker, then report current status and next steps."
+    }
   ],
-  "deadlines": [
-   {
-    "label": "BDR application decision",
-    "days": "varies (months–years); status at studentaid.gov or 1-855-279-6207"
-   },
-   {
-    "label": "Bureau investigation",
-    "days": "30 days from delivery"
-   },
-   {
-    "label": "MOV response (§611(a)(7))",
-    "days": "15 days"
-   },
-   {
-    "label": "Bureau says 'verified'",
-    "days": "→ Round 3: CFPB complaint + final demand"
-   }
-  ],
-  "disputePoints": [
-   "School fraud angle: Anthem Institute closed 8/2014 after bankruptcy; on Sweet v. Cardona Exhibit C",
-   "BDR discharge → credit lines must be removed as discharged debt",
-   "Removal estimates conflict on the SAME debt: collections 02/2027 vs original line 11/2031 (DOFD 12/22/2024 → 7yr = 12/2031)",
-   "Two collection lines for one consolidated loan — verify the split/assignment is accurate",
-   "Transfer timing: Aidvantage closed 11/17/2025, US Dept Ed lines opened 11/24/2025 — no double-reporting"
+  "financial": [
+    {
+      "label": "Total Open Balances",
+      "value": 607873,
+      "fmt": "—",
+      "kind": "neg",
+      "note": "incl. mortgage + auto + business + 2 collections"
+    },
+    {
+      "label": "Student Loan Collections",
+      "value": 2955,
+      "fmt": "—",
+      "kind": "neg",
+      "note": "was — single line Dec 2025 — now 2 lines at US Dept of Ed"
+    },
+    {
+      "label": "Open Accounts",
+      "value": 7,
+      "fmt": "7 healthy · all current",
+      "kind": "pos"
+    },
+    {
+      "label": "Derogatory Items",
+      "value": 3,
+      "fmt": "3 (1 debt, 3 tradelines)",
+      "kind": "neutral"
+    }
   ]
- },
- "quickCommands": [
-  {
-   "emoji": "📋",
-   "label": "Campaign Status",
-   "cmd": "Show Anthony Duran's credit dispute campaign status: which letters are sent, tracking numbers, deadlines, and next action."
-  },
-  {
-   "emoji": "✍️",
-   "label": "Draft Next Letter",
-   "cmd": "Draft the next dispute letter for Anthony Duran's student loan campaign (Aidvantage transfer → US Dept of Ed 2 collection lines). Check private storage first."
-  },
-  {
-   "emoji": "📊",
-   "label": "Fresh Report",
-   "cmd": "Help Anthony Duran pull fresh SCORED credit reports (3 bureaus). TU pulled 08/13/26 (no score in PDF) — still need EQ + EX re-pulls and scored views."
-  },
-  {
-   "emoji": "💳",
-   "label": "Utilization Plan",
-   "cmd": "Build a paydown plan for Anthony Duran's maxed cards: Apple 99%, JPMCB 98%, CapOne 89%. Target under 30% utilization before next pull."
-  },
-  {
-   "emoji": "🏠",
-   "label": "Co-signor Check",
-   "cmd": "Verify the Union County Economic Dev business loan (—) co-signor line on Anthony Duran's report is still accurate."
-  },
-  {
-   "emoji": "🎯",
-   "label": "Score Plan",
-   "cmd": "Build a 90-day credit score improvement plan for Anthony Duran: cure student loan delinquency + pay down card utilization."
-  }
- ],
- "sessions": [
-  {
-   "title": "Anthony Fresh TU Pull",
-   "who": "Anthony R",
-   "when": "Aug 13, 2026 — fresh transunion.com disclosure analyzed",
-   "cmd": "Continue the Anthony Duran credit analysis with the FRESH 08/13/26 TU pull at private storage The Aidvantage loan transferred to US Dept of Ed as 2 collection lines (—). Update the MOV campaign for the new furnisher."
-  },
-  {
-   "title": "Anthony Credit Analysis",
-   "who": "Anthony R",
-   "when": "Dec 13, 2025 pull analyzed",
-   "cmd": "Continue the Anthony Duran credit report analysis. Review private storage and the MOV campaign tracker, then report current status and next steps."
-  }
- ],
- "financial": [
-  {
-   "label": "Total Open Balances",
-   "value": 607873,
-   "fmt": "—",
-   "kind": "neg",
-   "note": "incl. mortgage + auto + business + 2 collections"
-  },
-  {
-   "label": "Student Loan Collections",
-   "value": 2955,
-   "fmt": "—",
-   "kind": "neg",
-   "note": "was — single line Dec 2025 — now 2 lines at US Dept of Ed"
-  },
-  {
-   "label": "Open Accounts",
-   "value": 7,
-   "fmt": "7 healthy · all current",
-   "kind": "pos"
-  },
-  {
-   "label": "Derogatory Items",
-   "value": 3,
-   "fmt": "3 (1 debt, 3 tradelines)",
-   "kind": "neutral"
-  }
- ]
 }

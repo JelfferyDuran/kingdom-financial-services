@@ -1,79 +1,79 @@
 {
- "slug": "cesar-larancuent",
- "name": "César Larancuent",
- "display": "César Larancuent",
- "title": "Centro de Control de Crédito",
- "lang": "es",
- "updatedAt": "2026-08-18T09:00:04Z",
- "profile": {
-  "role": "KFS client",
-  "reportDate": "TBD — data lives in cesar-cr-tracker (Supabase)",
-  "reportSource": "https://jelfferyduran.github.io/cesar-cr-tracker/ (login-gated)",
-  "history": "TBD",
-  "location": "TBD",
-  "piiNote": "Full client data is stored in the cesar-cr-tracker Supabase database, NOT in this public repo."
- },
- "credit": {
-  "scores": null,
-  "scoresNote": "Scores are stored in the cesar-cr-tracker app (Supabase). Seed this file from there when the app data is exported.",
-  "negative": [],
-  "openAccounts": [],
-  "closedPositive": "TBD from cesar-cr-tracker",
-  "inquiries": {}
- },
- "flags": [
-  {
-   "emoji": "ℹ️",
-   "text": "Dashboard exists in cesar-cr-tracker",
-   "meta": "Spanish UI · Supabase auth · login required"
+  "slug": "cesar-larancuent",
+  "name": "César Larancuent",
+  "display": "César Larancuent",
+  "title": "Centro de Control de Crédito",
+  "lang": "es",
+  "updatedAt": "2026-08-19T09:11:47Z",
+  "profile": {
+    "role": "KFS client",
+    "reportDate": "TBD — data lives in cesar-cr-tracker (Supabase)",
+    "reportSource": "https://jelfferyduran.github.io/cesar-cr-tracker/ (login-gated)",
+    "history": "TBD",
+    "location": "TBD",
+    "piiNote": "Full client data is stored in the cesar-cr-tracker Supabase database, NOT in this public repo."
   },
-  {
-   "emoji": "⏳",
-   "text": "Data not yet mirrored into this miniapp",
-   "meta": "export from Supabase or fill manually, then update this file"
-  }
- ],
- "actionPlan": {
-  "campaign": "Centro de Control de Crédito — César Larancuent",
-  "packDate": null,
-  "round": null,
-  "method": "Follow the soydaat-fcra-disputes 3-round framework. Full letter history is in the cesar-cr-tracker app.",
-  "steps": [
-   {
-    "id": "s1",
-    "label": "Mirror client data from cesar-cr-tracker into this app",
-    "status": "pending",
-    "meta": "scores, accounts, flags, action plan"
-   },
-   {
-    "id": "s2",
-    "label": "Define campaign rounds & letters for this client",
-    "status": "pending",
-    "meta": "soydaat-fcra-disputes skill"
-   }
+  "credit": {
+    "scores": null,
+    "scoresNote": "Scores are stored in the cesar-cr-tracker app (Supabase). Seed this file from there when the app data is exported.",
+    "negative": [],
+    "openAccounts": [],
+    "closedPositive": "TBD from cesar-cr-tracker",
+    "inquiries": {}
+  },
+  "flags": [
+    {
+      "emoji": "ℹ️",
+      "text": "Dashboard exists in cesar-cr-tracker",
+      "meta": "Spanish UI · Supabase auth · login required"
+    },
+    {
+      "emoji": "⏳",
+      "text": "Data not yet mirrored into this miniapp",
+      "meta": "export from Supabase or fill manually, then update this file"
+    }
   ],
-  "deadlines": [],
-  "disputePoints": []
- },
- "quickCommands": [
-  {
-   "emoji": "🇪🇸",
-   "label": "Estado de Crédito",
-   "cmd": "Muestra el estado del crédito de César Larancuent: puntajes, cuentas, banderas y próximos pasos en español."
+  "actionPlan": {
+    "campaign": "Centro de Control de Crédito — César Larancuent",
+    "packDate": null,
+    "round": null,
+    "method": "Follow the soydaat-fcra-disputes 3-round framework. Full letter history is in the cesar-cr-tracker app.",
+    "steps": [
+      {
+        "id": "s1",
+        "label": "Mirror client data from cesar-cr-tracker into this app",
+        "status": "pending",
+        "meta": "scores, accounts, flags, action plan"
+      },
+      {
+        "id": "s2",
+        "label": "Define campaign rounds & letters for this client",
+        "status": "pending",
+        "meta": "soydaat-fcra-disputes skill"
+      }
+    ],
+    "deadlines": [],
+    "disputePoints": []
   },
-  {
-   "emoji": "📋",
-   "label": "Campaign Status",
-   "cmd": "Show César Larancuent's credit dispute campaign status from the cesar-cr-tracker app and the soydaat framework."
-  }
- ],
- "sessions": [
-  {
-   "title": "César CR Tracker",
-   "who": "César L",
-   "when": "tracker live",
-   "cmd": "Continue César Larancuent's credit control work. Reference the cesar-cr-tracker repo and the soydaat-fcra-disputes skill. Report status and next steps."
-  }
- ],
- "financial": []
+  "quickCommands": [
+    {
+      "emoji": "🇪🇸",
+      "label": "Estado de Crédito",
+      "cmd": "Muestra el estado del crédito de César Larancuent: puntajes, cuentas, banderas y próximos pasos en español."
+    },
+    {
+      "emoji": "📋",
+      "label": "Campaign Status",
+      "cmd": "Show César Larancuent's credit dispute campaign status from the cesar-cr-tracker app and the soydaat framework."
+    }
+  ],
+  "sessions": [
+    {
+      "title": "César CR Tracker",
+      "who": "César L",
+      "when": "tracker live",
+      "cmd": "Continue César Larancuent's credit control work. Reference the cesar-cr-tracker repo and the soydaat-fcra-disputes skill. Report status and next steps."
+    }
+  ],
+  "financial": []
 }
