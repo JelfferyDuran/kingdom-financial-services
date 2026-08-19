@@ -12,7 +12,7 @@ dashboard for KFS clients and general Hermes sessions. Opened inside Telegram vi
 - **Live URL:** https://jelfferyduran.github.io/kingdom-financial-services/miniapp/
 - **Host repo:** `JelfferyDuran/kingdom-financial-services` (PUBLIC — see PII rule below)
 - **Hosting:** GitHub Pages, "Deploy from a branch" → `main` / root. Push to main = instant publish. No build step.
-- **Telegram:** menu button + welcome message wired via Bot API (`setChatMenuButton`, inline `web_app` button). Bot token lives in `/opt/data/.env` (`TELEGRAM_BOT_TOKEN`). Bot username: `kingdomfi_bot`.
+- **Telegram:** menu button + welcome message wired via Bot API (`setChatMenuButton`, inline `web_app` button). Bot token lives in the local `.env` (never in this repo). Bot username: `kingdomfi_bot`.
 
 ## Repository layout
 
@@ -77,8 +77,8 @@ supabase/
 - **⚡ Per-step ask buttons**: every action-plan step has a ⚡ button that sends a self-contained "execute this step" prompt.
 - **🧠 LLM prompt standard (non-negotiable)**: every command the app emits follows `promptBuilder()`: `🧠 HERMES — KFS TASK` header → CLIENT/REPORT/CAMPAIGN/SOURCES context → TASK → RULES (soydaat framework, verify sources, no invented numbers, mask PII, certified mail, report next action) → OUTPUT format. When editing commands in `quickCommands` or data files, keep this structure — it is what makes button commands work well with any agent.
 - **🔒 Client access links**: `?client=<slug>` locks the app to one client (client switcher hidden) — give each client their own URL.
-- **☁️ Supabase progress bridge: ✅ ENABLED (2026-08-14)** — `SUPABASE_ENABLED=true`, real anon key in place, project `rckqjverdckszsrzjkzs` (cesar/KFS shared project) restored + migrations applied (`20260813_enable_multi_client_progress.sql` + `20260814_seed_slugs_and_new_user_trigger.sql`). Checkmarks sync per client via OTP magic-link login, RLS-protected. Slugs seeded: `cesarlarancuent63@gmail.com → cesar-larancuent`, `jelfferyduran@gmail.com → general`. A `handle_new_user` trigger auto-creates a profile row for ANY new sign-in; known client emails auto-map.
-  - **Mapping a new client email** (e.g. Anthony after his first sign-in): run once via SQL editor or `python3 /opt/data/scripts/sb_query.py rckqjverdckszsrzjkzs <file>` → `UPDATE public.profiles SET slug='anthony-duran' WHERE email='<their-email>' AND slug IS NULL;` — and add the email to the `CASE` in `miniapp/supabase/migrations/20260814_seed_slugs_and_new_user_trigger.sql` so future sign-ins auto-map.
+- **☁️ Supabase progress bridge: ✅ ENABLED (2026-08-14)** — `SUPABASE_ENABLED=true`, real anon key in place, project `rckqjverdckszsrzjkzs` (cesar/KFS shared project) restored + migrations applied (`20260813_enable_multi_client_progress.sql` + `20260814_seed_slugs_and_new_user_trigger.sql`). Checkmarks sync per client via OTP magic-link login, RLS-protected. Slugs seeded: `<client-email> → <slug>`. A `handle_new_user` trigger auto-creates a profile row for ANY new sign-in; known client emails auto-map.
+  - **Mapping a new client email** (e.g. Anthony after his first sign-in): run once via SQL editor → `UPDATE public.profiles SET slug='anthony-duran' WHERE email='<their-email>' AND slug IS NULL;` — and add the email to the `CASE` in `miniapp/supabase/migrations/20260814_seed_slugs_and_new_user_trigger.sql` so future sign-ins auto-map.
   - Free-plan slot note: project was paused (2-active limit); `empanadas-monumental-elizabeth` Supabase (`maxhsuddkkalsyuzgren`) is paused to keep this one active. Resume with `POST /v1/projects/<ref>/restore` after pausing something else.
 - **🌐 i18n**: fixed labels translate for `lang: "es"`. Data text stays as authored.
 - **💡 Tap-to-copy accounts**: tapping an open account copies a "check status" prompt. Sections animate in (`.reveal`).
@@ -102,15 +102,12 @@ Existing branches: `client/anthony-duran`, `client/cesar-larancuent`.
 ## How data stays fresh
 
 - **Cron:** daily 09:00 UTC job runs `miniapp/scripts/update_snapshot.py`
-  (wrapper: `/opt/data/scripts/update_kingdom_hermes_snapshot.py`) → refreshes all
+  (wrapper: `local scripts`) → refreshes all
   `updatedAt` timestamps, commits, pushes. Silent when nothing changed.
 - **Manual:** any agent may edit `data/clients/*.json` directly and push — the miniapp
   picks changes up on next open (fetch with cache-busting; embedded fallback offline).
 - **Real sources (local VPS, NOT in this repo):**
-  - Credit reports + analyses: `/opt/data/finance/credit/`
-  - Anthony MOV pack: `/opt/data/finance/credit/dispute-letters-2026-08/anthony_mov/`
-  - Jeff's campaign tracker: `/opt/data/finance/credit/dispute-letters-2026-08/CAMPAIGN_TRACKER.md`
-  - Obsidian vault (KFS KB): `/opt/data/obsidian-vault-git/01 - KFS/`
+  - Credit reports, MOV packs, and campaign trackers live in private local storage (never in this repo).
 
 ## Agent conventions
 
@@ -158,7 +155,7 @@ curl -s https://jelfferyduran.github.io/kingdom-financial-services/miniapp/data/
 - **URL (primary):** https://kfs-kingdom-os.vercel.app — hosted on **Vercel** (project `kingdom-os`, team kingdom-noel).
 - **URL (backup):** https://jelfferyduran.github.io/kingdom-financial-services/miniapp/kingdom-os/ (GitHub Pages — keep as fallback; github.io is unreachable on some mobile networks/VPNs).
 - Sanitized public mirror of the KFS Admin OS (tailnet-only at kfs-os.tail258ffd.ts.net).
-- `data.json` is AUTO-GENERATED by the KFS collector (`/opt/data/kfs-admin-os/collector.py` → `publish_miniapp()`), committed+ pushed to GitHub only when changed, then deployed to Vercel via `/opt/data/scripts/deploy_miniapp_vercel.py`. **Do not hand-edit.**
+- `data.json` is AUTO-GENERATED by the KFS collector (`local scripts` → `publish_miniapp()`), committed+ pushed to GitHub only when changed, then deployed to Vercel via `local scripts`. **Do not hand-edit.**
 - **PII rule (hard):** this mirror must NEVER contain finance numbers, client data, gmail findings, notes, or case-pack links. Allowed: site names/urls, case names + hub links, status counts, health history.
 - **🔒 Locked-mode UI kit (`KOS_LOCKED`)** — reusable locked-mode components for any `?client=` view:
   - Shell: `KOS_LOCKED.applyShell()` (idempotent, re-run on every render/nav; `syncLockedState()` already calls it) + `shellHTML()`. Renders the lock banner with the client's display name (resolved from `../data/clients.json`) and gates the page.
