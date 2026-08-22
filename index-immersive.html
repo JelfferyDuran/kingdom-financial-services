@@ -45,8 +45,7 @@
 
 <style>
 /* ═══════════════════════════════════════════════
-   KFS DESIGN SYSTEM — PARAMETRIC ROYAL / CYBER CINEMATIC
-   Fluid · generative · immersive · parallax
+   KFS DESIGN SYSTEM — ROYAL / CYBER CINEMATIC
    ═══════════════════════════════════════════════ */
 :root{
   /* Brand — Royal Gold on Obsidian */
@@ -75,20 +74,11 @@
   --font-sans:"DM Sans", system-ui, sans-serif;
   --font-mono:"JetBrains Mono", monospace;
 
-  --text-hero:clamp(3rem, 9vw, 7.5rem);
-  --text-h2:clamp(2.2rem, 5vw, 3.6rem);
-
-  /* Fluid spacing (parametric scale) */
-  --space-1:clamp(0.5rem, 1vw, 0.9rem);
-  --space-2:clamp(0.9rem, 2vw, 1.6rem);
-  --space-3:clamp(1.4rem, 3vw, 2.6rem);
-  --space-4:clamp(2.2rem, 5vw, 4.4rem);
-  --space-5:clamp(3.4rem, 8vw, 7rem);
+  --text-hero:clamp(3.2rem, 9vw, 7.5rem);
 
   /* Effects */
   --glow-gold:0 0 24px rgba(201,168,76,0.55), 0 0 60px rgba(201,168,76,0.18);
   --bg-grain-radial:radial-gradient(1200px 600px at 50% -10%, rgba(201,168,76,0.06), transparent 60%);
-  --ease-out:cubic-bezier(.2,.8,.2,1);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -120,29 +110,13 @@ img,svg,canvas{display:block}
   width:44px;height:44px;border:1px solid var(--gold-border);
   transition:width .3s,height .3s,border-color .3s;
 }
-.cursor-ring.is-active{width:76px;height:76px;border-color:var(--gold)}
+.cursor-ring.is-active{width:72px;height:72px;border-color:var(--gold)}
 
-/* ── WebGL canvas + grain ── */
+/* ── WebGL canvas ── */
 #bg{position:fixed;inset:0;z-index:0;pointer-events:none}
 #grain{
-  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.06;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ── Floating parallax orbs (DOM depth layers) ── */
-.orb{
-  position:fixed;border-radius:50%;pointer-events:none;z-index:0;
-  filter:blur(60px);will-change:transform;opacity:.5;
-}
-.orb-1{width:38vmax;height:38vmax;top:-12vmax;left:-10vmax;
-  background:radial-gradient(circle at 35% 35%, rgba(201,168,76,.22), transparent 65%);animation:orbDrift 26s ease-in-out infinite alternate}
-.orb-2{width:30vmax;height:30vmax;bottom:-8vmax;right:-6vmax;
-  background:radial-gradient(circle at 60% 40%, rgba(83,216,255,.10), transparent 65%);animation:orbDrift 32s ease-in-out infinite alternate-reverse}
-.orb-3{width:22vmax;height:22vmax;top:38%;left:58%;
-  background:radial-gradient(circle at 50% 50%, rgba(245,200,66,.12), transparent 65%);animation:orbDrift 22s ease-in-out infinite alternate}
-@keyframes orbDrift{
-  0%{transform:translate3d(0,0,0) scale(1)}
-  100%{transform:translate3d(4vmax,-3vmax,0) scale(1.12)}
 }
 
 /* ── Scroll progress ── */
@@ -167,7 +141,7 @@ img,svg,canvas{display:block}
   padding:22px clamp(20px,5vw,60px);
   transition:background .4s,padding .4s,backdrop-filter .4s;
 }
-#nav.scrolled{background:rgba(5,7,11,.72);backdrop-filter:blur(18px);padding:14px clamp(20px,5vw,60px);border-bottom:1px solid var(--gold-border)}
+#nav.scrolled{background:rgba(5,7,11,.7);backdrop-filter:blur(18px);padding:14px clamp(20px,5vw,60px);border-bottom:1px solid var(--gold-border)}
 .nav-logo{display:flex;align-items:center;gap:14px}
 .logo-mark{
   width:44px;height:44px;display:flex;align-items:center;justify-content:center;
@@ -207,7 +181,7 @@ main{position:relative;z-index:2}
 .wrap{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
 
 /* ── Hero ── */
-#hero{min-height:100vh;align-items:center;perspective:1000px}
+#hero{min-height:100vh;align-items:center}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:10px;padding:8px 20px;margin-bottom:28px;
   border:1px solid var(--gold-border);border-radius:100px;background:var(--gold-subtle);
@@ -218,11 +192,10 @@ main{position:relative;z-index:2}
 .hero h1{
   font-size:var(--text-hero);font-weight:900;margin-bottom:24px;
 }
-.hero h1 .line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.hero h1 .ch{display:inline-block;transform:translateY(110%);will-change:transform}
-.hero h1 .accent .ch{
+.hero h1 .accent{
   background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-muted) 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-style:italic;
 }
 .hero-meta{
   display:flex;align-items:center;gap:24px;margin-bottom:32px;
@@ -235,7 +208,7 @@ main{position:relative;z-index:2}
 .btn{
   position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 40px;
   border-radius:10px;font-weight:600;font-size:.9rem;letter-spacing:.06em;overflow:hidden;
-  transition:transform .3s,box-shadow .3s;will-change:transform;cursor:none;
+  transition:transform .3s,box-shadow .3s;will-change:transform;
 }
 .btn-gold{
   background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-muted) 100%);
@@ -254,61 +227,40 @@ main{position:relative;z-index:2}
 .scroll-hint .line{width:1px;height:50px;background:linear-gradient(180deg,transparent,var(--gold));animation:drop 1.6s infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* ── Craft marquee (the dev signature ribbon) ── */
-#marquee{
-  position:relative;z-index:2;padding:26px 0;border-top:1px solid rgba(255,255,255,.05);
-  border-bottom:1px solid rgba(255,255,255,.05);background:rgba(5,7,11,.5);overflow:hidden;
-  transform:rotate(-1deg) scale(1.02);
-}
-.marquee-track{display:flex;width:max-content;animation:marquee 34s linear infinite}
-.marquee-track span{
-  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--gold);white-space:nowrap;padding:0 2rem;display:flex;align-items:center;gap:2rem;
-}
-.marquee-track i{font-style:normal;color:var(--neutral);font-size:.9rem}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ── Stats strip ── */
-#stats{min-height:auto;padding:var(--space-5) 0}
+/* Stats strip */
+#stats{min-height:auto;padding:40px 0 80px}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .stat-card{
-  position:relative;padding:var(--space-4) var(--space-3);text-align:center;overflow:hidden;
+  position:relative;padding:40px 30px;text-align:center;overflow:hidden;
   background:var(--dark-2);border:1px solid var(--gold-border);border-radius:16px;
-  transform-style:preserve-3d;will-change:transform;
 }
 .stat-card::before{content:'';position:absolute;inset:0;background:var(--bg-grain-radial);opacity:.6}
-.stat-card::after{content:'';position:absolute;inset:0;border-radius:16px;opacity:0;transition:opacity .4s;
-  background:radial-gradient(600px circle at var(--gx,50%) var(--gy,50%), rgba(245,200,66,.12), transparent 45%)}
-.stat-card:hover::after{opacity:1}
 .stat-num{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,4vw,3.6rem);color:var(--gold-bright);text-shadow:0 0 30px rgba(201,168,76,.3)}
 .stat-label{margin-top:10px;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--neutral)}
 
-/* ── Section header ── */
-.sec-head{max-width:720px;margin-bottom:var(--space-5)}
+/* Section header */
+.sec-head{max-width:720px;margin-bottom:70px}
 .sec-index{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.3em;color:var(--gold);margin-bottom:16px;display:block}
-.sec-head h2{font-size:var(--text-h2);margin-bottom:20px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:20px}
 .sec-head p{font-family:var(--font-serif);font-size:1.15rem;line-height:1.7;color:var(--white-muted)}
 
-/* ── Services — cards ── */
+/* Services — cards */
 #services{align-items:flex-start}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .service-card{
   position:relative;padding:44px 34px;border-radius:20px;overflow:hidden;
   background:var(--dark-2);border:1px solid rgba(255,255,255,.08);
-  transition:transform .5s var(--ease-out),box-shadow .5s,border-color .5s;min-height:420px;
-  display:flex;flex-direction:column;transform-style:preserve-3d;will-change:transform;
+  transition:transform .4s,box-shadow .4s,border-color .4s;min-height:420px;
+  display:flex;flex-direction:column;
 }
 .service-card::after{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);opacity:0;transition:opacity .4s}
-.service-card::before{content:'';position:absolute;inset:0;border-radius:20px;opacity:0;transition:opacity .4s;pointer-events:none;
-  background:radial-gradient(700px circle at var(--gx,50%) var(--gy,50%), rgba(245,200,66,.10), transparent 45%)}
-.service-card:hover{border-color:var(--gold-border);box-shadow:0 30px 60px rgba(0,0,0,.5)}
-.service-card:hover::after,.service-card:hover::before{opacity:1}
+.service-card:hover{transform:translateY(-10px);border-color:var(--gold-border);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.service-card:hover::after{opacity:1}
 .service-icon{
   width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;
   font-size:1.8rem;margin-bottom:26px;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.02));border:1px solid var(--gold-border);
-  transform:translateZ(30px);
 }
-.service-card h3{font-size:1.45rem;margin-bottom:14px;transform:translateZ(20px)}
+.service-card h3{font-size:1.45rem;margin-bottom:14px}
 .service-card .tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
 .service-card p{font-size:.92rem;line-height:1.75;color:var(--white-muted);margin-bottom:22px;flex:1}
 .service-card ul{list-style:none;margin-bottom:26px}
@@ -318,12 +270,11 @@ main{position:relative;z-index:2}
 .service-link:hover .arrow{transform:translateX(5px)}
 .service-link .arrow{transition:transform .3s}
 
-/* ── Process timeline ── */
+/* Process timeline */
 #process{align-items:flex-start}
 .process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .step{
   position:relative;padding:40px 30px;border-radius:16px;background:var(--dark-2);border:1px solid rgba(255,255,255,.06);
-  transform-style:preserve-3d;will-change:transform;
 }
 .step .num{
   font-family:var(--font-display);font-weight:900;font-size:3.6rem;line-height:1;
@@ -335,14 +286,14 @@ main{position:relative;z-index:2}
 .step-line{position:absolute;top:50%;right:-24px;width:48px;height:1px;background:linear-gradient(90deg,var(--gold-muted),transparent)}
 .step:last-child .step-line{display:none}
 
-/* ── Proof / testimonials ── */
+/* Proof / testimonials */
 #proof{align-items:flex-start}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .testi{
   padding:38px 32px;border-radius:18px;background:var(--dark-2);border:1px solid rgba(255,255,255,.07);
-  position:relative;transition:transform .5s var(--ease-out),border-color .5s;transform-style:preserve-3d;will-change:transform;
+  position:relative;transition:transform .4s,border-color .4s;
 }
-.testi:hover{border-color:var(--gold-border)}
+.testi:hover{transform:translateY(-8px);border-color:var(--gold-border)}
 .testi .quote-mark{font-family:var(--font-serif);font-size:4rem;color:var(--gold);opacity:.3;line-height:.5;display:block;margin-bottom:30px}
 .testi p{font-family:var(--font-serif);font-size:1.15rem;font-style:italic;line-height:1.7;color:var(--white);margin-bottom:28px}
 .testi .who{margin-top:auto}
@@ -350,7 +301,7 @@ main{position:relative;z-index:2}
 .testi .role{font-size:.75rem;color:var(--neutral);margin-top:4px}
 .testi .stars{color:var(--gold-bright);letter-spacing:3px;margin-bottom:16px;font-size:.85rem}
 
-/* ── FAQ ── */
+/* FAQ */
 #faq{align-items:flex-start}
 .faq-list{max-width:820px;margin:0 auto}
 .faq-item{
@@ -364,7 +315,7 @@ main{position:relative;z-index:2}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
 .faq-a p{padding:0 30px 26px;color:var(--white-muted);line-height:1.75;font-size:.92rem}
 
-/* ── Contact / CTA ── */
+/* Contact / CTA */
 #contact{min-height:100vh;align-items:center;text-align:center}
 .contact-card{
   max-width:640px;margin:0 auto;padding:60px 50px;border-radius:28px;position:relative;overflow:hidden;
@@ -393,7 +344,7 @@ main{position:relative;z-index:2}
 .portal-link a{color:var(--gold);font-weight:600;border-bottom:1px solid var(--gold-border);transition:color .3s}
 .portal-link a:hover{color:var(--gold-bright)}
 
-/* ── Footer ── */
+/* Footer */
 footer{
   position:relative;z-index:2;padding:60px clamp(20px,6vw,80px);
   border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.3);
@@ -405,12 +356,8 @@ footer{
 .footer-col a{display:block;padding:6px 0;color:var(--white-muted);font-size:.88rem;transition:color .3s}
 .footer-col a:hover{color:var(--white)}
 .footer-legal{margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;color:var(--neutral);line-height:1.8;text-align:center}
-.footer-craft{
-  margin-top:18px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.26em;
-  text-transform:uppercase;color:rgba(201,168,76,.45);text-align:center;
-}
 
-/* ── Portal orb — floating bubble ── */
+/* Portal orb — floating bubble */
 #orb-wrap{
   position:fixed;bottom:28px;right:28px;z-index:600;width:92px;height:92px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
@@ -421,14 +368,14 @@ footer{
   font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;
 }
 
-/* ── Reveal animations ── */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s var(--ease-out)}
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width:1024px){
   .services-grid,.process-steps,.testi-grid{grid-template-columns:repeat(2,1fr)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -450,7 +397,6 @@ footer{
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
-  .hero h1 .ch{transform:none}
 }
 </style>
 </head>
@@ -463,9 +409,6 @@ footer{
 
 <canvas id="bg"></canvas>
 <div id="grain"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
 <div id="progress"></div>
 
 <div class="cursor-dot" id="cursorDot"></div>
@@ -500,12 +443,9 @@ footer{
 
   <!-- HERO -->
   <section id="hero" class="section">
-    <div class="wrap" id="heroWrap">
+    <div class="wrap">
       <div class="hero-eyebrow"><span class="dot"></span> New Jersey LLC · Serving All 50 States</div>
-      <h1 id="heroTitle">
-        <span class="line">Your Kingdom.</span>
-        <span class="line"><span class="accent">Your Capital.</span></span>
-      </h1>
+      <h1>Your Kingdom.<br><span class="accent">Your Capital.</span></h1>
       <div class="hero-meta">
         <span>Credit</span><span class="sep">◆</span>
         <span>Debt</span><span class="sep">◆</span>
@@ -518,29 +458,21 @@ footer{
         you are on your journey, we build the roadmap. Royal treatment, zero judgment.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-gold magnetic">Start Free Consultation <span class="arrow">→</span></a>
-        <a href="#services" class="btn btn-ghost magnetic">Explore Services</a>
+        <a href="#contact" class="btn btn-gold">Start Free Consultation <span class="arrow">→</span></a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
       </div>
     </div>
     <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
   </section>
 
-  <!-- CRAFT MARQUEE — the developer signature ribbon -->
-  <div id="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>WebGL <i>◆</i> GLSL Shaders <i>◆</i> GSAP Motion <i>◆</i> Parametric Design <i>◆</i> Generative Canvas <i>◆</i> Fluid Typography <i>◆</i> Scroll Physics <i>◆</i> Three.js <i>◆</i></span>
-      <span>WebGL <i>◆</i> GLSL Shaders <i>◆</i> GSAP Motion <i>◆</i> Parametric Design <i>◆</i> Generative Canvas <i>◆</i> Fluid Typography <i>◆</i> Scroll Physics <i>◆</i> Three.js <i>◆</i></span>
-    </div>
-  </div>
-
   <!-- STATS -->
   <section id="stats" class="section">
     <div class="wrap">
       <div class="stats-grid">
-        <div class="stat-card tilt reveal"><div class="stat-num" data-count="500">0</div><div class="stat-label">Clients Funded</div></div>
-        <div class="stat-card tilt reveal reveal-delay-1"><div class="stat-num"><span data-count="250">0</span>K+</div><div class="stat-label">Avg Funding Approved</div></div>
-        <div class="stat-card tilt reveal reveal-delay-2"><div class="stat-num"><span data-count="127">0</span> pts</div><div class="stat-label">Avg Credit Score Gain</div></div>
-        <div class="stat-card tilt reveal reveal-delay-3"><div class="stat-num"><span data-count="780">0</span></div><div class="stat-label">Target Credit Score</div></div>
+        <div class="stat-card reveal"><div class="stat-num" data-count="500">0</div><div class="stat-label">Clients Funded</div></div>
+        <div class="stat-card reveal reveal-delay-1"><div class="stat-num"><span data-count="250">0</span>K+</div><div class="stat-label">Avg Funding Approved</div></div>
+        <div class="stat-card reveal reveal-delay-2"><div class="stat-num"><span data-count="127">0</span> pts</div><div class="stat-label">Avg Credit Score Gain</div></div>
+        <div class="stat-card reveal reveal-delay-3"><div class="stat-num"><span data-count="780">0</span></div><div class="stat-label">Target Credit Score</div></div>
       </div>
     </div>
   </section>
@@ -548,13 +480,13 @@ footer{
   <!-- SERVICES -->
   <section id="services" class="section">
     <div class="wrap">
-      <div class="sec-head" data-speed="0.9">
+      <div class="sec-head">
         <span class="sec-index">[ 01 — THE ARCANA ]</span>
         <h2>Services Forged for Your Rise</h2>
         <p>Every path is unique. We arm you with the knowledge and strategy your specific financial arc requires.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card tilt reveal">
+        <div class="service-card reveal">
           <div class="service-icon">🛠️</div>
           <span class="tag">Credit Repair & Building</span>
           <h3>Rebuild Your Score</h3>
@@ -566,7 +498,7 @@ footer{
           </ul>
           <a href="#contact" class="service-link">Begin <span class="arrow">→</span></a>
         </div>
-        <div class="service-card tilt reveal reveal-delay-1">
+        <div class="service-card reveal reveal-delay-1">
           <div class="service-icon">⚖️</div>
           <span class="tag">Debt Relief Guidance</span>
           <h3>Escape the Weight</h3>
@@ -578,7 +510,7 @@ footer{
           </ul>
           <a href="#contact" class="service-link">Begin <span class="arrow">→</span></a>
         </div>
-        <div class="service-card tilt reveal reveal-delay-2">
+        <div class="service-card reveal reveal-delay-2">
           <div class="service-icon">🏦</div>
           <span class="tag">Business Funding</span>
           <h3>Fund Your Vision</h3>
@@ -597,25 +529,25 @@ footer{
   <!-- PROCESS -->
   <section id="process" class="section">
     <div class="wrap">
-      <div class="sec-head" data-speed="0.9">
+      <div class="sec-head">
         <span class="sec-index">[ 02 — THE RITUAL ]</span>
         <h2>Three Steps to Ascension</h2>
         <p>A proven, transparent process. No jargon. No pressure. Just clarity and momentum.</p>
       </div>
       <div class="process-steps">
-        <div class="step tilt reveal">
+        <div class="step reveal">
           <div class="num">01</div>
           <h3>Free Consultation & Credit Review</h3>
           <p>A 30-minute strategy call — free. We audit your credit, understand your goals, and map the terrain. Zero cost, zero obligation.</p>
           <div class="step-line"></div>
         </div>
-        <div class="step tilt reveal reveal-delay-1">
+        <div class="step reveal reveal-delay-1">
           <div class="num">02</div>
           <h3>Custom Funding Roadmap</h3>
           <p>Lender targets, credit items to attack, documentation prep. Your personalized plan — built on your real numbers, not guesswork.</p>
           <div class="step-line"></div>
         </div>
-        <div class="step tilt reveal reveal-delay-2">
+        <div class="step reveal reveal-delay-2">
           <div class="num">03</div>
           <h3>Submit & Get Funded</h3>
           <p>We submit through our 50+ lender network. Approvals in 24–72 hours. Watch your kingdom take shape.</p>
@@ -627,25 +559,25 @@ footer{
   <!-- PROOF -->
   <section id="proof" class="section">
     <div class="wrap">
-      <div class="sec-head" data-speed="0.9">
+      <div class="sec-head">
         <span class="sec-index">[ 03 — TESTIMONY ]</span>
         <h2>Real Subjects. Real Results.</h2>
         <p>From the archives — clients who walked the path and found their standing.</p>
       </div>
       <div class="testi-grid">
-        <div class="testi tilt reveal">
+        <div class="testi reveal">
           <span class="quote-mark">“</span>
           <div class="stars">★★★★★</div>
           <p>I didn't know where to start. Kingdom broke everything down step by step — my score jumped 80 points in four months. Life-changing.</p>
           <div class="who"><div class="name">Marcus T.</div><div class="role">Atlanta, GA · Credit Client</div></div>
         </div>
-        <div class="testi tilt reveal reveal-delay-1">
+        <div class="testi reveal reveal-delay-1">
           <span class="quote-mark">“</span>
           <div class="stars">★★★★★</div>
           <p>They helped me navigate my debt without judgment. I finally have a plan that makes sense for my family.</p>
           <div class="who"><div class="name">Danielle R.</div><div class="role">Houston, TX · Debt Client</div></div>
         </div>
-        <div class="testi tilt reveal reveal-delay-2">
+        <div class="testi reveal reveal-delay-2">
           <span class="quote-mark">“</span>
           <div class="stars">★★★★★</div>
           <p>I launched my LLC and secured my first business credit line within 90 days. Kingdom taught me what banks never would.</p>
@@ -704,7 +636,7 @@ footer{
             <input type="checkbox" name="email_consent" checked />
             <span>I agree to receive educational emails. I can unsubscribe anytime. We never sell your information.</span>
           </label>
-          <button type="submit" class="btn btn-gold btn-submit magnetic">Begin My Ascension — It's Free</button>
+          <button type="submit" class="btn btn-gold btn-submit">Begin My Ascension — It's Free</button>
           <p class="form-note">🔒 Your information is encrypted and never shared. Mon–Sat, 9am–7pm EST.</p>
         </form>
         <div class="portal-link">
@@ -743,7 +675,6 @@ footer{
     © <span id="year"></span> Kingdom Financial Services LLC · EIN 41-5101264 · New Jersey LLC ·
     Financial education and guidance only. Not legal or financial advice. No guarantees. Results vary.
   </p>
-  <p class="footer-craft">Engineered with WebGL · GSAP · Parametric Design</p>
 </footer>
 
 <!-- Portal orb -->
@@ -759,14 +690,8 @@ footer{
 
 <script>
 /* ═══════════════════════════════════════════
-   PARAMETRIC WEBGL BACKGROUND
-   Golden core + flow-field particle galaxy,
-   driven by time, scroll and mouse position.
+   THREE.JS — CUSTOM SHADER + GOLDEN GALAXY
    ═══════════════════════════════════════════ */
-window.__KFS_ERRORS = [];
-window.addEventListener('error', e => window.__KFS_ERRORS.push(String(e.message)));
-window.addEventListener('unhandledrejection', e => window.__KFS_ERRORS.push('promise:' + String(e.reason)));
-
 const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = document.getElementById('bg');
 let renderer, scene, camera;
@@ -779,7 +704,7 @@ function initScene(){
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setSize(innerWidth, innerHeight);
 
-  // -------- Golden core (parametric icosahedron + shells) --------
+  // -------- Golden fractal core (custom-ish via icosahedron + wireframe shells) --------
   const core = new THREE.Mesh(
     new THREE.IcosahedronGeometry(7, 1),
     new THREE.MeshStandardMaterial({color:0xC9A84C, metalness:.85, roughness:.2, flatShading:true})
@@ -807,8 +732,8 @@ function initScene(){
   scene.add(key); scene.add(fill);
   scene.add(new THREE.AmbientLight(0xffffff, .35));
 
-  // -------- Flow-field galaxy (shader points, parametric) --------
-  const count = 2600;
+  // -------- Particle galaxy (galaxy shader points) --------
+  const count = 2500;
   const geo = new THREE.BufferGeometry();
   const pos = new Float32Array(count*3);
   const col = new Float32Array(count*3);
@@ -828,40 +753,25 @@ function initScene(){
   geo.setAttribute('color', new THREE.BufferAttribute(col,3));
   geo.setAttribute('size', new THREE.BufferAttribute(sizes,1));
 
+  // Shader material for glowing points
   const starMat = new THREE.ShaderMaterial({
-    uniforms:{uTime:{value:0}, uMouse:{value:new THREE.Vector2(0,0)}},
+    uniforms:{uTime:{value:0}},
     vertexShader:`
       attribute float size;
-      uniform float uTime;
-      uniform vec2 uMouse;
       varying vec3 vColor;
-      varying float vFade;
       void main(){
-        vColor = color;
-        vec3 p = position;
-        // parametric flow field — organic drift
-        float t = uTime * 0.25;
-        p.x += sin(p.y * 0.5 + t) * 0.6;
-        p.y += cos(p.z * 0.4 + t * 0.8) * 0.6;
-        p.z += sin(p.x * 0.3 + t * 0.6) * 0.6;
-        // cursor attraction (2D)
-        vec2 m = uMouse * 14.0;
-        vec2 d = vec2(p.x, p.y) - m;
-        float dm = length(d);
-        p.xy += (d / max(dm, 0.0001)) * (1.6 / (1.0 + dm * 0.06));
-        vec4 mv = modelViewMatrix * vec4(p, 1.0);
-        gl_PointSize = size * (140.0 / -mv.z);
-        gl_Position = projectionMatrix * mv;
-        vFade = smoothstep(42.0, 6.0, length(p));
+        vColor=color;
+        vec4 mv=modelViewMatrix*vec4(position,1.0);
+        gl_PointSize=size*(120.0/-mv.z);
+        gl_Position=projectionMatrix*mv;
       }`,
     fragmentShader:`
       varying vec3 vColor;
-      varying float vFade;
       void main(){
-        vec2 c = gl_PointCoord - 0.5;
-        float d = length(c);
-        float a = smoothstep(0.5, 0.0, d);
-        gl_FragColor = vec4(vColor, a * 0.85 * vFade);
+        vec2 c=gl_PointCoord-.5;
+        float d=length(c);
+        float a=smoothstep(.5,.0,d);
+        gl_FragColor=vec4(vColor,a*.9);
       }`,
     transparent:true, vertexColors:true, depthWrite:false, blending:THREE.AdditiveBlending
   });
@@ -879,15 +789,8 @@ function initScene(){
 let objects;
 if(!isReduced) objects = initScene();
 
-// Mouse tracking (normalized -1..1, lerped)
-let mx=0, my=0, tmx=0, tmy=0;
-window.addEventListener('mousemove', e=>{
-  mx = (e.clientX/innerWidth)*2-1;
-  my = -((e.clientY/innerHeight)*2-1);
-});
-
 // Scroll-driven camera movement (only when not reduced-motion)
-if(!isReduced && typeof gsap !== 'undefined'){
+if(!isReduced){
   gsap.registerPlugin(ScrollTrigger);
   gsap.to(camera.position, {
     z: 10, y: 4,
@@ -897,7 +800,6 @@ if(!isReduced && typeof gsap !== 'undefined'){
         objects.core.rotation.y += .002;
         objects.shell2.rotation.z = self.progress*6;
         objects.shell1.rotation.x = self.progress*4;
-        objects.starMat.uniforms.uMouse.value.set(tmx, tmy);
       }
     }
   });
@@ -909,19 +811,12 @@ function animate(){
   requestAnimationFrame(animate);
   if(isReduced || !objects) return;
   time += .01;
-  // lerp mouse
-  tmx += (mx - tmx) * .05;
-  tmy += (my - tmy) * .05;
   objects.starMat.uniforms.uTime.value = time;
-  objects.starMat.uniforms.uMouse.value.set(tmx, tmy);
   objects.core.rotation.x += .0022;
   objects.core.rotation.y += .003;
   objects.shell1.rotation.y -= .0015;
   objects.shell2.rotation.y -= .0025;
   objects.particles.rotation.y += .0004;
-  // camera parallax with mouse
-  camera.position.x = tmx * 1.4;
-  camera.position.y = tmy * 0.9;
   renderer.render(scene, camera);
 }
 animate();
@@ -930,7 +825,7 @@ animate();
    PORTAL ORB — 3D floating client portal
    ═══════════════════════════════════════════ */
 const orbCanvas = document.getElementById('orb');
-if(orbCanvas && !isReduced && typeof THREE !== 'undefined'){
+if(orbCanvas && !isReduced){
   const oScene=new THREE.Scene(), oCam=new THREE.PerspectiveCamera(60,1,.1,100);
   oCam.position.z=3.2;
   const oR=new THREE.WebGLRenderer({canvas:orbCanvas,alpha:true,antialias:true});
@@ -966,105 +861,27 @@ if(orbCanvas && !isReduced && typeof THREE !== 'undefined'){
 }
 
 /* ═══════════════════════════════════════════
-   CURSOR FOLLOWER + MAGNETIC + TILT
+   CURSOR FOLLOWER + MAGNETIC HOVER
    ═══════════════════════════════════════════ */
 const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
-let cmx=0,cmy=0,crx=0,cry=0;
+let mx=0,my=0,rx=0,ry=0;
 if(window.matchMedia('(hover:hover)').matches){
-  window.addEventListener('mousemove',e=>{cmx=e.clientX;cmy=e.clientY;dot.style.left=cmx+'px';dot.style.top=cmy+'px'});
-  (function loop(){
-    requestAnimationFrame(loop);
-    crx+=(cmx-crx)*.16; cry+=(cmy-cry)*.16;
-    ring.style.left=crx+'px'; ring.style.top=cry+'px';
-  })();
-  document.querySelectorAll('a,button,.faq-q,.service-card,.stat-card,.testi,.step,.nav-cta').forEach(el=>{
+  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+  gsap.ticker.add(()=>{ rx+=(mx-rx)*.16; ry+=(my-ry)*.16; ring.style.left=rx+'px'; ring.style.top=ry+'px'; });
+  document.querySelectorAll('a,button,.faq-q,.service-card,.nav-cta').forEach(el=>{
     el.addEventListener('mouseenter',()=>ring.classList.add('is-active'));
     el.addEventListener('mouseleave',()=>ring.classList.remove('is-active'));
   });
 }
 
-// Magnetic buttons
-if(window.matchMedia('(hover:hover)').matches && typeof gsap !== 'undefined'){
-  document.querySelectorAll('.magnetic').forEach(el=>{
-    el.addEventListener('mousemove',e=>{
-      const r=el.getBoundingClientRect();
-      const x=e.clientX-r.left-r.width/2;
-      const y=e.clientY-r.top-r.height/2;
-      gsap.to(el,{x:x*.22,y:y*.22,duration:.4,ease:'power2.out'});
-    });
-    el.addEventListener('mouseleave',()=>gsap.to(el,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}));
-  });
-}
-
-// 3D tilt cards
-if(window.matchMedia('(hover:hover)').matches){
-  document.querySelectorAll('.tilt').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const px=(e.clientX-r.left)/r.width;
-      const py=(e.clientY-r.top)/r.height;
-      const rx=(0.5-py)*10;
-      const ry=(px-0.5)*10;
-      card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
-      card.style.setProperty('--gx',`${px*100}%`);
-      card.style.setProperty('--gy',`${py*100}%`);
-    });
-    card.addEventListener('mouseleave',()=>{card.style.transform=''});
-  });
-}
-
 /* ═══════════════════════════════════════════
-   SCROLL / REVEAL / NAV / KINETIC HERO
+   SCROLL / REVEAL / NAV
    ═══════════════════════════════════════════ */
 document.getElementById('year').textContent=new Date().getFullYear();
 
-// Kinetic hero — split into chars
-if(!isReduced){
-  document.querySelectorAll('#heroTitle .line').forEach(line=>{
-    const node=line.firstChild && line.firstChild.nodeType===3 ? line.firstChild : null;
-    // Only split text nodes; keep nested spans (accent) intact
-    const walker=document.createTreeWalker(line, NodeFilter.SHOW_TEXT, null);
-    const texts=[];
-    while(walker.nextNode()) texts.push(walker.currentNode);
-    texts.forEach(tn=>{
-      const frag=document.createDocumentFragment();
-      const chars=tn.nodeValue.split('');
-      chars.forEach(c=>{
-        const s=document.createElement('span');
-        s.className='ch';
-        s.textContent=c===' '?'\u00A0':c;
-        frag.appendChild(s);
-      });
-      tn.parentNode.replaceChild(frag,tn);
-    });
-  });
-  if(typeof gsap !== 'undefined'){
-    gsap.registerPlugin(ScrollTrigger);
-    // animate chars up with stagger
-    const chars=document.querySelectorAll('#heroTitle .ch');
-    gsap.fromTo(chars,{yPercent:110},{yPercent:0,duration:1.1,ease:'power4.out',stagger:.04,delay:.15});
-    // scroll skew on hero title
-    gsap.to('#heroTitle',{
-      yPercent:-18, opacity:.25,
-      scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}
-    });
-    // parallax orbs + data-speed sections
-    gsap.utils.toArray('[data-speed]').forEach(el=>{
-      const speed=parseFloat(el.dataset.speed)||1;
-      gsap.fromTo(el,{y:0},{
-        y:()=>(1-speed)*220,
-        ease:'none',
-        scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}
-      });
-    });
-  }
-}
-
 // Progress bar
-if(typeof gsap !== 'undefined'){
-  gsap.to('#progress',{width:'100%',ease:'none',
-    scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
-}
+gsap.to('#progress',{width:'100%',ease:'none',
+  scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
 
 // Nav shrink
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>40));
@@ -1082,14 +899,8 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const cio=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){
     const el=e.target; const target=+el.dataset.count;
-    const start=performance.now(), dur=2000;
-    function tick(now){
-      const p=Math.min(1,(now-start)/dur);
-      const ease=1-Math.pow(1-p,3);
-      el.textContent=Math.round(target*ease);
-      if(p<1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+    gsap.fromTo(el,{innerText:0},{innerText:target,duration:2,ease:'power2.out',
+      snap:{innerText:1},onUpdate(){} });
     cio.unobserve(el);
   }
 }),{threshold:.6});
@@ -1122,13 +933,7 @@ form.addEventListener('submit',async e=>{
 // Loader
 let lp=0; const fill=document.getElementById('loader-fill');
 const lt=setInterval(()=>{ lp=Math.min(100,lp+Math.random()*20); fill.style.width=lp+'%';
-  if(lp>=100){ clearInterval(lt); setTimeout(()=>{
-    const l=document.getElementById('loader');
-    l.classList.add('done');
-    setTimeout(()=>{ l.style.display='none'; }, 900);
-  },300); } },180);
-
-window.__KFS_READY = true;
+  if(lp>=100){ clearInterval(lt); setTimeout(()=>document.getElementById('loader').classList.add('done'),300); } },180);
 </script>
 </body>
 </html>
