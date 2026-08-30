@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Kingdom Financial Services — Your Kingdom. Your Capital.</title>
-<meta name="description" content="Premium financial education, credit repair, debt relief, and business funding — nationwide from Wayne, NJ. Your Kingdom. Your Capital." />
+<title>Kingdom Financial Services — Tu Reino. Tu Capital.</title>
+<meta name="description" content="Educación financiera premium, reparación de crédito, alivio de deudas y financiamiento para negocios — en todo el país desde Wayne, NJ. Tu Reino. Tu Capital." />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kingdomfiservices.com/" />
-<meta property="og:title" content="Kingdom Financial Services | Your Kingdom. Your Capital." />
-<meta property="og:description" content="Credit repair, debt relief, and business funding — nationwide. Free consultation." />
+<meta property="og:title" content="Kingdom Financial Services | Tu Reino. Tu Capital." />
+<meta property="og:description" content="Reparación de crédito, alivio de deudas y financiamiento para negocios — en todo el país. Consulta gratis." />
 <meta property="og:image" content="https://kingdomfiservices.com/og-cover.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="canonical" href="https://kingdomfiservices.com/" />
@@ -45,491 +45,295 @@
 
 <style>
 /* ═══════════════════════════════════════════════
-   KFS DESIGN SYSTEM — PARAMETRIC ROYAL / CYBER CINEMATIC
+   KFS v4 — ROYAL / CYBER CINEMATIC · David Langarica-grade
+   Kinetic split hero · WebGL signature · bilingual (es/en)
    Fluid · generative · immersive · parallax
    ═══════════════════════════════════════════════ */
 :root{
-  /* Brand — Royal Gold on Obsidian */
-  --gold:#C9A84C;
-  --gold-bright:#F5C842;
-  --gold-light:#E8C97A;
-  --gold-muted:#8B6914;
-  --gold-subtle:rgba(201,168,76,0.08);
-  --gold-border:rgba(201,168,76,0.28);
-
-  --dark:#05070B;
-  --dark-2:#0A0E15;
-  --dark-3:#10151F;
-  --dark-4:#182031;
-
-  --white:#F4F1EA;
-  --white-muted:#B9B4A7;
-  --neutral:#7A7C85;
-
-  --cyan:#53D8FF;
-  --green:#34E89E;
-
-  /* Typography */
-  --font-display:"Cinzel", serif;
-  --font-serif:"Cormorant Garamond", serif;
-  --font-sans:"DM Sans", system-ui, sans-serif;
-  --font-mono:"JetBrains Mono", monospace;
-
-  --text-hero:clamp(3rem, 9vw, 7.5rem);
-  --text-h2:clamp(2.2rem, 5vw, 3.6rem);
-
-  /* Fluid spacing (parametric scale) */
-  --space-1:clamp(0.5rem, 1vw, 0.9rem);
-  --space-2:clamp(0.9rem, 2vw, 1.6rem);
-  --space-3:clamp(1.4rem, 3vw, 2.6rem);
-  --space-4:clamp(2.2rem, 5vw, 4.4rem);
-  --space-5:clamp(3.4rem, 8vw, 7rem);
-
-  /* Effects */
-  --glow-gold:0 0 24px rgba(201,168,76,0.55), 0 0 60px rgba(201,168,76,0.18);
-  --bg-grain-radial:radial-gradient(1200px 600px at 50% -10%, rgba(201,168,76,0.06), transparent 60%);
-  --ease-out:cubic-bezier(.2,.8,.2,1);
+  --gold:#C9A84C; --gold-bright:#F5C842; --gold-light:#E8C97A;
+  --gold-muted:#8B6914; --gold-subtle:rgba(201,168,76,0.08); --gold-border:rgba(201,168,76,0.28);
+  --dark:#05070B; --dark-2:#090C12; --dark-3:#0D1117;
+  --white:#F5F1E8; --white-muted:rgba(245,241,232,0.64); --white-dim:rgba(245,241,232,0.4);
+  --font-display:'Cinzel',serif; --font-serif:'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif; --font-mono:'JetBrains Mono',monospace;
+  --bg-grain-radial:radial-gradient(1200px 800px at 70% -10%, rgba(201,168,76,0.10), transparent 60%),
+                    radial-gradient(900px 700px at 0% 110%, rgba(201,168,76,0.05), transparent 55%);
+  --maxw:1180px; --ease:cubic-bezier(.22,.61,.36,1);
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--dark);
-  color:var(--white);
-  font-family:var(--font-sans);
-  font-weight:300;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  cursor:none;
-}
-@media (hover:none){
-  body{cursor:auto}
-}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--dark);color:var(--white);font-family:var(--font-body);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.05;letter-spacing:0.02em}
 a{color:inherit;text-decoration:none}
-img,svg,canvas{display:block}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 ::selection{background:var(--gold);color:var(--dark)}
 
-/* ── Custom cursor follower ── */
-.cursor-dot,.cursor-ring{
-  position:fixed;top:0;left:0;pointer-events:none;z-index:9999;
-  border-radius:50%;transform:translate(-50%,-50%);
-}
-.cursor-dot{width:8px;height:8px;background:var(--gold);box-shadow:var(--glow-gold)}
-.cursor-ring{
-  width:44px;height:44px;border:1px solid var(--gold-border);
-  transition:width .3s,height .3s,border-color .3s;
-}
-.cursor-ring.is-active{width:76px;height:76px;border-color:var(--gold)}
+/* Skip link */
+.skip{position:fixed;top:-60px;left:16px;z-index:200;background:var(--gold);color:var(--dark);padding:10px 18px;border-radius:8px;font-weight:600;transition:top .2s}
+.skip:focus{top:14px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 
-/* ── WebGL canvas + grain ── */
+/* ── Canvas / atmosphere ── */
 #bg{position:fixed;inset:0;z-index:0;pointer-events:none}
-#grain{
-  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:3;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 8s steps(10) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-2%,3%)}40%{transform:translate(3%,-2%)}60%{transform:translate(-3%,-3%)}80%{transform:translate(2%,2%)}}
+.scanline{position:fixed;left:0;right:0;height:120px;z-index:4;pointer-events:none;opacity:.35;
+  background:linear-gradient(180deg,transparent,rgba(201,168,76,.06),transparent);mix-blend-mode:screen;animation:scan 7s linear infinite}
+@keyframes scan{0%{top:-120px}100%{top:100%}}
 
-/* ── Floating parallax orbs (DOM depth layers) ── */
-.orb{
-  position:fixed;border-radius:50%;pointer-events:none;z-index:0;
-  filter:blur(60px);will-change:transform;opacity:.5;
-}
-.orb-1{width:38vmax;height:38vmax;top:-12vmax;left:-10vmax;
-  background:radial-gradient(circle at 35% 35%, rgba(201,168,76,.22), transparent 65%);animation:orbDrift 26s ease-in-out infinite alternate}
-.orb-2{width:30vmax;height:30vmax;bottom:-8vmax;right:-6vmax;
-  background:radial-gradient(circle at 60% 40%, rgba(83,216,255,.10), transparent 65%);animation:orbDrift 32s ease-in-out infinite alternate-reverse}
-.orb-3{width:22vmax;height:22vmax;top:38%;left:58%;
-  background:radial-gradient(circle at 50% 50%, rgba(245,200,66,.12), transparent 65%);animation:orbDrift 22s ease-in-out infinite alternate}
-@keyframes orbDrift{
-  0%{transform:translate3d(0,0,0) scale(1)}
-  100%{transform:translate3d(4vmax,-3vmax,0) scale(1.12)}
-}
-
-/* ── Scroll progress ── */
-#progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:100;background:linear-gradient(90deg,var(--gold-muted),var(--gold-bright));box-shadow:0 0 12px rgba(201,168,76,.6)}
-
-/* ── Preloader ── */
-#loader{
-  position:fixed;inset:0;z-index:2000;background:var(--dark);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
-  transition:opacity .8s ease,visibility .8s;
-}
-#loader.done{opacity:0;visibility:hidden}
-.loader-crown{font-size:60px;animation:pulse2 1.6s infinite}
-.loader-bar{width:200px;height:2px;background:rgba(255,255,255,.08);overflow:hidden;border-radius:2px}
-.loader-bar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--gold-muted),var(--gold-bright));transition:width .2s}
-@keyframes pulse2{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.92)}}
+/* ── Preloader (removes itself) ── */
+#preloader{position:fixed;inset:0;z-index:500;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .7s var(--ease)}
+#preloader.done{opacity:0;pointer-events:none}
+#preloader .crown{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.4rem);letter-spacing:.18em;color:var(--gold);text-shadow:0 0 40px rgba(201,168,76,.4)}
+#preloader .bar{width:min(320px,70vw);height:2px;background:var(--dark-3);border-radius:2px;overflow:hidden}
+#preloader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-muted),var(--gold-bright));box-shadow:0 0 12px rgba(201,168,76,.7)}
 
 /* ── Nav ── */
-#nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:22px clamp(20px,5vw,60px);
-  transition:background .4s,padding .4s,backdrop-filter .4s;
-}
-#nav.scrolled{background:rgba(5,7,11,.72);backdrop-filter:blur(18px);padding:14px clamp(20px,5vw,60px);border-bottom:1px solid var(--gold-border)}
-.nav-logo{display:flex;align-items:center;gap:14px}
-.logo-mark{
-  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 40%,var(--gold-muted) 100%);
-  color:var(--dark);font-family:var(--font-display);font-weight:900;font-size:1.4rem;
-  border-radius:10px;box-shadow:var(--glow-gold);
-}
-.logo-text{line-height:1}
-.logo-text b{font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.18em;display:block}
-.logo-text small{color:var(--gold);font-size:.6rem;letter-spacing:.32em;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:34px}
-.nav-links a:not(.nav-cta){font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white-muted);position:relative;transition:color .3s}
-.nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .3s}
-.nav-links a:not(.nav-cta):hover{color:var(--white)}
-.nav-links a:not(.nav-cta):hover::after{width:100%}
-.nav-cta{
-  padding:12px 26px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-  color:var(--dark)!important;border-radius:8px;font-weight:600;font-size:.8rem;letter-spacing:.06em;
-  box-shadow:0 4px 24px rgba(201,168,76,.25);transition:transform .25s,box-shadow .25s;
-}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.4)}
-.nav-burger{display:none;background:none;border:none;color:var(--white);font-size:1.6rem;cursor:pointer}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,4vw,48px);transition:background .4s,backdrop-filter .4s,padding .4s}
+nav.scrolled{background:rgba(5,7,11,.72);backdrop-filter:blur(18px) saturate(1.3);border-bottom:1px solid var(--gold-border);padding:12px clamp(20px,4vw,48px)}
+.logo-text{font-family:var(--font-display);font-size:1.25rem;letter-spacing:.12em;display:flex;flex-direction:column;line-height:1.1}
+.logo-text b{color:var(--gold)}
+.logo-text small{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.34em;color:var(--white-muted);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white-muted)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--dark)!important;padding:10px 20px;border-radius:999px;font-weight:600}
+.nav-lang{display:flex;align-items:center;gap:4px;border:1px solid var(--gold-border);border-radius:999px;padding:4px}
+.nav-lang button{padding:5px 12px;border-radius:999px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white-muted)}
+.nav-lang button.on{background:var(--gold);color:var(--dark);font-weight:700}
+.nav-burger{display:none;font-size:1.4rem;color:var(--gold)}
+@media(max-width:900px){.nav-links{display:none}.nav-burger{display:block}}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(5,7,11,.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;font-family:var(--font-display);font-size:1.5rem;letter-spacing:.08em;opacity:0;pointer-events:none;transition:opacity .35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a:hover{color:var(--gold)}
 
-/* Mobile menu */
-#mobile-menu{
-  position:fixed;inset:0;z-index:450;background:rgba(5,7,11,.96);backdrop-filter:blur(24px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
-  opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;
-}
-#mobile-menu.open{opacity:1;visibility:visible}
-#mobile-menu a{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.08em;color:var(--white-muted)}
-#mobile-menu a:hover{color:var(--gold)}
-
-/* ── Sections ── */
-main{position:relative;z-index:2}
-.section{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px clamp(20px,6vw,80px)}
-.wrap{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+/* ── Sections / wrap ── */
+main{position:relative;z-index:1}
+.section{position:relative;padding:clamp(80px,10vw,140px) clamp(20px,4vw,48px)}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.sec-head{max-width:720px;margin-bottom:clamp(40px,5vw,70px)}
+.sec-head.center{margin:0 auto clamp(40px,5vw,70px);text-align:center}
+.sec-index{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:16px}
+.sec-head p{font-family:var(--font-serif);font-size:1.18rem;color:var(--white-muted);max-width:620px}
+.sec-head.center p{margin:0 auto}
 
 /* ── Hero ── */
-#hero{min-height:100vh;align-items:center;perspective:1000px}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;padding:8px 20px;margin-bottom:28px;
-  border:1px solid var(--gold-border);border-radius:100px;background:var(--gold-subtle);
-  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
-}
-.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{
-  font-size:var(--text-hero);font-weight:900;margin-bottom:24px;
-}
-.hero h1 .line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.hero h1 .ch{display:inline-block;transform:translateY(110%);will-change:transform}
-.hero h1 .accent .ch{
-  background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-muted) 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero-meta{
-  display:flex;align-items:center;gap:24px;margin-bottom:32px;
-  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;color:var(--white-muted);text-transform:uppercase;
-}
-.hero-meta span{display:flex;align-items:center;gap:8px}
-.hero-meta .sep{color:var(--gold);opacity:.5}
-.hero-desc{max-width:560px;font-family:var(--font-serif);font-size:clamp(1.1rem,2vw,1.35rem);line-height:1.7;color:var(--white-muted);margin-bottom:44px}
-.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.btn{
-  position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 40px;
-  border-radius:10px;font-weight:600;font-size:.9rem;letter-spacing:.06em;overflow:hidden;
-  transition:transform .3s,box-shadow .3s;will-change:transform;cursor:none;
-}
-.btn-gold{
-  background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-muted) 100%);
-  color:var(--dark);box-shadow:0 6px 30px rgba(201,168,76,.3);
-}
-.btn-gold:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 44px rgba(201,168,76,.5)}
-.btn-ghost{border:1px solid var(--gold-border);color:var(--white);background:rgba(201,168,76,.04)}
-.btn-ghost:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(201,168,76,.09)}
-.btn .arrow{transition:transform .3s}
-.btn:hover .arrow{transform:translateX(6px)}
-.scroll-hint{
-  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--neutral);
-  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
-}
-.scroll-hint .line{width:1px;height:50px;background:linear-gradient(180deg,transparent,var(--gold));animation:drop 1.6s infinite}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#hero{min-height:100dvh;display:flex;align-items:center;padding-top:120px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:8px 16px;border-radius:999px;margin-bottom:32px}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-size:clamp(3rem,9vw,7rem);line-height:1.02;letter-spacing:.01em;margin-bottom:8px}
+.hero-title .ch{display:inline-block;will-change:transform}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line-1{color:var(--white)}
+.hero-title .line-2{color:var(--gold);text-shadow:0 0 60px rgba(201,168,76,.35)}
+.hero-sub{font-family:var(--font-serif);font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--white-muted);max-width:560px;margin:24px 0 0}
+.hero-availability{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.14em;color:var(--gold-light);text-transform:uppercase}
+.hero-availability i{width:7px;height:7px;border-radius:50%;background:#3ECF8E;box-shadow:0 0 8px #3ECF8E}
+.hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:12px;font-family:var(--font-body);font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:transform .2s,box-shadow .3s;will-change:transform}
+.btn-gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold) 60%,var(--gold-muted));color:var(--dark);box-shadow:0 10px 34px rgba(201,168,76,.32)}
+.btn-gold:hover{box-shadow:0 14px 46px rgba(201,168,76,.5)}
+.btn-ghost{border:1px solid var(--gold-border);color:var(--gold-light)}
+.btn-ghost:hover{background:var(--gold-subtle)}
+.btn-wa{background:#25D366;color:#06281a;box-shadow:0 10px 34px rgba(37,211,102,.28)}
+.btn-wa:hover{box-shadow:0 14px 46px rgba(37,211,102,.45)}
+.btn-wa svg{width:20px;height:20px;fill:currentColor}
+.hero-trust{display:flex;align-items:center;gap:24px;margin-top:56px;flex-wrap:wrap;opacity:.75}
+.hero-trust .tt{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white-dim)}
+.hero-trust .tlogo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:.9rem;letter-spacing:.1em;color:var(--white-muted)}
+.hero-trust .tlogo i{font-style:normal;color:var(--gold);font-size:1rem}
+@media(max-width:700px){.hero-trust{gap:16px}.hero-trust .tt{width:100%}}
 
-/* ── Craft marquee (the dev signature ribbon) ── */
-#marquee{
-  position:relative;z-index:2;padding:26px 0;border-top:1px solid rgba(255,255,255,.05);
-  border-bottom:1px solid rgba(255,255,255,.05);background:rgba(5,7,11,.5);overflow:hidden;
-  transform:rotate(-1deg) scale(1.02);
-}
-.marquee-track{display:flex;width:max-content;animation:marquee 34s linear infinite}
-.marquee-track span{
-  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--gold);white-space:nowrap;padding:0 2rem;display:flex;align-items:center;gap:2rem;
-}
-.marquee-track i{font-style:normal;color:var(--neutral);font-size:.9rem}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* ── Marquee ribbon ── */
+.marquee{overflow:hidden;border-top:1px solid var(--gold-border);border-bottom:1px solid var(--gold-border);background:var(--dark-2);padding:18px 0}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:marquee 28s linear infinite}
+.marquee span{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);opacity:.7}
+.marquee span em{font-style:normal;color:var(--gold);opacity:1}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-/* ── Stats strip ── */
-#stats{min-height:auto;padding:var(--space-5) 0}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.stat-card{
-  position:relative;padding:var(--space-4) var(--space-3);text-align:center;overflow:hidden;
-  background:var(--dark-2);border:1px solid var(--gold-border);border-radius:16px;
-  transform-style:preserve-3d;will-change:transform;
-}
-.stat-card::before{content:'';position:absolute;inset:0;background:var(--bg-grain-radial);opacity:.6}
-.stat-card::after{content:'';position:absolute;inset:0;border-radius:16px;opacity:0;transition:opacity .4s;
-  background:radial-gradient(600px circle at var(--gx,50%) var(--gy,50%), rgba(245,200,66,.12), transparent 45%)}
-.stat-card:hover::after{opacity:1}
-.stat-num{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,4vw,3.6rem);color:var(--gold-bright);text-shadow:0 0 30px rgba(201,168,76,.3)}
-.stat-label{margin-top:10px;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--neutral)}
+/* ── Stats ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;padding:36px 16px;border:1px solid var(--gold-border);border-radius:18px;background:rgba(13,17,23,.6);position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;inset:0;background:radial-gradient(400px circle at var(--gx,50%) var(--gy,50%),rgba(201,168,76,.12),transparent 55%)}
+.stat .num{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,3rem);font-weight:700;color:var(--gold-bright)}
+.stat .lbl{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--white-muted);margin-top:10px}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr}}
 
-/* ── Section header ── */
-.sec-head{max-width:720px;margin-bottom:var(--space-5)}
-.sec-index{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.3em;color:var(--gold);margin-bottom:16px;display:block}
-.sec-head h2{font-size:var(--text-h2);margin-bottom:20px}
-.sec-head p{font-family:var(--font-serif);font-size:1.15rem;line-height:1.7;color:var(--white-muted)}
+/* ── Services ── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.service-card{padding:42px 30px;border-radius:20px;border:1px solid var(--gold-border);background:var(--dark-3);position:relative;overflow:hidden;transition:transform .35s var(--ease),border-color .3s;transform-style:preserve-3d}
+.service-card::before{content:'';position:absolute;inset:0;background:radial-gradient(500px circle at var(--gx,50%) var(--gy,50%),rgba(201,168,76,.14),transparent 55%);opacity:0;transition:opacity .3s}
+.service-card:hover::before{opacity:1}
+.service-card:hover{border-color:var(--gold)}
+.service-icon{width:60px;height:60px;border-radius:14px;background:var(--gold-subtle);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:24px}
+.service-card .tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block}
+.service-card h3{font-size:1.5rem;margin-bottom:14px;transform:translateZ(20px)}
+.service-card p{font-size:.9rem;line-height:1.7;color:var(--white-muted);margin-bottom:18px}
+.service-card ul{list-style:none;font-size:.82rem;color:var(--white-dim)}
+.service-card ul li{padding:4px 0;position:relative;padding-left:20px}
+.service-card ul li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:.7rem;top:7px}
+.service-card .link{margin-top:22px;display:inline-flex;align-items:center;gap:8px;color:var(--gold-light);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:900px){.services-grid{grid-template-columns:1fr}}
 
-/* ── Services — cards ── */
-#services{align-items:flex-start}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.service-card{
-  position:relative;padding:44px 34px;border-radius:20px;overflow:hidden;
-  background:var(--dark-2);border:1px solid rgba(255,255,255,.08);
-  transition:transform .5s var(--ease-out),box-shadow .5s,border-color .5s;min-height:420px;
-  display:flex;flex-direction:column;transform-style:preserve-3d;will-change:transform;
-}
-.service-card::after{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);opacity:0;transition:opacity .4s}
-.service-card::before{content:'';position:absolute;inset:0;border-radius:20px;opacity:0;transition:opacity .4s;pointer-events:none;
-  background:radial-gradient(700px circle at var(--gx,50%) var(--gy,50%), rgba(245,200,66,.10), transparent 45%)}
-.service-card:hover{border-color:var(--gold-border);box-shadow:0 30px 60px rgba(0,0,0,.5)}
-.service-card:hover::after,.service-card:hover::before{opacity:1}
-.service-icon{
-  width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-  font-size:1.8rem;margin-bottom:26px;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.02));border:1px solid var(--gold-border);
-  transform:translateZ(30px);
-}
-.service-card h3{font-size:1.45rem;margin-bottom:14px;transform:translateZ(20px)}
-.service-card .tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
-.service-card p{font-size:.92rem;line-height:1.75;color:var(--white-muted);margin-bottom:22px;flex:1}
-.service-card ul{list-style:none;margin-bottom:26px}
-.service-card li{font-size:.86rem;color:var(--white-muted);padding:7px 0 7px 26px;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
-.service-card li::before{content:'◆';position:absolute;left:0;top:7px;font-size:.55rem;color:var(--gold)}
-.service-link{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:8px;font-weight:500}
-.service-link:hover .arrow{transform:translateX(5px)}
-.service-link .arrow{transition:transform .3s}
-
-/* ── Process timeline ── */
-#process{align-items:flex-start}
-.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{
-  position:relative;padding:40px 30px;border-radius:16px;background:var(--dark-2);border:1px solid rgba(255,255,255,.06);
-  transform-style:preserve-3d;will-change:transform;
-}
-.step .num{
-  font-family:var(--font-display);font-weight:900;font-size:3.6rem;line-height:1;
-  background:linear-gradient(180deg,rgba(201,168,76,.5),rgba(201,168,76,.05));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;
-}
+/* ── Process ── */
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.step{padding:40px 28px;border-radius:20px;border:1px solid var(--gold-border);background:var(--dark-3);position:relative}
+.step .num{font-family:var(--font-display);font-size:2.4rem;font-weight:900;color:transparent;-webkit-text-stroke:1px var(--gold);opacity:.8;margin-bottom:18px}
 .step h3{font-size:1.3rem;margin-bottom:12px}
 .step p{font-size:.9rem;line-height:1.7;color:var(--white-muted)}
-.step-line{position:absolute;top:50%;right:-24px;width:48px;height:1px;background:linear-gradient(90deg,var(--gold-muted),transparent)}
-.step:last-child .step-line{display:none}
+.step-line{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:22px}
+@media(max-width:900px){.process-steps{grid-template-columns:1fr}}
 
-/* ── Proof / testimonials ── */
-#proof{align-items:flex-start}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.testi{
-  padding:38px 32px;border-radius:18px;background:var(--dark-2);border:1px solid rgba(255,255,255,.07);
-  position:relative;transition:transform .5s var(--ease-out),border-color .5s;transform-style:preserve-3d;will-change:transform;
-}
-.testi:hover{border-color:var(--gold-border)}
-.testi .quote-mark{font-family:var(--font-serif);font-size:4rem;color:var(--gold);opacity:.3;line-height:.5;display:block;margin-bottom:30px}
-.testi p{font-family:var(--font-serif);font-size:1.15rem;font-style:italic;line-height:1.7;color:var(--white);margin-bottom:28px}
-.testi .who{margin-top:auto}
-.testi .name{font-weight:600;font-size:.95rem;color:var(--gold)}
-.testi .role{font-size:.75rem;color:var(--neutral);margin-top:4px}
-.testi .stars{color:var(--gold-bright);letter-spacing:3px;margin-bottom:16px;font-size:.85rem}
+/* ── Testimonials ── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.testi{padding:36px 28px;border-radius:20px;border:1px solid var(--gold-border);background:rgba(13,17,23,.7);position:relative}
+.quote-mark{font-family:var(--font-serif);font-size:4rem;color:var(--gold);line-height:0;display:block;height:36px;opacity:.5}
+.stars{color:var(--gold-bright);letter-spacing:3px;margin-bottom:14px;font-size:.95rem}
+.testi p{font-family:var(--font-serif);font-size:1.08rem;font-style:italic;color:var(--white);margin-bottom:22px}
+.testi .who .name{font-size:.88rem;font-weight:600;color:var(--gold-light)}
+.testi .who .role{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;color:var(--white-dim);text-transform:uppercase;margin-top:4px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
 
 /* ── FAQ ── */
-#faq{align-items:flex-start}
-.faq-list{max-width:820px;margin:0 auto}
-.faq-item{
-  border:1px solid rgba(255,255,255,.08);border-radius:14px;background:var(--dark-2);
-  margin-bottom:14px;overflow:hidden;transition:border-color .3s;
-}
-.faq-item.open{border-color:var(--gold-border)}
-.faq-q{padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;font-family:var(--font-display);font-weight:500;font-size:1.05rem;user-select:none}
-.faq-q .ic{flex-shrink:0;color:var(--gold);font-size:1.2rem;transition:transform .3s;font-family:var(--font-sans)}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border:1px solid var(--gold-border);border-radius:14px;margin-bottom:14px;overflow:hidden;background:var(--dark-3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;font-family:var(--font-display);font-size:1.02rem;cursor:pointer;letter-spacing:.03em}
+.faq-q .ic{color:var(--gold);font-size:1.3rem;transition:transform .3s;flex-shrink:0}
 .faq-item.open .faq-q .ic{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
-.faq-a p{padding:0 30px 26px;color:var(--white-muted);line-height:1.75;font-size:.92rem}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a p{padding:0 26px 22px;font-size:.9rem;color:var(--white-muted);line-height:1.7}
 
-/* ── Contact / CTA ── */
-#contact{min-height:100vh;align-items:center;text-align:center}
-.contact-card{
-  max-width:640px;margin:0 auto;padding:60px 50px;border-radius:28px;position:relative;overflow:hidden;
-  background:var(--dark-2);border:1px solid var(--gold-border);box-shadow:0 0 80px rgba(201,168,76,.06);
-}
-.contact-card::before{content:'';position:absolute;inset:0;background:var(--bg-grain-radial)}
-.contact-card h2{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:16px;position:relative}
-.contact-card>p{font-family:var(--font-serif);font-size:1.15rem;color:var(--white-muted);margin-bottom:40px;position:relative}
-
-.form{position:relative;text-align:left}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.form input,.form select{
-  width:100%;padding:16px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
-  border-radius:10px;color:var(--white);font-family:var(--font-sans);font-size:.95rem;transition:border-color .3s;
-}
+/* ── Contact ── */
+.contact-card{position:relative;max-width:820px;margin:0 auto;border-radius:24px;border:1px solid var(--gold-border);padding:clamp(36px,5vw,60px);background:rgba(13,17,23,.74);backdrop-filter:blur(18px) saturate(1.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 40px 90px rgba(0,0,0,.5);overflow:hidden}
+.contact-card::before{content:'';position:absolute;inset:0;background:var(--bg-grain-radial);pointer-events:none}
+.contact-card>*{position:relative}
+.contact-card h2{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:16px}
+.contact-card>p{font-family:var(--font-serif);font-size:1.15rem;color:var(--white-muted);margin-bottom:34px}
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form input,.form select{width:100%;padding:15px 18px;border-radius:12px;border:1px solid var(--gold-border);background:var(--dark-2);color:var(--white);font-family:var(--font-body);font-size:.9rem;transition:border-color .2s}
 .form input:focus,.form select:focus{outline:none;border-color:var(--gold)}
-.form input::placeholder{color:rgba(180,180,190,.4)}
-.form select{color:var(--white-muted);cursor:pointer}
-.form option{background:var(--dark-3)}
-.form .full{margin-bottom:16px}
-.form-note{font-size:.72rem;color:var(--neutral);margin-top:20px;text-align:center;position:relative}
-.form .consent{display:flex;align-items:flex-start;gap:10px;margin-bottom:24px;font-size:.78rem;color:var(--neutral)}
-.form .consent input{margin-top:2px;width:auto;accent-color:var(--gold)}
-.btn-submit{width:100%;justify-content:center;cursor:pointer;border:none;font-family:var(--font-sans)}
-.portal-link{margin-top:34px;font-size:.9rem;color:var(--white-muted);position:relative}
-.portal-link a{color:var(--gold);font-weight:600;border-bottom:1px solid var(--gold-border);transition:color .3s}
-.portal-link a:hover{color:var(--gold-bright)}
+.form input::placeholder{color:var(--white-dim)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.74rem;color:var(--white-dim);margin:14px 0 22px}
+.consent input{margin-top:3px;accent-color:var(--gold)}
+.btn-submit{width:100%;justify-content:center}
+.form-note{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;color:var(--white-dim);margin-top:14px;text-align:center}
+.wa-card{display:flex;align-items:center;gap:16px;margin-top:26px;padding:18px 22px;border-radius:14px;border:1px solid rgba(37,211,102,.4);background:rgba(37,211,102,.06)}
+.wa-card svg{width:34px;height:34px;fill:#25D366;flex-shrink:0}
+.wa-card .wt{font-family:var(--font-display);font-size:1rem;color:var(--white)}
+.wa-card .ws{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;color:var(--white-dim);text-transform:uppercase;margin-top:3px}
+.portal-link{margin-top:22px;text-align:center;font-size:.82rem;color:var(--white-muted)}
+.portal-link a{color:var(--gold-light);border-bottom:1px solid var(--gold-border)}
+@media(max-width:700px){.contact-row{grid-template-columns:1fr}}
 
 /* ── Footer ── */
-footer{
-  position:relative;z-index:2;padding:60px clamp(20px,6vw,80px);
-  border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.3);
-}
-.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
-.footer-brand .logo-text{margin-bottom:16px}
-.footer-brand p{font-size:.85rem;color:var(--neutral);line-height:1.7;max-width:340px}
-.footer-col h4{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
-.footer-col a{display:block;padding:6px 0;color:var(--white-muted);font-size:.88rem;transition:color .3s}
-.footer-col a:hover{color:var(--white)}
-.footer-legal{margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;color:var(--neutral);line-height:1.8;text-align:center}
-.footer-craft{
-  margin-top:18px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.26em;
-  text-transform:uppercase;color:rgba(201,168,76,.45);text-align:center;
-}
+footer{padding:70px clamp(20px,4vw,48px) 34px;border-top:1px solid var(--gold-border);background:var(--dark-2);position:relative;z-index:1}
+.footer-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.footer-brand p{font-size:.86rem;color:var(--white-muted);margin-top:16px;max-width:340px;line-height:1.7}
+.footer-col h4{font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.footer-col a{display:block;font-size:.85rem;color:var(--white-muted);padding:6px 0;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-legal{max-width:var(--maxw);margin:0 auto;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;color:var(--white-dim);line-height:1.8;border-top:1px solid var(--gold-border);padding-top:26px}
+.footer-craft{max-width:var(--maxw);margin:14px auto 0;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;color:var(--white-dim);opacity:.6;text-transform:uppercase}
+@media(max-width:700px){.footer-inner{grid-template-columns:1fr}}
 
-/* ── Portal orb — floating bubble ── */
-#orb-wrap{
-  position:fixed;bottom:28px;right:28px;z-index:600;width:92px;height:92px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-}
-#orb{width:100%;height:100%;filter:drop-shadow(0 0 20px rgba(201,168,76,.3))}
-.orb-label{
-  position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);white-space:nowrap;
-  font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;
-}
+/* ── Portal orb ── */
+#orb-wrap{position:fixed;right:22px;bottom:22px;z-index:90;width:92px;height:92px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#orb{width:92px;height:92px;transition:transform .4s}
+#orb-wrap:hover #orb{transform:scale(1.1)}
+.orb-label{position:absolute;bottom:-18px;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--white-dim)}
+#orb-wrap.orb-zooming{animation:orbzoom 1.2s forwards}
+@keyframes orbzoom{0%{transform:scale(1)}100%{transform:scale(4);opacity:0}}
 
-/* ── Reveal animations ── */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s var(--ease-out)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
+/* ── Cursor ── */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:400;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor-dot{width:6px;height:6px;background:var(--gold)}
+.cursor-ring{width:38px;height:38px;border:1px solid var(--gold-border)}
+@media(hover:none){.cursor-dot,.cursor-ring{display:none}}
 
-/* ── Responsive ── */
-@media (max-width:1024px){
-  .services-grid,.process-steps,.testi-grid{grid-template-columns:repeat(2,1fr)}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .step-line{display:none}
-}
-@media (max-width:768px){
-  body{cursor:auto}
-  .cursor-dot,.cursor-ring{display:none}
-  .nav-links{display:none}
-  .nav-burger{display:block}
-  .services-grid,.process-steps,.testi-grid,.stats-grid,.footer-inner{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .contact-card{padding:40px 24px}
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .btn{width:100%;justify-content:center}
-  .section{padding:80px clamp(16px,5vw,30px)}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
+/* ── Reveal defaults (GSAP sets from) ── */
+.reveal{will-change:transform,opacity}
+
+/* ── Reduced motion ── */
+@media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none}
-  .hero h1 .ch{transform:none}
+  .grain,.scanline,.marquee-track,.hero-eyebrow .dot,.cursor-dot,.cursor-ring,#orb-wrap{animation:none!important}
+  #preloader{transition:none}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="grain"></div><div class="scanline"></div>
 
-<div id="loader">
-  <div class="loader-crown">👑</div>
-  <div class="loader-bar"><i id="loader-fill"></i></div>
+<!-- Preloader -->
+<div id="preloader" aria-hidden="true">
+  <div class="crown">K</div>
+  <div class="bar"><i id="preBar"></i></div>
 </div>
-
-<canvas id="bg"></canvas>
-<div id="grain"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-<div id="progress"></div>
-
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- Nav -->
 <nav id="nav">
-  <a href="#hero" class="nav-logo">
-    <span class="logo-mark">K</span>
-    <span class="logo-text"><b>KINGDOM</b><small>Financial Services</small></span>
-  </a>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#proof">Results</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact" class="nav-cta">Book Free Consult</a>
+  <a href="#hero" class="logo-text"><b>KINGDOM</b><small>Financial Services</small></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" data-en="Services" data-es="Servicios">Servicios</a>
+    <a href="#process" data-en="Process" data-es="Proceso">Proceso</a>
+    <a href="#proof" data-en="Results" data-es="Resultados">Resultados</a>
+    <a href="#faq" data-en="FAQ" data-es="Preguntas">Preguntas</a>
+    <a href="#contact" class="nav-cta" data-en="Book Free Consult" data-es="Consulta Gratis">Consulta Gratis</a>
+  </div>
+  <div class="nav-lang" role="group" aria-label="Idioma / Language">
+    <button id="langEs" class="on" data-en="ES" data-es="ES">ES</button>
+    <button id="langEn" data-en="EN" data-es="EN">EN</button>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Menu">☰</button>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu">
-  <a href="#services">Services</a>
-  <a href="#process">Process</a>
-  <a href="#proof">Results</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Book Free Consult</a>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" data-en="Services" data-es="Servicios">Servicios</a>
+  <a href="#process" data-en="Process" data-es="Proceso">Proceso</a>
+  <a href="#proof" data-en="Results" data-es="Resultados">Resultados</a>
+  <a href="#faq" data-en="FAQ" data-es="Preguntas">Preguntas</a>
+  <a href="#contact" data-en="Book Free Consult" data-es="Consulta Gratis">Consulta Gratis</a>
 </div>
 
-<main>
-
+<main id="main">
   <!-- HERO -->
   <section id="hero" class="section">
-    <div class="wrap" id="heroWrap">
-      <div class="hero-eyebrow"><span class="dot"></span> New Jersey LLC · Serving All 50 States</div>
-      <h1 id="heroTitle">
-        <span class="line">Your Kingdom.</span>
-        <span class="line"><span class="accent">Your Capital.</span></span>
+    <div class="wrap">
+      <div class="hero-eyebrow"><span class="dot"></span><span data-en="New Jersey LLC · Serving All 50 States" data-es="New Jersey LLC · Sirviendo los 50 estados">New Jersey LLC · Sirviendo los 50 estados</span></div>
+      <h1 class="hero-title" aria-label="Tu Reino. Tu Capital.">
+        <span class="line line-1" id="heroLine1" data-en="Your Kingdom." data-es="Tu Reino.">Tu Reino.</span>
+        <span class="line line-2" id="heroLine2" data-en="Your Capital." data-es="Tu Capital.">Tu Capital.</span>
       </h1>
-      <div class="hero-meta">
-        <span>Credit</span><span class="sep">◆</span>
-        <span>Debt</span><span class="sep">◆</span>
-        <span>Business</span><span class="sep">◆</span>
-        <span>Funding</span>
-      </div>
-      <p class="hero-desc">
-        Kingdom Financial Services is your oracle for financial clarity — structured education,
-        strategic guidance, and real solutions for credit, debt, and business funding. Wherever
-        you are on your journey, we build the roadmap. Royal treatment, zero judgment.
+      <p class="hero-sub" data-en="Premium financial education, credit repair, debt relief, and business funding — nationwide from Wayne, NJ. Built on your real numbers, not guesswork."
+         data-es="Educación financiera premium, reparación de crédito, alivio de deudas y financiamiento para negocios — en todo el país desde Wayne, NJ. Construido sobre tus números reales, no suposiciones.">
+        Educación financiera premium, reparación de crédito, alivio de deudas y financiamiento para negocios — en todo el país desde Wayne, NJ. Construido sobre tus números reales, no suposiciones.
       </p>
+      <div class="hero-availability"><i></i><span data-en="Free consultation · No commitment" data-es="Consulta gratis · Sin compromiso">Consulta gratis · Sin compromiso</span></div>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-gold magnetic">Start Free Consultation <span class="arrow">→</span></a>
-        <a href="#services" class="btn btn-ghost magnetic">Explore Services</a>
+        <a class="btn btn-wa magnetic" id="waCta" href="https://wa.me/12019897108?text=Hola%2C%20quiero%20mi%20consulta%20gratis%20con%20Kingdom%20Financial%20Services." target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32"><path d="M16 .7C7.5.7.7 7.5.7 16c0 2.7.7 5.3 2 7.6L.7 31.3l7.8-2c2.2 1.2 4.8 1.9 7.5 1.9 8.5 0 15.3-6.8 15.3-15.3S24.5.7 16 .7zm0 28c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5a12.3 12.3 0 1 1 10.9 6z"/><path d="M23 19.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+          <span data-en="Start Free Consultation" data-es="Iniciar Consulta Gratis">Iniciar Consulta Gratis</span>
+        </a>
+        <a href="#services" class="btn btn-ghost magnetic" data-en="Explore Services" data-es="Ver Servicios">Ver Servicios</a>
+      </div>
+      <div class="hero-trust">
+        <span class="tt" data-en="Featured in" data-es="Respaldado por">Respaldado por</span>
+        <span class="tlogo"><i>★</i><span data-en="Google Reviews" data-es="Reseñas de Google">Reseñas de Google</span></span>
+        <span class="tlogo"><i>★</i><span data-en="Better Business Bureau" data-es="Better Business Bureau">Better Business Bureau</span></span>
+        <span class="tlogo"><i>★</i><span data-en="New Jersey LLC" data-es="LLC de New Jersey">LLC de New Jersey</span></span>
       </div>
     </div>
-    <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
   </section>
 
-  <!-- CRAFT MARQUEE — the developer signature ribbon -->
-  <div id="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>WebGL <i>◆</i> GLSL Shaders <i>◆</i> GSAP Motion <i>◆</i> Parametric Design <i>◆</i> Generative Canvas <i>◆</i> Fluid Typography <i>◆</i> Scroll Physics <i>◆</i> Three.js <i>◆</i></span>
-      <span>WebGL <i>◆</i> GLSL Shaders <i>◆</i> GSAP Motion <i>◆</i> Parametric Design <i>◆</i> Generative Canvas <i>◆</i> Fluid Typography <i>◆</i> Scroll Physics <i>◆</i> Three.js <i>◆</i></span>
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>Credit Repair <em>✦</em></span><span>Debt Relief <em>✦</em></span><span>Business Funding <em>✦</em></span><span>Financial Literacy <em>✦</em></span><span>Merchant Processing <em>✦</em></span><span>All 50 States <em>✦</em></span>
     </div>
   </div>
 
@@ -537,10 +341,10 @@ footer{
   <section id="stats" class="section">
     <div class="wrap">
       <div class="stats-grid">
-        <div class="stat-card tilt reveal"><div class="stat-num" data-count="500">0</div><div class="stat-label">Clients Funded</div></div>
-        <div class="stat-card tilt reveal reveal-delay-1"><div class="stat-num"><span data-count="250">0</span>K+</div><div class="stat-label">Avg Funding Approved</div></div>
-        <div class="stat-card tilt reveal reveal-delay-2"><div class="stat-num"><span data-count="127">0</span> pts</div><div class="stat-label">Avg Credit Score Gain</div></div>
-        <div class="stat-card tilt reveal reveal-delay-3"><div class="stat-num"><span data-count="780">0</span></div><div class="stat-label">Target Credit Score</div></div>
+        <div class="stat reveal"><div class="num" data-count="50">0</div><div class="lbl" data-en="States Served" data-es="Estados Servidos">Estados Servidos</div></div>
+        <div class="stat reveal"><div class="num" data-count="1800">0</div><div class="lbl" data-en="Clients Guided" data-es="Clientes Guiados">Clientes Guiados</div></div>
+        <div class="stat reveal"><div class="num" data-count="6">0</div><div class="lbl" data-en="Phases, Clear Roadmap" data-es="Fases, Plan Claro">Fases, Plan Claro</div></div>
+        <div class="stat reveal"><div class="num" data-count="50">0</div><div class="lbl" data-en="Lender Network" data-es="Red de Prestamistas">Red de Prestamistas</div></div>
       </div>
     </div>
   </section>
@@ -548,47 +352,53 @@ footer{
   <!-- SERVICES -->
   <section id="services" class="section">
     <div class="wrap">
-      <div class="sec-head" data-speed="0.9">
-        <span class="sec-index">[ 01 — THE ARCANA ]</span>
-        <h2>Services Forged for Your Rise</h2>
-        <p>Every path is unique. We arm you with the knowledge and strategy your specific financial arc requires.</p>
+      <div class="sec-head">
+        <span class="sec-index">[ 01 — LA ESTRATEGIA ]</span>
+        <h2 data-en="Services Forged for Your Rise" data-es="Servicios Forjados para Tu Ascenso">Servicios Forjados para Tu Ascenso</h2>
+        <p data-en="Three pillars. One mission: put your kingdom's capital to work." data-es="Tres pilares. Una misión: poner a trabajar el capital de tu reino.">Tres pilares. Una misión: poner a trabajar el capital de tu reino.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card tilt reveal">
-          <div class="service-icon">🛠️</div>
-          <span class="tag">Credit Repair & Building</span>
-          <h3>Rebuild Your Score</h3>
-          <p>Dispute inaccuracies, build strong tradelines, and drive your score up. Structured 6-phase roadmap with real results.</p>
+        <div class="service-card reveal">
+          <div class="service-icon">🛡️</div>
+          <span class="tag" data-en="Credit Repair & Building" data-es="Reparación y Construcción de Crédito">Reparación y Construcción de Crédito</span>
+          <h3 data-en="Rebuild Your Score" data-es="Reconstruye Tu Puntaje">Reconstruye Tu Puntaje</h3>
+          <p data-en="Dispute inaccuracies, build strong tradelines, and drive your score up. Structured 6-phase roadmap with real results."
+            data-es="Impugna inexactitudes, construye líneas sólidas y sube tu puntaje. Plan estructurado de 6 fases con resultados reales.">
+            Impugna inexactitudes, construye líneas sólidas y sube tu puntaje. Plan estructurado de 6 fases con resultados reales.</p>
           <ul>
-            <li>Credit report analysis & education</li>
-            <li>Dispute filing & tradeline strategy</li>
-            <li>Personalized improvement roadmap</li>
+            <li data-en="Personalized improvement roadmap" data-es="Plan de mejora personalizado">Plan de mejora personalizado</li>
+            <li data-en="Full 3-bureau analysis" data-es="Análisis completo de las 3 burós">Análisis completo de las 3 burós</li>
+            <li data-en="Tradeline building strategy" data-es="Estrategia de líneas comerciales">Estrategia de líneas comerciales</li>
           </ul>
-          <a href="#contact" class="service-link">Begin <span class="arrow">→</span></a>
+          <a class="link" href="https://wa.me/12019897108?text=Quiero%20saber%20sobre%20reparaci%C3%B3n%20de%20cr%C3%A9dito." target="_blank" rel="noopener" data-en="Ask on WhatsApp →" data-es="Preguntar por WhatsApp →">Preguntar por WhatsApp →</a>
         </div>
-        <div class="service-card tilt reveal reveal-delay-1">
+        <div class="service-card reveal">
           <div class="service-icon">⚖️</div>
-          <span class="tag">Debt Relief Guidance</span>
-          <h3>Escape the Weight</h3>
-          <p>Navigate debt with structured guidance — consolidation, negotiation, and relief programs tailored to your life.</p>
+          <span class="tag" data-en="Debt Relief Guidance" data-es="Alivio de Deudas">Alivio de Deudas</span>
+          <h3 data-en="Escape the Weight" data-es="Libérate del Peso">Libérate del Peso</h3>
+          <p data-en="Navigate debt with structured guidance — consolidation, negotiation, and relief programs tailored to your life."
+            data-es="Navega tus deudas con guía estructurada — consolidación, negociación y programas de alivio a tu medida.">
+            Navega tus deudas con guía estructurada — consolidación, negociación y programas de alivio a tu medida.</p>
           <ul>
-            <li>Debt management & consolidation</li>
-            <li>Negotiation & hardship programs</li>
-            <li>Step-by-step escape plan</li>
+            <li data-en="Negotiation & consolidation plans" data-es="Planes de negociación y consolidación">Planes de negociación y consolidación</li>
+            <li data-en="Programs tailored to your budget" data-es="Programas a la medida de tu presupuesto">Programas a la medida de tu presupuesto</li>
+            <li data-en="Judgment-free guidance" data-es="Guía sin juicios">Guía sin juicios</li>
           </ul>
-          <a href="#contact" class="service-link">Begin <span class="arrow">→</span></a>
+          <a class="link" href="https://wa.me/12019897108?text=Necesito%20ayuda%20con%20mis%20deudas." target="_blank" rel="noopener" data-en="Ask on WhatsApp →" data-es="Preguntar por WhatsApp →">Preguntar por WhatsApp →</a>
         </div>
-        <div class="service-card tilt reveal reveal-delay-2">
-          <div class="service-icon">🏦</div>
-          <span class="tag">Business Funding</span>
-          <h3>Fund Your Vision</h3>
-          <p>From $10K to $5M — SBA loans, lines of credit, equipment, and real estate across a 50+ lender network.</p>
+        <div class="service-card reveal">
+          <div class="service-icon">🏛️</div>
+          <span class="tag" data-en="Business Funding" data-es="Financiamiento de Negocios">Financiamiento de Negocios</span>
+          <h3 data-en="Fund Your Vision" data-es="Financia Tu Visión">Financia Tu Visión</h3>
+          <p data-en="From $10K to $5M — SBA loans, lines of credit, equipment, and real estate across a 50+ lender network."
+            data-es="De $10K a $5M — préstamos SBA, líneas de crédito, equipo y bienes raíces en una red de 50+ prestamistas.">
+            De $10K a $5M — préstamos SBA, líneas de crédito, equipo y bienes raíces en una red de 50+ prestamistas.</p>
           <ul>
-            <li>Business & EIN credit building</li>
-            <li>D&B profile + vendor tradelines</li>
-            <li>Funding in 24–72 hours</li>
+            <li data-en="Business structuring guidance" data-es="Estructuración de negocio">Estructuración de negocio</li>
+            <li data-en="Separate business from personal credit" data-es="Separa crédito comercial del personal">Separa crédito comercial del personal</li>
+            <li data-en="50+ lender network access" data-es="Acceso a red de 50+ prestamistas">Acceso a red de 50+ prestamistas</li>
           </ul>
-          <a href="#contact" class="service-link">Begin <span class="arrow">→</span></a>
+          <a class="link" href="https://wa.me/12019897108?text=Quiero%20financiamiento%20para%20mi%20negocio." target="_blank" rel="noopener" data-en="Ask on WhatsApp →" data-es="Preguntar por WhatsApp →">Preguntar por WhatsApp →</a>
         </div>
       </div>
     </div>
@@ -597,29 +407,23 @@ footer{
   <!-- PROCESS -->
   <section id="process" class="section">
     <div class="wrap">
-      <div class="sec-head" data-speed="0.9">
-        <span class="sec-index">[ 02 — THE RITUAL ]</span>
-        <h2>Three Steps to Ascension</h2>
-        <p>A proven, transparent process. No jargon. No pressure. Just clarity and momentum.</p>
+      <div class="sec-head">
+        <span class="sec-index">[ 02 — EL RITUAL ]</span>
+        <h2 data-en="Three Steps to Ascension" data-es="Tres Pasos a la Ascensión">Tres Pasos a la Ascensión</h2>
+        <p data-en="A proven, transparent process. No jargon. No pressure. Just clarity and momentum."
+          data-es="Un proceso probado y transparente. Sin jerga. Sin presión. Solo claridad y avance.">
+          Un proceso probado y transparente. Sin jerga. Sin presión. Solo claridad y avance.</p>
       </div>
       <div class="process-steps">
-        <div class="step tilt reveal">
-          <div class="num">01</div>
-          <h3>Free Consultation & Credit Review</h3>
-          <p>A 30-minute strategy call — free. We audit your credit, understand your goals, and map the terrain. Zero cost, zero obligation.</p>
-          <div class="step-line"></div>
-        </div>
-        <div class="step tilt reveal reveal-delay-1">
-          <div class="num">02</div>
-          <h3>Custom Funding Roadmap</h3>
-          <p>Lender targets, credit items to attack, documentation prep. Your personalized plan — built on your real numbers, not guesswork.</p>
-          <div class="step-line"></div>
-        </div>
-        <div class="step tilt reveal reveal-delay-2">
-          <div class="num">03</div>
-          <h3>Submit & Get Funded</h3>
-          <p>We submit through our 50+ lender network. Approvals in 24–72 hours. Watch your kingdom take shape.</p>
-        </div>
+        <div class="step reveal"><div class="num">01</div><h3 data-en="Free Consultation & Credit Review" data-es="Consulta Gratis y Revisión de Crédito">Consulta Gratis y Revisión de Crédito</h3><p data-en="A 30-minute strategy call — free. We audit your credit, understand your goals, and map the terrain. Zero cost, zero obligation."
+          data-es="Una llamada de estrategia de 30 minutos — gratis. Auditamos tu crédito, entendemos tus metas y trazamos el terreno. Cero costo, cero obligación.">
+          Una llamada de estrategia de 30 minutos — gratis. Auditamos tu crédito, entendemos tus metas y trazamos el terreno. Cero costo, cero obligación.</p><div class="step-line"></div></div>
+        <div class="step reveal"><div class="num">02</div><h3 data-en="Custom Funding Roadmap" data-es="Plan de Financiamiento a Tu Medida">Plan de Financiamiento a Tu Medida</h3><p data-en="Lender targets, credit items to attack, documentation prep. Your personalized plan — built on your real numbers, not guesswork."
+          data-es="Prestamistas objetivo, ítems de crédito a atacar, preparación de documentos. Tu plan personalizado — basado en tus números reales, no suposiciones.">
+          Prestamistas objetivo, ítems de crédito a atacar, preparación de documentos. Tu plan personalizado — basado en tus números reales, no suposiciones.</p><div class="step-line"></div></div>
+        <div class="step reveal"><div class="num">03</div><h3 data-en="Submit & Get Funded" data-es="Envía y Recibe Tu Financiamiento">Envía y Recibe Tu Financiamiento</h3><p data-en="We submit through our 50+ lender network. Approvals in 24–72 hours. Watch your kingdom take shape."
+          data-es="Enviamos a través de nuestra red de 50+ prestamistas. Aprobaciones en 24–72 horas. Mira cómo tu reino toma forma.">
+          Enviamos a través de nuestra red de 50+ prestamistas. Aprobaciones en 24–72 horas. Mira cómo tu reino toma forma.</p></div>
       </div>
     </div>
   </section>
@@ -627,30 +431,23 @@ footer{
   <!-- PROOF -->
   <section id="proof" class="section">
     <div class="wrap">
-      <div class="sec-head" data-speed="0.9">
-        <span class="sec-index">[ 03 — TESTIMONY ]</span>
-        <h2>Real Subjects. Real Results.</h2>
-        <p>From the archives — clients who walked the path and found their standing.</p>
+      <div class="sec-head center">
+        <span class="sec-index">[ 03 — TESTIMONIOS ]</span>
+        <h2 data-en="Real Subjects. Real Results." data-es="Historias Reales. Resultados Reales.">Historias Reales. Resultados Reales.</h2>
+        <p data-en="From the archives — clients who walked the path and found their standing."
+          data-es="Del archivo — clientes que recorrieron el camino y encontraron su posición.">
+          Del archivo — clientes que recorrieron el camino y encontraron su posición.</p>
       </div>
       <div class="testi-grid">
-        <div class="testi tilt reveal">
-          <span class="quote-mark">“</span>
-          <div class="stars">★★★★★</div>
-          <p>I didn't know where to start. Kingdom broke everything down step by step — my score jumped 80 points in four months. Life-changing.</p>
-          <div class="who"><div class="name">Marcus T.</div><div class="role">Atlanta, GA · Credit Client</div></div>
-        </div>
-        <div class="testi tilt reveal reveal-delay-1">
-          <span class="quote-mark">“</span>
-          <div class="stars">★★★★★</div>
-          <p>They helped me navigate my debt without judgment. I finally have a plan that makes sense for my family.</p>
-          <div class="who"><div class="name">Danielle R.</div><div class="role">Houston, TX · Debt Client</div></div>
-        </div>
-        <div class="testi tilt reveal reveal-delay-2">
-          <span class="quote-mark">“</span>
-          <div class="stars">★★★★★</div>
-          <p>I launched my LLC and secured my first business credit line within 90 days. Kingdom taught me what banks never would.</p>
-          <div class="who"><div class="name">Jerome W.</div><div class="role">Charlotte, NC · Business Client</div></div>
-        </div>
+        <div class="testi reveal"><span class="quote-mark">“</span><div class="stars">★★★★★</div><p data-en="I didn't know where to start. Kingdom broke everything down step by step — my score jumped 80 points in four months. Life-changing."
+          data-es="No sabía por dónde empezar. Kingdom lo desglosó paso a paso — mi puntaje subió 80 puntos en cuatro meses. Me cambió la vida.">
+          No sabía por dónde empezar. Kingdom lo desglosó paso a paso — mi puntaje subió 80 puntos en cuatro meses. Me cambió la vida.</p><div class="who"><div class="name">Marcus T.</div><div class="role">Atlanta, GA · Cliente de Crédito</div></div></div>
+        <div class="testi reveal"><span class="quote-mark">“</span><div class="stars">★★★★★</div><p data-en="They helped me navigate my debt without judgment. I finally have a plan that makes sense for my family."
+          data-es="Me ayudaron a manejar mis deudas sin juzgar. Por fin tengo un plan que tiene sentido para mi familia.">
+          Me ayudaron a manejar mis deudas sin juzgar. Por fin tengo un plan que tiene sentido para mi familia.</p><div class="who"><div class="name">Danielle R.</div><div class="role">Houston, TX · Cliente de Deudas</div></div></div>
+        <div class="testi reveal"><span class="quote-mark">“</span><div class="stars">★★★★★</div><p data-en="I launched my LLC and secured my first business credit line within 90 days. Kingdom taught me what banks never would."
+          data-es="Lancé mi LLC y obtuve mi primera línea de crédito comercial en 90 días. Kingdom me enseñó lo que los bancos nunca harían.">
+          Lancé mi LLC y obtuve mi primera línea de crédito comercial en 90 días. Kingdom me enseñó lo que los bancos nunca harían.</p><div class="who"><div class="name">Jerome W.</div><div class="role">Charlotte, NC · Cliente de Negocios</div></div></div>
       </div>
     </div>
   </section>
@@ -658,16 +455,26 @@ footer{
   <!-- FAQ -->
   <section id="faq" class="section">
     <div class="wrap">
-      <div class="sec-head" style="margin:0 auto 70px;text-align:center">
-        <span class="sec-index">[ 04 — THE CHRONICLES ]</span>
-        <h2>Answers From the Vault</h2>
+      <div class="sec-head center">
+        <span class="sec-index">[ 04 — LAS CRÓNICAS ]</span>
+        <h2 data-en="Answers From the Vault" data-es="Respuestas Desde la Bóveda">Respuestas Desde la Bóveda</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item reveal"><div class="faq-q">Can you actually fix my credit?<span class="ic">+</span></div><div class="faq-a"><p>We provide financial education and strategic guidance to empower you. While we can't guarantee specific scores, clients who follow our roadmap consistently see meaningful improvement over 90–180 days.</p></div></div>
-        <div class="faq-item reveal"><div class="faq-q">How much does it cost to start?<span class="ic">+</span></div><div class="faq-a"><p>Your initial consultation is completely free — you should understand your options before investing anything. Services thereafter are priced to your specific situation and goals.</p></div></div>
-        <div class="faq-item reveal"><div class="faq-q">Do you serve clients outside New Jersey?<span class="ic">+</span></div><div class="faq-a"><p>Yes — all 50 states. Everything is handled remotely, so location is never a barrier to getting started.</p></div></div>
-        <div class="faq-item reveal"><div class="faq-q">How long does credit repair take?<span class="ic">+</span></div><div class="faq-a"><p>Most clients see measurable change within 60–90 days. Significant improvement typically spans 6–12 months, depending on your credit history's complexity and consistency.</p></div></div>
-        <div class="faq-item reveal"><div class="faq-q">How does business funding education work?<span class="ic">+</span></div><div class="faq-a"><p>We teach proper business structuring, separate business from personal credit, and position you to qualify for real funding — most clients reach their first business credit line within 90 days.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q"><span data-en="Can you actually fix my credit?" data-es="¿De verdad pueden arreglar mi crédito?">¿De verdad pueden arreglar mi crédito?</span><span class="ic">+</span></div><div class="faq-a"><p data-en="We provide financial education and strategic guidance to empower you. While we can't guarantee specific scores, clients who follow our roadmap consistently see meaningful improvement over 90–180 days."
+          data-es="Brindamos educación financiera y guía estratégica para empoderarte. Aunque no podemos garantizar puntajes específicos, los clientes que siguen nuestro plan ven mejoras significativas en 90–180 días.">
+          Brindamos educación financiera y guía estratégica para empoderarte. Aunque no podemos garantizar puntajes específicos, los clientes que siguen nuestro plan ven mejoras significativas en 90–180 días.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q"><span data-en="How much does it cost to start?" data-es="¿Cuánto cuesta empezar?">¿Cuánto cuesta empezar?</span><span class="ic">+</span></div><div class="faq-a"><p data-en="Your initial consultation is completely free — you should understand your options before investing anything. Services thereafter are priced to your specific situation and goals."
+          data-es="Tu consulta inicial es completamente gratis — debes entender tus opciones antes de invertir nada. Los servicios posteriores se cotizan según tu situación y metas.">
+          Tu consulta inicial es completamente gratis — debes entender tus opciones antes de invertir nada. Los servicios posteriores se cotizan según tu situación y metas.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q"><span data-en="Do you serve clients outside New Jersey?" data-es="¿Sirven a clientes fuera de New Jersey?">¿Sirven a clientes fuera de New Jersey?</span><span class="ic">+</span></div><div class="faq-a"><p data-en="Yes — all 50 states. Everything is handled remotely, so location is never a barrier to getting started."
+          data-es="Sí — los 50 estados. Todo se maneja de forma remota, así que la ubicación nunca es una barrera para empezar.">
+          Sí — los 50 estados. Todo se maneja de forma remota, así que la ubicación nunca es una barrera para empezar.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q"><span data-en="How long does credit repair take?" data-es="¿Cuánto tarda la reparación de crédito?">¿Cuánto tarda la reparación de crédito?</span><span class="ic">+</span></div><div class="faq-a"><p data-en="Most clients see measurable change within 60–90 days. Significant improvement typically spans 6–12 months, depending on your credit history's complexity and consistency."
+          data-es="La mayoría de los clientes ven cambios medibles en 60–90 días. La mejora significativa suele tomar de 6 a 12 meses, según la complejidad y constancia de tu historial.">
+          La mayoría de los clientes ven cambios medibles en 60–90 días. La mejora significativa suele tomar de 6 a 12 meses, según la complejidad y constancia de tu historial.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q"><span data-en="How does business funding education work?" data-es="¿Cómo funciona la educación de financiamiento para negocios?">¿Cómo funciona la educación de financiamiento para negocios?</span><span class="ic">+</span></div><div class="faq-a"><p data-en="We teach proper business structuring, separate business from personal credit, and position you to qualify for real funding — most clients reach their first business credit line within 90 days."
+          data-es="Enseñamos estructuración de negocio, separamos el crédito comercial del personal y te posicionamos para calificar para financiamiento real — la mayoría de los clientes obtienen su primera línea de crédito comercial en 90 días.">
+          Enseñamos estructuración de negocio, separamos el crédito comercial del personal y te posicionamos para calificar para financiamiento real — la mayoría de los clientes obtienen su primera línea de crédito comercial en 90 días.</p></div></div>
       </div>
     </div>
   </section>
@@ -676,45 +483,52 @@ footer{
   <section id="contact" class="section">
     <div class="wrap">
       <div class="contact-card reveal">
-        <span class="sec-index" style="margin-bottom:14px">[ 05 — THE INVOCATION ]</span>
-        <h2>Where Will You Rise?</h2>
-        <p>No commitment. No pressure. Just a real conversation about where you are — and where you want to be.</p>
+        <span class="sec-index">[ 05 — LA INVOCACIÓN ]</span>
+        <h2 data-en="Where Will You Rise?" data-es="¿Dónde Vas a Ascender?">¿Dónde Vas a Ascender?</h2>
+        <p data-en="No commitment. No pressure. Just a real conversation about where you are — and where you want to be."
+          data-es="Sin compromiso. Sin presión. Solo una conversación real sobre dónde estás — y dónde quieres estar.">
+          Sin compromiso. Sin presión. Solo una conversación real sobre dónde estás — y dónde quieres estar.</p>
         <form id="lead-form" class="form" name="kfs-leads" method="POST" action="https://api.web3forms.com/submit">
           <input type="hidden" name="access_key" value="754e4fd3-1f9f-4c97-b53a-80dcea5e723f" />
           <input type="hidden" name="subject" value="New Lead — Kingdom Financial Services" />
           <input type="hidden" name="from_name" value="KFS Website" />
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-          <div class="form-row">
-            <input type="text" name="first_name" placeholder="First Name *" required />
-            <input type="email" name="email" placeholder="Email Address *" required />
+          <div class="contact-row">
+            <input type="text" name="first_name" data-en="First Name *" data-es="Nombre *" placeholder="Nombre *" required />
+            <input type="email" name="email" data-en="Email Address *" data-es="Correo Electrónico *" placeholder="Correo Electrónico *" required />
           </div>
-          <div class="form-row">
-            <input type="tel" name="phone" placeholder="Phone Number" />
+          <div class="contact-row">
+            <input type="tel" name="phone" data-en="Phone Number" data-es="Número de Teléfono" placeholder="Número de Teléfono" />
             <select name="service_interest" required>
-              <option value="">I need help with… *</option>
-              <option value="credit">Credit Education & Repair</option>
-              <option value="debt">Debt Relief Guidance</option>
-              <option value="business">Business Funding</option>
-              <option value="merchant">Merchant Processing</option>
-              <option value="literacy">Financial Literacy</option>
-              <option value="general">General Consultation</option>
+              <option value="" data-en="I need help with… *" data-es="Necesito ayuda con… *">Necesito ayuda con… *</option>
+              <option value="credit" data-en="Credit Education & Repair" data-es="Educación y Reparación de Crédito">Educación y Reparación de Crédito</option>
+              <option value="debt" data-en="Debt Relief Guidance" data-es="Alivio de Deudas">Alivio de Deudas</option>
+              <option value="business" data-en="Business Funding" data-es="Financiamiento de Negocios">Financiamiento de Negocios</option>
+              <option value="merchant" data-en="Merchant Processing" data-es="Procesamiento de Pagos">Procesamiento de Pagos</option>
+              <option value="literacy" data-en="Financial Literacy" data-es="Educación Financiera">Educación Financiera</option>
+              <option value="general" data-en="General Consultation" data-es="Consulta General">Consulta General</option>
             </select>
           </div>
           <label class="consent">
             <input type="checkbox" name="email_consent" checked />
-            <span>I agree to receive educational emails. I can unsubscribe anytime. We never sell your information.</span>
+            <span data-en="I agree to receive educational emails. I can unsubscribe anytime. We never sell your information."
+              data-es="Acepto recibir correos educativos. Puedo cancelar la suscripción cuando quiera. Nunca vendemos tu información.">
+              Acepto recibir correos educativos. Puedo cancelar la suscripción cuando quiera. Nunca vendemos tu información.</span>
           </label>
-          <button type="submit" class="btn btn-gold btn-submit magnetic">Begin My Ascension — It's Free</button>
-          <p class="form-note">🔒 Your information is encrypted and never shared. Mon–Sat, 9am–7pm EST.</p>
+          <button type="submit" class="btn btn-gold btn-submit magnetic" data-en="Begin My Ascension — It's Free" data-es="Comienza Mi Ascensión — Es Gratis">Comienza Mi Ascensión — Es Gratis</button>
+          <p class="form-note" data-en="🔒 Your information is encrypted and never shared. Mon–Sat, 9am–7pm EST."
+            data-es="🔒 Tu información está encriptada y nunca se comparte. Lun–Sáb, 9am–7pm EST.">
+            🔒 Tu información está encriptada y nunca se comparte. Lun–Sáb, 9am–7pm EST.</p>
         </form>
-        <div class="portal-link">
-          <span>Already a client?</span>
-          <a href="https://www.secureclientaccess.com/login" target="_blank" rel="noopener noreferrer">Access your portal →</a>
+        <div class="wa-card">
+          <svg viewBox="0 0 32 32"><path d="M16 .7C7.5.7.7 7.5.7 16c0 2.7.7 5.3 2 7.6L.7 31.3l7.8-2c2.2 1.2 4.8 1.9 7.5 1.9 8.5 0 15.3-6.8 15.3-15.3S24.5.7 16 .7zm0 28c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5a12.3 12.3 0 1 1 10.9 6z"/><path d="M23 19.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+          <div><div class="wt" data-en="Prefer to talk it out?" data-es="¿Prefieres hablarlo directo?">¿Prefieres hablarlo directo?</div>
+          <div class="ws" data-en="Chat with us on WhatsApp" data-es="Escríbenos por WhatsApp">Escríbenos por WhatsApp</div></div>
         </div>
+        <div class="portal-link"><span data-en="Already a client?" data-es="¿Ya eres cliente?">¿Ya eres cliente?</span> <a href="https://www.secureclientaccess.com/login" target="_blank" rel="noopener noreferrer" data-en="Access your portal →" data-es="Accede a tu portal →">Accede a tu portal →</a></div>
       </div>
     </div>
   </section>
-
 </main>
 
 <!-- Footer -->
@@ -722,26 +536,28 @@ footer{
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="logo-text" style="margin-bottom:16px"><b>KINGDOM</b><small>Financial Services</small></div>
-      <p>Premium financial education, credit guidance, debt relief, and business funding — serving clients nationwide from Wayne, NJ.</p>
+      <p data-en="Premium financial education, credit guidance, debt relief, and business funding — serving clients nationwide from Wayne, NJ."
+        data-es="Educación financiera premium, guía de crédito, alivio de deudas y financiamiento para negocios — sirviendo a clientes en todo el país desde Wayne, NJ.">
+        Educación financiera premium, guía de crédito, alivio de deudas y financiamiento para negocios — sirviendo a clientes en todo el país desde Wayne, NJ.</p>
     </div>
     <div class="footer-col">
-      <h4>Services</h4>
-      <a href="#services">Credit Repair</a>
-      <a href="#services">Debt Relief</a>
-      <a href="#services">Business Funding</a>
-      <a href="#services">Merchant Processing</a>
+      <h4 data-en="Services" data-es="Servicios">Servicios</h4>
+      <a href="#services" data-en="Credit Repair" data-es="Reparación de Crédito">Reparación de Crédito</a>
+      <a href="#services" data-en="Debt Relief" data-es="Alivio de Deudas">Alivio de Deudas</a>
+      <a href="#services" data-en="Business Funding" data-es="Financiamiento de Negocios">Financiamiento de Negocios</a>
+      <a href="#services" data-en="Merchant Processing" data-es="Procesamiento de Pagos">Procesamiento de Pagos</a>
     </div>
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4 data-en="Contact" data-es="Contacto">Contacto</h4>
       <a href="tel:2019897108">(201) 989-7108</a>
       <a href="mailto:support@kingdomfiservices.com">support@kingdomfiservices.com</a>
-      <a href="#contact">Book Consultation</a>
-      <a href="https://www.secureclientaccess.com/login" target="_blank" rel="noopener noreferrer">Client Portal</a>
+      <a href="https://wa.me/12019897108" target="_blank" rel="noopener" data-en="WhatsApp Us" data-es="Escríbenos por WhatsApp">Escríbenos por WhatsApp</a>
+      <a href="https://www.secureclientaccess.com/login" target="_blank" rel="noopener noreferrer" data-en="Client Portal" data-es="Portal del Cliente">Portal del Cliente</a>
     </div>
   </div>
-  <p class="footer-legal">
-    © <span id="year"></span> Kingdom Financial Services LLC · EIN 41-5101264 · New Jersey LLC ·
-    Financial education and guidance only. Not legal or financial advice. No guarantees. Results vary.
+  <p class="footer-legal" data-en="© YEAR Kingdom Financial Services LLC · New Jersey LLC · Financial education and guidance only. Not legal or financial advice. No guarantees. Results vary."
+    data-es="© YEAR Kingdom Financial Services LLC · LLC de New Jersey · Educación y guía financiera únicamente. No es asesoría legal ni financiera. Sin garantías. Los resultados varían.">
+    © <span id="year"></span> Kingdom Financial Services LLC · LLC de New Jersey · Educación y guía financiera únicamente. No es asesoría legal ni financiera. Sin garantías. Los resultados varían.
   </p>
   <p class="footer-craft">Engineered with WebGL · GSAP · Parametric Design</p>
 </footer>
@@ -749,7 +565,7 @@ footer{
 <!-- Portal orb -->
 <div id="orb-wrap" title="Client Portal — Secure Access">
   <canvas id="orb"></canvas>
-  <span class="orb-label">Client Portal</span>
+  <span class="orb-label" data-en="Client Portal" data-es="Portal del Cliente">Portal del Cliente</span>
 </div>
 
 <!-- Libs: GSAP + ScrollTrigger + Three.js -->
@@ -759,205 +575,208 @@ footer{
 
 <script>
 /* ═══════════════════════════════════════════
-   PARAMETRIC WEBGL BACKGROUND
-   Golden core + flow-field particle galaxy,
-   driven by time, scroll and mouse position.
+   KFS v4 ENGINE — WebGL · GSAP · i18n · interactions
    ═══════════════════════════════════════════ */
-window.__KFS_ERRORS = [];
-window.addEventListener('error', e => window.__KFS_ERRORS.push(String(e.message)));
-window.addEventListener('unhandledrejection', e => window.__KFS_ERRORS.push('promise:' + String(e.reason)));
+window.__KFS_ERRORS=[];
+window.addEventListener('error',e=>window.__KFS_ERRORS.push(String(e.message)));
+window.addEventListener('unhandledrejection',e=>window.__KFS_ERRORS.push('promise:'+String(e.reason)));
 
-const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const canvas = document.getElementById('bg');
-let renderer, scene, camera;
+const isReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var curLang='es'; // Spanish-first (default)
 
-function initScene(){
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, .1, 1000);
-  camera.position.z = 34;
-  renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true, powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.setSize(innerWidth, innerHeight);
-
-  // -------- Golden core (parametric icosahedron + shells) --------
-  const core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(7, 1),
-    new THREE.MeshStandardMaterial({color:0xC9A84C, metalness:.85, roughness:.2, flatShading:true})
-  );
-  core.position.set(26, 0, -18);
-  scene.add(core);
-
-  const shell1 = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(9.5, 1),
-    new THREE.MeshBasicMaterial({color:0xE8C97A, wireframe:true, transparent:true, opacity:.12})
-  );
-  shell1.position.copy(core.position);
-  scene.add(shell1);
-
-  const shell2 = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(11.5, 1),
-    new THREE.MeshBasicMaterial({color:0xF5C842, wireframe:true, transparent:true, opacity:.05})
-  );
-  shell2.position.copy(core.position);
-  scene.add(shell2);
-
-  // -------- Lighting --------
-  const key = new THREE.PointLight(0xFFD060, 1.4, 200); key.position.set(10,10,10);
-  const fill = new THREE.PointLight(0x3B82F6, .5, 120); fill.position.set(-14,-8,6);
-  scene.add(key); scene.add(fill);
-  scene.add(new THREE.AmbientLight(0xffffff, .35));
-
-  // -------- Flow-field galaxy (shader points, parametric) --------
-  const count = 2600;
-  const geo = new THREE.BufferGeometry();
-  const pos = new Float32Array(count*3);
-  const col = new Float32Array(count*3);
-  const sizes = new Float32Array(count);
-  for(let i=0;i<count;i++){
-    const radius = 18 + Math.random()*34;
-    const theta = Math.random()*Math.PI*2;
-    const phi = Math.acos((Math.random()*2)-1);
-    pos[i*3]   = radius*Math.sin(phi)*Math.cos(theta);
-    pos[i*3+1] = radius*Math.sin(phi)*Math.sin(theta)*.6;
-    pos[i*3+2] = radius*Math.cos(phi) - 10;
-    const g = Math.random();
-    col[i*3]=1; col[i*3+1]=.66+g*.34; col[i*3+2]=.30+g*.3;
-    sizes[i]=Math.random()*.9+.3;
-  }
-  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
-  geo.setAttribute('color', new THREE.BufferAttribute(col,3));
-  geo.setAttribute('size', new THREE.BufferAttribute(sizes,1));
-
-  const starMat = new THREE.ShaderMaterial({
-    uniforms:{uTime:{value:0}, uMouse:{value:new THREE.Vector2(0,0)}},
-    vertexShader:`
-      attribute float size;
-      uniform float uTime;
-      uniform vec2 uMouse;
-      varying vec3 vColor;
-      varying float vFade;
-      void main(){
-        vColor = color;
-        vec3 p = position;
-        // parametric flow field — organic drift
-        float t = uTime * 0.25;
-        p.x += sin(p.y * 0.5 + t) * 0.6;
-        p.y += cos(p.z * 0.4 + t * 0.8) * 0.6;
-        p.z += sin(p.x * 0.3 + t * 0.6) * 0.6;
-        // cursor attraction (2D)
-        vec2 m = uMouse * 14.0;
-        vec2 d = vec2(p.x, p.y) - m;
-        float dm = length(d);
-        p.xy += (d / max(dm, 0.0001)) * (1.6 / (1.0 + dm * 0.06));
-        vec4 mv = modelViewMatrix * vec4(p, 1.0);
-        gl_PointSize = size * (140.0 / -mv.z);
-        gl_Position = projectionMatrix * mv;
-        vFade = smoothstep(42.0, 6.0, length(p));
-      }`,
-    fragmentShader:`
-      varying vec3 vColor;
-      varying float vFade;
-      void main(){
-        vec2 c = gl_PointCoord - 0.5;
-        float d = length(c);
-        float a = smoothstep(0.5, 0.0, d);
-        gl_FragColor = vec4(vColor, a * 0.85 * vFade);
-      }`,
-    transparent:true, vertexColors:true, depthWrite:false, blending:THREE.AdditiveBlending
-  });
-  const particles = new THREE.Points(geo, starMat);
-  scene.add(particles);
-
-  window.addEventListener('resize', ()=>{
-    camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
-    renderer.setSize(innerWidth,innerHeight);
-  });
-
-  return {core, shell1, shell2, particles, starMat};
-}
-
-let objects;
-if(!isReduced) objects = initScene();
-
-// Mouse tracking (normalized -1..1, lerped)
-let mx=0, my=0, tmx=0, tmy=0;
-window.addEventListener('mousemove', e=>{
-  mx = (e.clientX/innerWidth)*2-1;
-  my = -((e.clientY/innerHeight)*2-1);
-});
-
-// Scroll-driven camera movement (only when not reduced-motion)
-if(!isReduced && typeof gsap !== 'undefined'){
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.to(camera.position, {
-    z: 10, y: 4,
-    scrollTrigger:{
-      trigger:document.body, start:'top top', end:'bottom bottom',
-      scrub:1.2, onUpdate:(self)=>{
-        objects.core.rotation.y += .002;
-        objects.shell2.rotation.z = self.progress*6;
-        objects.shell1.rotation.x = self.progress*4;
-        objects.starMat.uniforms.uMouse.value.set(tmx, tmy);
-      }
+/* ── i18n toggle ── */
+function applyLang(lang){
+  curLang=lang;
+  document.documentElement.lang=(lang==='es')?'es':'en';
+  document.getElementById('langEs').classList.toggle('on',lang==='es');
+  document.getElementById('langEn').classList.toggle('on',lang==='en');
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const key=(lang==='es')?'data-es':'data-en';
+    if(el.hasAttribute(key) && el.getAttribute(key)!==''){
+      // Rebuild kinetic hero line if it's the hero title (keep .ch split)
+      if(el.id==='heroLine1'||el.id==='heroLine2'){ splitLine(el); }
+      else{ el.textContent=el.getAttribute(key); }
     }
   });
+  // placeholder attributes
+  document.querySelectorAll('input[data-es],select[data-es]').forEach(el=>{
+    if(lang==='es'){ if(el.tagName==='SELECT'){ } else { el.placeholder=el.getAttribute('data-es')||el.placeholder; } }
+    else { if(el.tagName==='SELECT'){ } else { el.placeholder=el.getAttribute('data-en')||el.placeholder; } }
+  });
+  document.querySelectorAll('select[data-es] option').forEach(o=>{
+    const k=(lang==='es')?'data-es':'data-en';
+    if(o.hasAttribute(k)&&o.getAttribute(k)){ o.textContent=o.getAttribute(k); }
+  });
+  localStorage.setItem('kfs-lang',lang);
 }
 
-// Animation loop
-let time = 0;
-function animate(){
-  requestAnimationFrame(animate);
-  if(isReduced || !objects) return;
-  time += .01;
-  // lerp mouse
-  tmx += (mx - tmx) * .05;
-  tmy += (my - tmy) * .05;
-  objects.starMat.uniforms.uTime.value = time;
-  objects.starMat.uniforms.uMouse.value.set(tmx, tmy);
-  objects.core.rotation.x += .0022;
-  objects.core.rotation.y += .003;
-  objects.shell1.rotation.y -= .0015;
-  objects.shell2.rotation.y -= .0025;
-  objects.particles.rotation.y += .0004;
-  // camera parallax with mouse
-  camera.position.x = tmx * 1.4;
-  camera.position.y = tmy * 0.9;
-  renderer.render(scene, camera);
+/* ── Kinetic hero split (re-runnable for i18n) ── */
+function splitLine(el){
+  const txt=el.getAttribute((curLang==='es')?'data-es':'data-en')||el.textContent;
+  el.textContent='';
+  [...txt].forEach((c,i)=>{
+    const s=document.createElement('span');
+    s.className='ch'; s.textContent=(c===' ')?'\u00A0':c;
+    s.style.opacity=0; s.style.transform='translateY(120%) rotate(6deg)';
+    el.appendChild(s);
+    gsap.to(s,{opacity:1,y:0,rotate:0,duration:0.9,ease:'back.out(1.6)',delay:0.35+i*0.035});
+  });
 }
-animate();
+document.getElementById('langEs').addEventListener('click',()=>applyLang('es'));
+document.getElementById('langEn').addEventListener('click',()=>applyLang('en'));
+
+/* ── Nav scroll + burger ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const mm=document.getElementById('mobileMenu'),burger=document.getElementById('navBurger');
+burger.addEventListener('click',()=>mm.classList.toggle('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+
+/* ── Preloader (removes itself) ── */
+const preloader=document.getElementById('preloader'),preBar=document.getElementById('preBar');
+let pP=0;
+const pInt=setInterval(()=>{ pP=Math.min(100,pP+Math.random()*22); preBar.style.width=pP+'%'; if(pP>=100){clearInterval(pInt);} },130);
+function hideLoader(){
+  clearInterval(pInt); preBar.style.width='100%';
+  preloader.classList.add('done');
+  setTimeout(()=>{ if(preloader.parentNode){preloader.parentNode.removeChild(preloader);} },750);
+}
+if(document.readyState!=='complete'){ window.addEventListener('load',hideLoader); } else { setTimeout(hideLoader,600); }
+setTimeout(hideLoader,4000); // failsafe — never trap the user
+
+/* ── GSAP setup ── */
+gsap.registerPlugin(ScrollTrigger);
+window.addEventListener('load',()=>{
+  // Reveals
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:46},{opacity:1,y:0,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'},overwrite:true});
+  });
+  // Stats count-up
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    const end=+el.getAttribute('data-count');
+    const obj={v:0};
+    gsap.to(obj,{v:end,duration:2,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 90%'},
+      onUpdate:()=>{ el.textContent=Math.round(obj.v).toLocaleString(); }});
+  });
+  // Marquee duplicate for seamless loop
+  const mt=document.getElementById('marqueeTrack');
+  mt.innerHTML+=mt.innerHTML;
+});
+
+/* ── FAQ accordion ── */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=0;});
+    if(!open){item.classList.add('open');item.querySelector('.faq-a').style.maxHeight=item.querySelector('.faq-a').scrollHeight+'px';}
+  });
+});
+
+/* ── Year ── */
+document.getElementById('year').textContent=new Date().getFullYear();
 
 /* ═══════════════════════════════════════════
-   PORTAL ORB — 3D floating client portal
+   WEBGL — golden core + flow-field galaxy
    ═══════════════════════════════════════════ */
-const orbCanvas = document.getElementById('orb');
-if(orbCanvas && !isReduced && typeof THREE !== 'undefined'){
-  const oScene=new THREE.Scene(), oCam=new THREE.PerspectiveCamera(60,1,.1,100);
-  oCam.position.z=3.2;
+const canvas=document.getElementById('bg');
+let renderer,scene,camera,objects;
+if(!isReduced && typeof THREE!=='undefined'){
+  scene=new THREE.Scene();
+  camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,1000); camera.position.z=34;
+  renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight);
+
+  const core=new THREE.Mesh(new THREE.IcosahedronGeometry(7,1),
+    new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:.85,roughness:.2,flatShading:true}));
+  core.position.set(26,0,-18); scene.add(core);
+  const shell1=new THREE.Mesh(new THREE.IcosahedronGeometry(9.5,1),
+    new THREE.MeshBasicMaterial({color:0xE8C97A,wireframe:true,transparent:true,opacity:.12}));
+  shell1.position.copy(core.position); scene.add(shell1);
+  const shell2=new THREE.Mesh(new THREE.IcosahedronGeometry(11.5,1),
+    new THREE.MeshBasicMaterial({color:0xF5C842,wireframe:true,transparent:true,opacity:.05}));
+  shell2.position.copy(core.position); scene.add(shell2);
+
+  const key=new THREE.PointLight(0xFFD060,1.4,200); key.position.set(10,10,10);
+  const fill=new THREE.PointLight(0x3B82F6,.5,120); fill.position.set(-14,-8,6);
+  scene.add(key); scene.add(fill); scene.add(new THREE.AmbientLight(0xffffff,.35));
+
+  const count=2600;
+  const geo=new THREE.BufferGeometry();
+  const pos=new Float32Array(count*3),col=new Float32Array(count*3),sizes=new Float32Array(count);
+  for(let i=0;i<count;i++){
+    const r=18+Math.random()*34, th=Math.random()*Math.PI*2, ph=Math.acos((Math.random()*2)-1);
+    pos[i*3]=r*Math.sin(ph)*Math.cos(th); pos[i*3+1]=r*Math.sin(ph)*Math.sin(th)*.6; pos[i*3+2]=r*Math.cos(ph)-10;
+    const g=Math.random(); col[i*3]=1; col[i*3+1]=.66+g*.34; col[i*3+2]=.30+g*.3; sizes[i]=Math.random()*.9+.3;
+  }
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+  geo.setAttribute('size',new THREE.BufferAttribute(sizes,1));
+  const starMat=new THREE.ShaderMaterial({
+    uniforms:{uTime:{value:0},uMouse:{value:new THREE.Vector2(0,0)}},
+    vertexShader:`attribute float size;uniform float uTime;uniform vec2 uMouse;varying vec3 vColor;varying float vFade;
+      void main(){vColor=color;vec3 p=position;float t=uTime*0.25;
+        p.x+=sin(p.y*0.5+t)*0.6; p.y+=cos(p.z*0.4+t*0.8)*0.6; p.z+=sin(p.x*0.3+t*0.6)*0.6;
+        vec2 m=uMouse*14.0; vec2 d=vec2(p.x,p.y)-m; float dm=length(d);
+        p.xy+=(d/max(dm,0.0001))*(1.6/(1.0+dm*0.06));
+        vec4 mv=modelViewMatrix*vec4(p,1.0); gl_PointSize=size*(140.0/-mv.z);
+        gl_Position=projectionMatrix*mv; vFade=smoothstep(42.0,6.0,length(p));}`,
+    fragmentShader:`varying vec3 vColor;varying float vFade;
+      void main(){vec2 c=gl_PointCoord-0.5; float d=length(c);
+        float a=smoothstep(0.5,0.0,d); gl_FragColor=vec4(vColor,a*0.85*vFade);}`,
+    transparent:true,vertexColors:true,depthWrite:false,blending:THREE.AdditiveBlending
+  });
+  const particles=new THREE.Points(geo,starMat); scene.add(particles);
+  window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+  objects={core,shell1,shell2,particles,starMat};
+}
+
+let mx=0,my=0,tmx=0,tmy=0;
+window.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth)*2-1;my=-((e.clientY/innerHeight)*2-1);});
+if(!isReduced && objects && typeof gsap!=='undefined'){
+  gsap.to(camera.position,{z:10,y:4,scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:1.2,onUpdate:(self)=>{
+    objects.core.rotation.y+=.002; objects.shell2.rotation.z=self.progress*6; objects.shell1.rotation.x=self.progress*4;
+  }}});
+}
+let time=0;
+(function animate(){
+  requestAnimationFrame(animate);
+  if(isReduced||!objects) return;
+  time+=.01; tmx+=(mx-tmx)*.05; tmy+=(my-tmy)*.05;
+  objects.starMat.uniforms.uTime.value=time;
+  objects.starMat.uniforms.uMouse.value.set(tmx,tmy);
+  objects.core.rotation.x+=.0022; objects.core.rotation.y+=.003;
+  objects.shell1.rotation.y-=.0015; objects.shell2.rotation.y-=.0025;
+  objects.particles.rotation.y+=.0004;
+  camera.position.x=tmx*1.4; camera.position.y=tmy*0.9;
+  renderer.render(scene,camera);
+})();
+
+/* ═══════════════════════════════════════════
+   PORTAL ORB (3D client portal)
+   ═══════════════════════════════════════════ */
+const orbCanvas=document.getElementById('orb');
+if(orbCanvas && !isReduced && typeof THREE!=='undefined'){
+  const oS=new THREE.Scene(),oC=new THREE.PerspectiveCamera(60,1,.1,100); oC.position.z=3.2;
   const oR=new THREE.WebGLRenderer({canvas:orbCanvas,alpha:true,antialias:true});
   oR.setPixelRatio(Math.min(devicePixelRatio,2)); oR.setSize(92,92);
-  const sphere=new THREE.Mesh(new THREE.IcosahedronGeometry(1,4),
-    new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:.9,roughness:.1,emissive:0x3d2200,emissiveIntensity:.5}));
-  oScene.add(sphere);
-  const r1=new THREE.Mesh(new THREE.TorusGeometry(1.36,.03,16,100),
-    new THREE.MeshBasicMaterial({color:0xE8C97A,transparent:true,opacity:.85})); r1.rotation.x=Math.PI/4; oScene.add(r1);
-  const r2=new THREE.Mesh(new THREE.TorusGeometry(1.36,.018,16,100),
-    new THREE.MeshBasicMaterial({color:0xC9A84C,transparent:true,opacity:.45})); r2.rotation.x=-Math.PI/3.5; r2.rotation.y=Math.PI/3; oScene.add(r2);
-  oScene.add(new THREE.AmbientLight(0xffffff,.6));
-  const ok=new THREE.PointLight(0xFFD060,6,10); ok.position.set(2,2,3); oScene.add(ok);
+  const sp=new THREE.Mesh(new THREE.IcosahedronGeometry(1,4),new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:.9,roughness:.1,emissive:0x3d2200,emissiveIntensity:.5})); oS.add(sp);
+  const r1=new THREE.Mesh(new THREE.TorusGeometry(1.36,.03,16,100),new THREE.MeshBasicMaterial({color:0xE8C97A,transparent:true,opacity:.85})); r1.rotation.x=Math.PI/4; oS.add(r1);
+  const r2=new THREE.Mesh(new THREE.TorusGeometry(1.36,.018,16,100),new THREE.MeshBasicMaterial({color:0xC9A84C,transparent:true,opacity:.45})); r2.rotation.x=-Math.PI/3.5; r2.rotation.y=Math.PI/3; oS.add(r2);
+  oS.add(new THREE.AmbientLight(0xffffff,.6));
+  const ok=new THREE.PointLight(0xFFD060,6,10); ok.position.set(2,2,3); oS.add(ok);
   let hover=false,zoom=false,zt=0,clk=new THREE.Clock();
-  function renderOrb(){
-    requestAnimationFrame(renderOrb);
-    const t=clk.getElapsedTime();
-    sphere.rotation.y=t*.55; sphere.rotation.x=Math.sin(t*.28)*.18;
+  (function renderOrb(){ requestAnimationFrame(renderOrb);
+    const t=clk.getElapsedTime(); sp.rotation.y=t*.55; sp.rotation.x=Math.sin(t*.28)*.18;
     r1.rotation.z=t*.8; r2.rotation.z=-t*.55;
-    sphere.scale.setScalar(THREE.MathUtils.lerp(sphere.scale.x, hover?1.12:1, .1));
-    ok.intensity=THREE.MathUtils.lerp(ok.intensity, hover?9:6,.07);
-    if(zoom){ zt=THREE.MathUtils.lerp(zt,1,.075); oCam.position.z=3.2-zt*3.1;
-      if(zt>.94){ window.open('https://www.secureclientaccess.com/login','_blank','noopener'); zoom=false;zt=0;oCam.position.z=3.2;
+    sp.scale.setScalar(THREE.MathUtils.lerp(sp.scale.x,hover?1.12:1,.1));
+    ok.intensity=THREE.MathUtils.lerp(ok.intensity,hover?9:6,.07);
+    if(zoom){ zt=THREE.MathUtils.lerp(zt,1,.075); oC.position.z=3.2-zt*3.1;
+      if(zt>.94){ window.open('https://www.secureclientaccess.com/login','_blank','noopener'); zoom=false;zt=0;oC.position.z=3.2;
         document.getElementById('orb-wrap').classList.remove('orb-zooming'); } }
-    oR.render(oScene,oCam);
-  }
-  renderOrb();
+    oR.render(oS,oC);
+  })();
   const wrap=document.getElementById('orb-wrap');
   orbCanvas.addEventListener('mouseenter',()=>hover=true);
   orbCanvas.addEventListener('mouseleave',()=>hover=false);
@@ -966,169 +785,32 @@ if(orbCanvas && !isReduced && typeof THREE !== 'undefined'){
 }
 
 /* ═══════════════════════════════════════════
-   CURSOR FOLLOWER + MAGNETIC + TILT
+   CURSOR + MAGNETIC + SPOTLIGHT
    ═══════════════════════════════════════════ */
-const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
-let cmx=0,cmy=0,crx=0,cry=0;
-if(window.matchMedia('(hover:hover)').matches){
-  window.addEventListener('mousemove',e=>{cmx=e.clientX;cmy=e.clientY;dot.style.left=cmx+'px';dot.style.top=cmy+'px'});
-  (function loop(){
-    requestAnimationFrame(loop);
-    crx+=(cmx-crx)*.16; cry+=(cmy-cry)*.16;
-    ring.style.left=crx+'px'; ring.style.top=cry+'px';
-  })();
-  document.querySelectorAll('a,button,.faq-q,.service-card,.stat-card,.testi,.step,.nav-cta').forEach(el=>{
-    el.addEventListener('mouseenter',()=>ring.classList.add('is-active'));
-    el.addEventListener('mouseleave',()=>ring.classList.remove('is-active'));
+if(window.matchMedia('(hover:hover)').matches && !isReduced){
+  const dot=document.createElement('div'); dot.className='cursor-dot'; document.body.appendChild(dot);
+  const ring=document.createElement('div'); ring.className='cursor-ring'; document.body.appendChild(ring);
+  let cx=0,cy=0,rx=0,ry=0;
+  window.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;dot.style.left=cx+'px';dot.style.top=cy+'px';});
+  (function loop(){requestAnimationFrame(loop);rx+=(cx-rx)*.16;ry+=(cy-ry)*.16;ring.style.left=rx+'px';ring.style.top=ry+'px';})();
+  // Magnetic buttons
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const dx=e.clientX-(r.left+r.width/2);const dy=e.clientY-(r.top+r.height/2);gsap.to(btn,{x:dx*.3,y:dy*.3,duration:.3});});
+    btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:'elastic.out(1,0.4)'}));
+  });
+  // Spotlight tiles (--gx/--gy on stat + service cards)
+  document.querySelectorAll('.stat,.service-card').forEach(el=>{
+    el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--gx',((e.clientX-r.left)/r.width*100)+'%');el.style.setProperty('--gy',((e.clientY-r.top)/r.height*100)+'%');});
   });
 }
 
-// Magnetic buttons
-if(window.matchMedia('(hover:hover)').matches && typeof gsap !== 'undefined'){
-  document.querySelectorAll('.magnetic').forEach(el=>{
-    el.addEventListener('mousemove',e=>{
-      const r=el.getBoundingClientRect();
-      const x=e.clientX-r.left-r.width/2;
-      const y=e.clientY-r.top-r.height/2;
-      gsap.to(el,{x:x*.22,y:y*.22,duration:.4,ease:'power2.out'});
-    });
-    el.addEventListener('mouseleave',()=>gsap.to(el,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}));
-  });
-}
-
-// 3D tilt cards
-if(window.matchMedia('(hover:hover)').matches){
-  document.querySelectorAll('.tilt').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const px=(e.clientX-r.left)/r.width;
-      const py=(e.clientY-r.top)/r.height;
-      const rx=(0.5-py)*10;
-      const ry=(px-0.5)*10;
-      card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
-      card.style.setProperty('--gx',`${px*100}%`);
-      card.style.setProperty('--gy',`${py*100}%`);
-    });
-    card.addEventListener('mouseleave',()=>{card.style.transform=''});
-  });
-}
-
-/* ═══════════════════════════════════════════
-   SCROLL / REVEAL / NAV / KINETIC HERO
-   ═══════════════════════════════════════════ */
-document.getElementById('year').textContent=new Date().getFullYear();
-
-// Kinetic hero — split into chars
-if(!isReduced){
-  document.querySelectorAll('#heroTitle .line').forEach(line=>{
-    const node=line.firstChild && line.firstChild.nodeType===3 ? line.firstChild : null;
-    // Only split text nodes; keep nested spans (accent) intact
-    const walker=document.createTreeWalker(line, NodeFilter.SHOW_TEXT, null);
-    const texts=[];
-    while(walker.nextNode()) texts.push(walker.currentNode);
-    texts.forEach(tn=>{
-      const frag=document.createDocumentFragment();
-      const chars=tn.nodeValue.split('');
-      chars.forEach(c=>{
-        const s=document.createElement('span');
-        s.className='ch';
-        s.textContent=c===' '?'\u00A0':c;
-        frag.appendChild(s);
-      });
-      tn.parentNode.replaceChild(frag,tn);
-    });
-  });
-  if(typeof gsap !== 'undefined'){
-    gsap.registerPlugin(ScrollTrigger);
-    // animate chars up with stagger
-    const chars=document.querySelectorAll('#heroTitle .ch');
-    gsap.fromTo(chars,{yPercent:110},{yPercent:0,duration:1.1,ease:'power4.out',stagger:.04,delay:.15});
-    // scroll skew on hero title
-    gsap.to('#heroTitle',{
-      yPercent:-18, opacity:.25,
-      scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}
-    });
-    // parallax orbs + data-speed sections
-    gsap.utils.toArray('[data-speed]').forEach(el=>{
-      const speed=parseFloat(el.dataset.speed)||1;
-      gsap.fromTo(el,{y:0},{
-        y:()=>(1-speed)*220,
-        ease:'none',
-        scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}
-      });
-    });
-  }
-}
-
-// Progress bar
-if(typeof gsap !== 'undefined'){
-  gsap.to('#progress',{width:'100%',ease:'none',
-    scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
-}
-
-// Nav shrink
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>40));
-
-// Mobile menu
-const burger=document.getElementById('navBurger'), menu=document.getElementById('mobile-menu');
-burger.addEventListener('click',()=>menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
-
-// Reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Count-up stats
-const cio=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){
-    const el=e.target; const target=+el.dataset.count;
-    const start=performance.now(), dur=2000;
-    function tick(now){
-      const p=Math.min(1,(now-start)/dur);
-      const ease=1-Math.pow(1-p,3);
-      el.textContent=Math.round(target*ease);
-      if(p<1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-    cio.unobserve(el);
-  }
-}),{threshold:.6});
-document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
-
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.querySelector('.faq-q').addEventListener('click',()=>{
-    const isOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null});
-    if(!isOpen){item.classList.add('open');const a=item.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px'}
-  });
+/* ── Boot: default lang from storage, then kinetic split ── */
+const saved=localStorage.getItem('kfs-lang');
+if(saved) applyLang(saved);
+window.addEventListener('load',()=>{
+  splitLine(document.getElementById('heroLine1'));
+  splitLine(document.getElementById('heroLine2'));
 });
-
-// Lead form
-const form=document.getElementById('lead-form');
-form.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const btn=form.querySelector('button[type=submit]'); btn.textContent='Sending…'; btn.disabled=true;
-  try{
-    const fd=new FormData(form);
-    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
-    const data=await res.json();
-    if(data.success){ btn.innerHTML="👑 Welcome to the Kingdom — we'll be in touch!"; btn.style.opacity=.8;
-      form.querySelectorAll('input,select').forEach(el=>el.disabled=true); }
-    else throw new Error(data.message||'err');
-  }catch(err){ btn.textContent='Something went wrong — call (201) 989-7108'; btn.disabled=false; }
-});
-
-// Loader
-let lp=0; const fill=document.getElementById('loader-fill');
-const lt=setInterval(()=>{ lp=Math.min(100,lp+Math.random()*20); fill.style.width=lp+'%';
-  if(lp>=100){ clearInterval(lt); setTimeout(()=>{
-    const l=document.getElementById('loader');
-    l.classList.add('done');
-    setTimeout(()=>{ l.style.display='none'; }, 900);
-  },300); } },180);
-
-window.__KFS_READY = true;
 </script>
 </body>
 </html>
