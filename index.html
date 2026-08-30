@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="theme-color" content="#05070B" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
 <title>Kingdom Financial Services — Your Kingdom. Your Capital.</title>
 <meta name="description" content="Premium financial education, credit repair, debt relief, and business funding — nationwide from Wayne, NJ. Your Kingdom. Your Capital." />
 
@@ -11,7 +14,6 @@
 <meta property="og:url" content="https://kingdomfiservices.com/" />
 <meta property="og:title" content="Kingdom Financial Services | Your Kingdom. Your Capital." />
 <meta property="og:description" content="Credit repair, debt relief, and business funding — nationwide. Free consultation." />
-<meta property="og:image" content="https://kingdomfiservices.com/og-cover.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="canonical" href="https://kingdomfiservices.com/" />
 
@@ -29,14 +31,7 @@
   "url": "https://kingdomfiservices.com",
   "telephone": "+1-201-989-7108",
   "email": "support@kingdomfiservices.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "155 Willowbrook Blvd, Ste 110 #8199",
-    "addressLocality": "Wayne",
-    "addressRegion": "NJ",
-    "postalCode": "07470",
-    "addressCountry": "US"
-  },
+  "address": {"@type": "PostalAddress", "addressLocality": "Wayne", "addressRegion": "NJ", "addressCountry": "US"},
   "description": "Financial education, credit guidance, debt relief, and business funding support — nationwide.",
   "areaServed": "US",
   "priceRange": "Free Consultation"
@@ -179,10 +174,24 @@ img,svg,canvas{display:block}
 .logo-text b{font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.18em;display:block}
 .logo-text small{color:var(--gold);font-size:.6rem;letter-spacing:.32em;text-transform:uppercase}
 .nav-links{display:flex;align-items:center;gap:34px}
-.nav-links a:not(.nav-cta){font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white-muted);position:relative;transition:color .3s}
-.nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .3s}
-.nav-links a:not(.nav-cta):hover{color:var(--white)}
-.nav-links a:not(.nav-cta):hover::after{width:100%}
+.nav-link,.nav-menu-trigger{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white-muted);position:relative;transition:color .3s}
+.nav-link:after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-link:hover,.nav-menu-trigger:hover,.nav-menu-trigger[aria-expanded="true"]{color:var(--white)}
+.nav-link:hover:after{width:100%}
+.nav-menu{position:relative}
+.nav-menu-trigger{display:flex;align-items:center;gap:8px;background:none;border:0;font-family:inherit;cursor:pointer}
+.nav-menu-trigger .chevron{font-size:.68rem;color:var(--gold);transition:transform .25s}
+.nav-menu-trigger[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 26px);right:-210px;width:min(720px,calc(100vw - 40px));padding:18px;background:rgba(8,11,17,.97);border:1px solid var(--gold-border);box-shadow:0 28px 80px rgba(0,0,0,.55);backdrop-filter:blur(24px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,visibility .25s,transform .25s}
+.nav-dropdown.open{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-grid{display:grid;grid-template-columns:1fr 1fr .9fr;gap:12px}
+.nav-group{padding:16px}.nav-group+.nav-group{border-left:1px solid rgba(255,255,255,.07)}
+.nav-group-label{display:block;margin-bottom:12px;color:var(--gold);font-family:var(--font-mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase}
+.nav-dropdown a:not(.nav-dropdown-cta){display:block;padding:9px 0;color:var(--white-muted);font-size:.88rem;transition:color .2s,transform .2s}
+.nav-dropdown a:not(.nav-dropdown-cta):hover,.nav-dropdown a:not(.nav-dropdown-cta):focus-visible{color:var(--white);transform:translateX(4px);outline:none}
+.nav-business-card{height:100%;padding:18px;background:linear-gradient(145deg,rgba(201,168,76,.13),rgba(201,168,76,.03));border:1px solid var(--gold-border)}
+.nav-business-card strong{display:block;font-family:var(--font-display);font-size:1.05rem;margin:8px 0}.nav-business-card p{color:var(--neutral);font-size:.75rem;line-height:1.55;margin-bottom:14px}
+.nav-dropdown-cta{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--gold);color:var(--dark);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
 .nav-cta{
   padding:12px 26px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));
   color:var(--dark)!important;border-radius:8px;font-weight:600;font-size:.8rem;letter-spacing:.06em;
@@ -194,12 +203,16 @@ img,svg,canvas{display:block}
 /* Mobile menu */
 #mobile-menu{
   position:fixed;inset:0;z-index:450;background:rgba(5,7,11,.96);backdrop-filter:blur(24px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+  display:flex;align-items:center;justify-content:center;padding:100px 24px 44px;
   opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;
 }
 #mobile-menu.open{opacity:1;visibility:visible}
-#mobile-menu a{font-family:var(--font-display);font-size:1.6rem;letter-spacing:.08em;color:var(--white-muted)}
-#mobile-menu a:hover{color:var(--gold)}
+.mobile-menu-inner{width:min(100%,520px);display:grid;gap:24px}
+.mobile-menu-label{color:var(--gold);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase}
+.mobile-menu-links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#mobile-menu a{padding:15px;border:1px solid rgba(255,255,255,.08);font-family:var(--font-display);font-size:1rem;color:var(--white-muted);transition:color .2s,border-color .2s,background .2s}
+#mobile-menu a:hover,#mobile-menu a:focus-visible{color:var(--white);border-color:var(--gold-border);background:var(--gold-subtle);outline:none}
+.mobile-menu-actions{display:grid;gap:10px}.mobile-menu-actions a:first-child{background:var(--gold);color:var(--dark);border-color:var(--gold);font-family:var(--font-sans);font-weight:700;text-align:center}.mobile-menu-note{color:var(--neutral);font-size:.74rem;line-height:1.5;text-align:center}
 
 /* ── Sections ── */
 main{position:relative;z-index:2}
@@ -253,20 +266,6 @@ main{position:relative;z-index:2}
 }
 .scroll-hint .line{width:1px;height:50px;background:linear-gradient(180deg,transparent,var(--gold));animation:drop 1.6s infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-/* ── Craft marquee (the dev signature ribbon) ── */
-#marquee{
-  position:relative;z-index:2;padding:26px 0;border-top:1px solid rgba(255,255,255,.05);
-  border-bottom:1px solid rgba(255,255,255,.05);background:rgba(5,7,11,.5);overflow:hidden;
-  transform:rotate(-1deg) scale(1.02);
-}
-.marquee-track{display:flex;width:max-content;animation:marquee 34s linear infinite}
-.marquee-track span{
-  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--gold);white-space:nowrap;padding:0 2rem;display:flex;align-items:center;gap:2rem;
-}
-.marquee-track i{font-style:normal;color:var(--neutral);font-size:.9rem}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── Stats strip ── */
 #stats{min-height:auto;padding:var(--space-5) 0}
@@ -405,11 +404,6 @@ footer{
 .footer-col a{display:block;padding:6px 0;color:var(--white-muted);font-size:.88rem;transition:color .3s}
 .footer-col a:hover{color:var(--white)}
 .footer-legal{margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;color:var(--neutral);line-height:1.8;text-align:center}
-.footer-craft{
-  margin-top:18px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.26em;
-  text-transform:uppercase;color:rgba(201,168,76,.45);text-align:center;
-}
-
 /* ── Portal orb — floating bubble ── */
 #orb-wrap{
   position:fixed;bottom:28px;right:28px;z-index:600;width:92px;height:92px;cursor:pointer;
@@ -497,10 +491,34 @@ footer{
     <span class="logo-text"><b>KINGDOM</b><small>Financial Services</small></span>
   </a>
   <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#proof">Results</a>
-    <a href="#faq">FAQ</a>
+    <div class="nav-menu">
+      <button class="nav-menu-trigger" id="navMenuTrigger" type="button" aria-expanded="false" aria-controls="navDropdown">Explore <span class="chevron">⌄</span></button>
+      <div class="nav-dropdown" id="navDropdown" aria-hidden="true">
+        <div class="nav-dropdown-grid">
+          <div class="nav-group">
+            <span class="nav-group-label">How we can help</span>
+            <a href="#pathfinder" data-path-nav="credit">Credit clarity & rebuilding</a>
+            <a href="#pathfinder" data-path-nav="debt">Debt strategy guidance</a>
+            <a href="#pathfinder" data-path-nav="business">Business funding readiness</a>
+          </div>
+          <div class="nav-group">
+            <span class="nav-group-label">Know the process</span>
+            <a href="#services">Explore services</a>
+            <a href="#process">How it works</a>
+            <a href="#proof">Why Kingdom</a>
+            <a href="#faq">Common questions</a>
+          </div>
+          <div class="nav-business-card">
+            <span class="nav-group-label">Kingdom Financial</span>
+            <strong>Clarity before commitment.</strong>
+            <p>New Jersey-based guidance for clients nationwide, with a free first consultation and secure client access.</p>
+            <a class="nav-dropdown-cta" href="https://www.secureclientaccess.com/login" target="_blank" rel="noopener noreferrer">Client portal <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="nav-link" href="#process">Process</a>
+    <a class="nav-link" href="#faq">FAQ</a>
     <a href="#contact" class="nav-cta">Book Free Consult</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
@@ -508,11 +526,22 @@ footer{
 
 <!-- Mobile menu -->
 <div id="mobile-menu">
-  <a href="#services">Services</a>
-  <a href="#process">Process</a>
-  <a href="#proof">Results</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Book Free Consult</a>
+  <div class="mobile-menu-inner">
+    <span class="mobile-menu-label">Explore Kingdom Financial</span>
+    <div class="mobile-menu-links">
+      <a href="#pathfinder">Find my starting point</a>
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#proof">Why Kingdom</a>
+      <a href="#faq">Common questions</a>
+      <a href="tel:2019897108">Call us</a>
+    </div>
+    <div class="mobile-menu-actions">
+      <a href="#contact">Book a free consultation</a>
+      <a href="https://www.secureclientaccess.com/login" target="_blank" rel="noopener noreferrer">Secure client portal ↗</a>
+    </div>
+    <p class="mobile-menu-note">New Jersey-based · Serving clients nationwide · Financial education and guidance</p>
+  </div>
 </div>
 
 <main>
@@ -544,14 +573,6 @@ footer{
     <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
   </section>
 
-  <!-- CRAFT MARQUEE — the developer signature ribbon -->
-  <div id="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>WebGL <i>◆</i> GLSL Shaders <i>◆</i> GSAP Motion <i>◆</i> Parametric Design <i>◆</i> Generative Canvas <i>◆</i> Fluid Typography <i>◆</i> Scroll Physics <i>◆</i> Three.js <i>◆</i></span>
-      <span>WebGL <i>◆</i> GLSL Shaders <i>◆</i> GSAP Motion <i>◆</i> Parametric Design <i>◆</i> Generative Canvas <i>◆</i> Fluid Typography <i>◆</i> Scroll Physics <i>◆</i> Three.js <i>◆</i></span>
-    </div>
-  </div>
-
   <!-- INTERACTIVE PATHFINDER -->
   <section id="pathfinder" class="section pathfinder" aria-labelledby="pathfinder-title">
     <div class="wrap pathfinder-shell">
@@ -580,10 +601,10 @@ footer{
   <section id="stats" class="section">
     <div class="wrap">
       <div class="stats-grid">
-        <div class="stat-card tilt reveal"><div class="stat-num" data-count="500">0</div><div class="stat-label">Clients Funded</div></div>
-        <div class="stat-card tilt reveal reveal-delay-1"><div class="stat-num"><span data-count="250">0</span>K+</div><div class="stat-label">Avg Funding Approved</div></div>
-        <div class="stat-card tilt reveal reveal-delay-2"><div class="stat-num"><span data-count="127">0</span> pts</div><div class="stat-label">Avg Credit Score Gain</div></div>
-        <div class="stat-card tilt reveal reveal-delay-3"><div class="stat-num"><span data-count="780">0</span></div><div class="stat-label">Target Credit Score</div></div>
+        <div class="stat-card tilt reveal"><div class="stat-num">50</div><div class="stat-label">States Served Remotely</div></div>
+        <div class="stat-card tilt reveal reveal-delay-1"><div class="stat-num">3</div><div class="stat-label">Core Financial Paths</div></div>
+        <div class="stat-card tilt reveal reveal-delay-2"><div class="stat-num">$0</div><div class="stat-label">Initial Consultation</div></div>
+        <div class="stat-card tilt reveal reveal-delay-3"><div class="stat-num">1:1</div><div class="stat-label">Personalized Guidance</div></div>
       </div>
     </div>
   </section>
@@ -601,7 +622,7 @@ footer{
           <div class="service-icon">🛠️</div>
           <span class="tag">Credit Repair & Building</span>
           <h3>Rebuild Your Score</h3>
-          <p>Dispute inaccuracies, build strong tradelines, and drive your score up. Structured 6-phase roadmap with real results.</p>
+          <p>Understand what is reporting, address potential inaccuracies, and build a structured improvement roadmap around your credit profile.</p>
           <ul>
             <li>Credit report analysis & education</li>
             <li>Dispute filing & tradeline strategy</li>
@@ -625,11 +646,11 @@ footer{
           <div class="service-icon">🏦</div>
           <span class="tag">Business Funding</span>
           <h3>Fund Your Vision</h3>
-          <p>From $10K to $5M — SBA loans, lines of credit, equipment, and real estate across a 50+ lender network.</p>
+          <p>Prepare for SBA loans, lines of credit, equipment financing, and other funding paths through an established lender network.</p>
           <ul>
-            <li>Business & EIN credit building</li>
+            <li>Business credit profile building</li>
             <li>D&B profile + vendor tradelines</li>
-            <li>Funding in 24–72 hours</li>
+            <li>Documentation and lender readiness</li>
           </ul>
           <a href="#contact" class="service-link">Begin <span class="arrow">→</span></a>
         </div>
@@ -660,8 +681,8 @@ footer{
         </div>
         <div class="step tilt reveal reveal-delay-2">
           <div class="num">03</div>
-          <h3>Submit & Get Funded</h3>
-          <p>We submit through our 50+ lender network. Approvals in 24–72 hours. Watch your kingdom take shape.</p>
+          <h3>Review Options & Move Forward</h3>
+          <p>When you are ready, we help you understand the available paths and next steps. Eligibility, timing, and outcomes vary by applicant and lender.</p>
         </div>
       </div>
     </div>
@@ -671,28 +692,28 @@ footer{
   <section id="proof" class="section">
     <div class="wrap">
       <div class="sec-head" data-speed="0.9">
-        <span class="sec-index">[ 03 — TESTIMONY ]</span>
-        <h2>Real Subjects. Real Results.</h2>
-        <p>From the archives — clients who walked the path and found their standing.</p>
+        <span class="sec-index">[ 03 — WHY KINGDOM ]</span>
+        <h2>Guidance Built Around Clarity</h2>
+        <p>A focused approach to understanding your position, your options, and the next responsible move.</p>
       </div>
       <div class="testi-grid">
         <div class="testi tilt reveal">
-          <span class="quote-mark">“</span>
-          <div class="stars">★★★★★</div>
-          <p>I didn't know where to start. Kingdom broke everything down step by step — my score jumped 80 points in four months. Life-changing.</p>
-          <div class="who"><div class="name">Marcus T.</div><div class="role">Atlanta, GA · Credit Client</div></div>
+          <span class="quote-mark">01</span>
+          <div class="stars">CLARITY FIRST</div>
+          <p>We begin by organizing the facts and explaining the available paths before asking you to make a commitment.</p>
+          <div class="who"><div class="name">Understand the full picture</div><div class="role">Reports · balances · goals · timelines</div></div>
         </div>
         <div class="testi tilt reveal reveal-delay-1">
-          <span class="quote-mark">“</span>
-          <div class="stars">★★★★★</div>
-          <p>They helped me navigate my debt without judgment. I finally have a plan that makes sense for my family.</p>
-          <div class="who"><div class="name">Danielle R.</div><div class="role">Houston, TX · Debt Client</div></div>
+          <span class="quote-mark">02</span>
+          <div class="stars">EDUCATION OVER PRESSURE</div>
+          <p>We explain tradeoffs in plain language so you can make informed decisions without inflated promises or unnecessary pressure.</p>
+          <div class="who"><div class="name">Know what each option means</div><div class="role">Straight answers · realistic expectations</div></div>
         </div>
         <div class="testi tilt reveal reveal-delay-2">
-          <span class="quote-mark">“</span>
-          <div class="stars">★★★★★</div>
-          <p>I launched my LLC and secured my first business credit line within 90 days. Kingdom taught me what banks never would.</p>
-          <div class="who"><div class="name">Jerome W.</div><div class="role">Charlotte, NC · Business Client</div></div>
+          <span class="quote-mark">03</span>
+          <div class="stars">A PRACTICAL ROADMAP</div>
+          <p>Your next steps are organized around your actual situation, with clear priorities and no guarantee of a specific score or approval.</p>
+          <div class="who"><div class="name">Move with a plan</div><div class="role">Priorities · preparation · progress</div></div>
         </div>
       </div>
     </div>
@@ -706,11 +727,11 @@ footer{
         <h2>Answers From the Vault</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item reveal"><div class="faq-q">Can you actually fix my credit?<span class="ic">+</span></div><div class="faq-a"><p>We provide financial education and strategic guidance to empower you. While we can't guarantee specific scores, clients who follow our roadmap consistently see meaningful improvement over 90–180 days.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q">Can you guarantee a credit-score increase?<span class="ic">+</span></div><div class="faq-a"><p>No. We provide financial education, report review, and strategic guidance, but no legitimate service can guarantee a specific score or outcome. Results depend on each credit profile and the actions taken.</p></div></div>
         <div class="faq-item reveal"><div class="faq-q">How much does it cost to start?<span class="ic">+</span></div><div class="faq-a"><p>Your initial consultation is completely free — you should understand your options before investing anything. Services thereafter are priced to your specific situation and goals.</p></div></div>
         <div class="faq-item reveal"><div class="faq-q">Do you serve clients outside New Jersey?<span class="ic">+</span></div><div class="faq-a"><p>Yes — all 50 states. Everything is handled remotely, so location is never a barrier to getting started.</p></div></div>
-        <div class="faq-item reveal"><div class="faq-q">How long does credit repair take?<span class="ic">+</span></div><div class="faq-a"><p>Most clients see measurable change within 60–90 days. Significant improvement typically spans 6–12 months, depending on your credit history's complexity and consistency.</p></div></div>
-        <div class="faq-item reveal"><div class="faq-q">How does business funding education work?<span class="ic">+</span></div><div class="faq-a"><p>We teach proper business structuring, separate business from personal credit, and position you to qualify for real funding — most clients reach their first business credit line within 90 days.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q">How long does credit improvement take?<span class="ic">+</span></div><div class="faq-a"><p>There is no universal timeline. It depends on what is reporting, the accuracy of the information, creditor and bureau responses, balances, and the steps you take. Your consultation will focus on a realistic sequence rather than a promised date.</p></div></div>
+        <div class="faq-item reveal"><div class="faq-q">How does business funding education work?<span class="ic">+</span></div><div class="faq-a"><p>We review business structure, documentation, credit readiness, and potential funding paths. We help you prepare and understand options; lenders make all approval decisions.</p></div></div>
       </div>
     </div>
   </section>
@@ -722,17 +743,18 @@ footer{
         <span class="sec-index" style="margin-bottom:14px">[ 05 — YOUR NEXT STEP ]</span>
         <h2>Where Do You Want to Begin?</h2>
         <p>No commitment. No pressure. Just a real conversation about where you are — and where you want to be.</p>
-        <form id="lead-form" class="form" name="kfs-leads" method="POST" action="https://api.web3forms.com/submit">
+        <form id="lead-form" class="form" name="kfs-leads" method="POST" action="https://api.web3forms.com/submit" accept-charset="UTF-8">
           <input type="hidden" name="access_key" value="754e4fd3-1f9f-4c97-b53a-80dcea5e723f" />
           <input type="hidden" name="subject" value="New Lead — Kingdom Financial Services" />
           <input type="hidden" name="from_name" value="KFS Website" />
+          <input type="hidden" name="form_started_at" id="form-started-at" value="" />
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="form-row">
-            <input type="text" name="first_name" placeholder="First Name *" required />
-            <input type="email" name="email" placeholder="Email Address *" required />
+            <input type="text" name="first_name" placeholder="First Name *" autocomplete="given-name" maxlength="80" required />
+            <input type="email" name="email" placeholder="Email Address *" autocomplete="email" maxlength="254" required />
           </div>
           <div class="form-row">
-            <input type="tel" name="phone" placeholder="Phone Number" />
+            <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="tel" maxlength="30" />
             <select name="service_interest" required>
               <option value="">I need help with… *</option>
               <option value="credit">Credit Education & Repair</option>
@@ -748,7 +770,7 @@ footer{
             <span>I agree to receive educational emails. I can unsubscribe anytime. We never sell your information.</span>
           </label>
           <button type="submit" class="btn btn-gold btn-submit magnetic">Request My Free Consultation</button>
-          <p class="form-note">🔒 Your information is encrypted and never shared. Mon–Sat, 9am–7pm EST.</p>
+          <p class="form-note">🔒 Sent over an encrypted connection and used to respond to your request. Mon–Sat, 9am–7pm ET.</p>
         </form>
         <div class="portal-link">
           <span>Already a client?</span>
@@ -783,10 +805,9 @@ footer{
     </div>
   </div>
   <p class="footer-legal">
-    © <span id="year"></span> Kingdom Financial Services LLC · EIN 41-5101264 · New Jersey LLC ·
+    © <span id="year"></span> Kingdom Financial Services LLC · New Jersey ·
     Financial education and guidance only. Not legal or financial advice. No guarantees. Results vary.
   </p>
-  <p class="footer-craft">Engineered with WebGL · GSAP · Parametric Design</p>
 </footer>
 
 <!-- Portal orb -->
@@ -795,10 +816,10 @@ footer{
   <span class="orb-label">Client Portal</span>
 </div>
 
-<!-- Libs: GSAP + ScrollTrigger + Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- Version-pinned libraries with integrity verification -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
 /* ═══════════════════════════════════════════
@@ -1118,6 +1139,14 @@ function setMenu(open){menu.classList.toggle('open',open);burger.setAttribute('a
 burger.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 
+// Desktop business menu — accessible by click, keyboard, and outside dismissal.
+const navMenuTrigger=document.getElementById('navMenuTrigger'),navDropdown=document.getElementById('navDropdown');
+function setNavDropdown(open){navDropdown.classList.toggle('open',open);navDropdown.setAttribute('aria-hidden',String(!open));navMenuTrigger.setAttribute('aria-expanded',String(open))}
+navMenuTrigger.addEventListener('click',()=>setNavDropdown(!navDropdown.classList.contains('open')));
+navDropdown.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setNavDropdown(false)));
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-menu'))setNavDropdown(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){setNavDropdown(false);setMenu(false);navMenuTrigger.focus()}});
+
 // Goal pathfinder — guides visitors and carries their choice into the lead form.
 const pathContent={
   credit:{title:'Start with a credit clarity review',copy:'We’ll review what is reporting, identify priorities, and explain a practical sequence of actions based on your situation.',cta:'Book a credit consultation'},
@@ -1130,6 +1159,7 @@ document.querySelectorAll('.path-option').forEach(button=>button.addEventListene
   document.querySelectorAll('.path-option').forEach(option=>option.setAttribute('aria-pressed',String(option===button)));
   pathTitle.textContent=content.title;pathCopy.textContent=content.copy;pathCta.firstChild.textContent=content.cta+' ';pathCta.dataset.service=key;
 }));
+document.querySelectorAll('[data-path-nav]').forEach(link=>link.addEventListener('click',()=>{const option=document.querySelector(`.path-option[data-path="${link.dataset.pathNav}"]`);if(option)option.click()}));
 pathCta.addEventListener('click',()=>{
   const service=document.querySelector('select[name="service_interest"]');
   if(service){service.value=pathCta.dataset.service;service.dispatchEvent(new Event('change',{bubbles:true}))}
@@ -1171,10 +1201,12 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 
 // Lead form
 const form=document.getElementById('lead-form');
+const formStartedAt=Date.now();document.getElementById('form-started-at').value=new Date(formStartedAt).toISOString();
 form.addEventListener('submit',async e=>{
   e.preventDefault();
   const btn=form.querySelector('button[type=submit]'); btn.textContent='Sending…'; btn.disabled=true;
   try{
+    if(Date.now()-formStartedAt<1200) throw new Error('Submission completed too quickly');
     const fd=new FormData(form);
     const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
     const data=await res.json();
