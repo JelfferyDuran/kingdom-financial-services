@@ -18,9 +18,9 @@ built this, you know the developer can build for you.
 - **Message:** "Your Kingdom. Your Capital." Royal treatment, zero judgment. Structured education → strategy → funding.
 - **Compliance hard rule (CROA/FCRA):** never guarantee score increases or specific point amounts.
   Always "Results may vary." Current copy already complies — preserve that.
-- **Meta:** title/description/OG/JSON-LD (`FinancialService`) already present — preserve exact business facts:
-  phone +1-201-989-7108, support@kingdomfiservices.com, 155 Willowbrook Blvd Ste 110 #8199 Wayne NJ 07470,
-  EIN 41-5101264, domain kingdomfiservices.com.
+- **Meta:** title/description/OG/JSON-LD (`FinancialService`) already present — preserve only public-facing business facts:
+  phone +1-201-989-7108, support@kingdomfiservices.com, Wayne NJ, and domain kingdomfiservices.com.
+  Never publish tax identifiers, exact mailing-suite details, credentials, or client data.
 
 ## 3. DESIGN DIRECTION — "PARAMETRIC ROYAL / CYBER CINEMATIC"
 
@@ -54,24 +54,23 @@ The site must feel **alive and generative**, not template-made:
 8. **FAQ accordion** with rotating `+`.
 9. **Portal orb** (bottom-right) — Three.js floating gold orb; click → zooms into client portal
    (https://www.secureclientaccess.com/login).
-10. **Lead form** → Web3Forms (`https://api.web3forms.com/submit`), access_key
-    `754e4fd3-1f9f-4c97-b53a-80dcea5e723f`, botcheck honeypot, success message, disabled-after-submit.
-    Do NOT leak the access key into git history if it can be avoided (it's already public in the page — acceptable).
+10. **Lead form** → Web3Forms (`https://api.web3forms.com/submit`), botcheck honeypot,
+    success message, and disabled-after-submit. Keep provider configuration out of documentation.
 
 ## 4. PAGE STRUCTURE (sections, in order)
 
 1. **Hero** — eyebrow badge (green pulse dot, "New Jersey LLC · Serving All 50 States"), giant headline
    "Your Kingdom. Your Capital.", meta row (Credit ◆ Debt ◆ Business ◆ Funding), serif description,
    gold CTA "Start Free Consultation" + ghost "Explore Services", scroll hint.
-2. **Stats strip** — 4 cards: 500 clients funded · 250K+ avg funding · 127 pts avg score gain · 780 target score.
+2. **Trust strip** — verified facts only: nationwide remote service, three core paths, free consultation,
+   and personalized guidance. Never publish unsupported client, score, or funding statistics.
 3. **Services** — 3 cards (Credit Repair & Building / Debt Relief Guidance / Business Funding) with icon,
    tag, description, bullet list, "Begin →" link. Tilt on hover.
-4. **Process** — 3 steps (Free Consultation & Credit Review / Custom Funding Roadmap / Submit & Get Funded).
-5. **Proof / Testimonials** — 3 five-star quotes (Marcus T. ATL · Danielle R. HOU · Jerome W. CLT).
+4. **Process** — 3 steps (Free Consultation & Review / Custom Roadmap / Review Options & Move Forward).
+5. **Why Kingdom** — clarity first, education over pressure, and a practical roadmap. Never use placeholder testimonials.
 6. **FAQ** — 5 questions (accordion). Compliance-safe answers.
 7. **Contact / CTA** — lead form + client portal link.
-8. **Footer** — brand blurb, services links, contact links, legal line (© year, EIN, "Not legal or financial
-   advice. No guarantees. Results vary.").
+8. **Footer** — brand blurb, services links, contact links, and a concise legal line. Never display tax identifiers.
 
 ## 5. TECH STACK (self-contained single file)
 
